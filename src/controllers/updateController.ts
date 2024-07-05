@@ -11,14 +11,14 @@ let update = async (req: Request, res: Response) => {
             email,
             password,
             phone,
-            image
+            image,
+            fkAdministratorId
         } = req.body;
 
         const role = req.body.role;
 
-        const user = await updateService.updateUser(new User(id, names, lastnames, email, password, phone, image), role);
-        
-        
+        const user = await updateService.updateUser(new User(id, names, lastnames, email, password, phone, image, fkAdministratorId), role);
+    
 
         if(user){
             return res.status(200).json({

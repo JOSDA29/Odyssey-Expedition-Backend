@@ -5,6 +5,6 @@ import { validsParameters, validator } from '../middlewares/updateValidator';
 
 const router = express.Router();
 
-router.patch('/', validsParameters, validator, validateToken, update);
+router.patch('/', validateToken, validsParameters, validator, update);
 
 export default router;

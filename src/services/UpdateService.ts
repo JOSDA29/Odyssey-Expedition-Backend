@@ -8,7 +8,7 @@ class updateService {
                 case 'Administrator':
                     await updateRepository.updateAdmin(user);  
                     break;
-                case 'Advisor':
+                case 'Adviser':
                     await updateRepository.updateAdviser(user);
                     break;
                 case 'User':
