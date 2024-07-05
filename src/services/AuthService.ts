@@ -15,10 +15,10 @@ class AuthService {
                 { result: adminResult, role: "Administrator" },
                 { result: adviserResult, role: "Adviser" }
             ];
-
+            
             for (const { result, role } of roles) {
                 if (result.length > 0) {
-                    const isPasswordValid = await compareHash(auth.$password, result[0].contrasenia);
+                    const isPasswordValid = await compareHash(auth.$password, result[0].password); 
                     if (isPasswordValid) {
                         const token = generateToken({ email: auth.$email, role: role }, process.env.SECRET, 60);
                         return token;

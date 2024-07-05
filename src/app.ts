@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 
 //ROUTES
 import auth from './routes/authRoute';
+import update from './routes/updateRoute';
 
 import dotenv from 'dotenv';
 import cookieParser from "cookie-parser";
@@ -14,6 +15,7 @@ const app = express().use(bodyParser.json());
 app.use(cookieParser());
 
 app.use('/auth', auth);
+app.use('/update', update)
 
 const PORT = process.env.PORT || 10240;
 

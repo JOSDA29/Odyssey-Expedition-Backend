@@ -9,11 +9,11 @@ const validsParameters = [
         return true;
     }),
     // Validaciones
-    check('nombre').optional().isString(),
-    check('apellidos').optional().isString(),
-    check('contrasenia').optional().isString(),
-    check('telefono').optional().isString(),
-    check('imagen').optional().isString()
+    check('names').optional().isString(),
+    check('lastnames').optional().isString(),
+    check('password').optional().isString(),
+    check('phone').optional().isString(),
+    check('image').optional().isString()
 ];
 
 function validator(req: Request, res: Response, next: NextFunction) {
