@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from 'body-parser';
 
 //ROUTES
-import register from './routes/users/user.routes';
+import register from './routes/users/userRoutes';
 
 import dotenv from 'dotenv';
 

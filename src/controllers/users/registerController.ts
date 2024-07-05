@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import UserDto from '../../DTO/user/user-dto';
-import UserService from '../../services/users/user.service';
+import UserDto from '../../DTO/user/userDto';
+import UserService from '../../services/users/userService';
 
 let register = async (req: Request, res: Response) => {
     try {
@@ -13,10 +13,8 @@ let register = async (req: Request, res: Response) => {
             phoneNumber,
             image
         } = req.body;
-        console.log(req.body);
         
         const registerUser = await UserService.register(new UserDto(id_client, email, password, name, lastName, phoneNumber, image));
-        console.log(registerUser);
         
         return res.status(201).json(
             {status: "register ok"}
