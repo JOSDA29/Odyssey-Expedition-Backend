@@ -22,6 +22,8 @@ let register = async (req: Request, res: Response) => {
     } catch (error: any) {
         if (error && error.code == "ER_DUP_ENTRY") {
             return res.status(500).json({errorInfo: error.sqlMessage});
+        }else if (error){
+            return res.status(500).json({errorInfo: error.message});
         }
     }
 }
