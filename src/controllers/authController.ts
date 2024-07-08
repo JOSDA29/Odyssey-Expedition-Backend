@@ -17,8 +17,10 @@ let auth = async(req:Request, res:Response) => {
             status: 'Invalid email or password'
         });
 
-    } catch (error) {
-        return res.status(500).send({ errorInfo: "Internal Server Error", error });
+    } catch (error: any) {
+        console.log(error);
+        
+        return res.status(500).send({ error: "Internal Server Error", errorInfo: error.message});
     }
 }
 

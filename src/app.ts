@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 
 //ROUTES
 import auth from './routes/authRoute';
-import register from './routes/users/userRoutes';
+import register from './routes/users/registerRoute';
 
 import dotenv from 'dotenv';
 
