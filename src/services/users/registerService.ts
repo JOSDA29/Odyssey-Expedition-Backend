@@ -1,12 +1,12 @@
-import UserRepository from "../../repository/user/userRepository";
+import registerRepository from "../../repository/user/registerRepository";
 import UserDto from "../../DTO/user/userDto";
 import generateHash from "../../helpers/generateHash";
 
-class UserService{
+class RegisterService{
     static async register(user:UserDto){
         const password: string = await generateHash(user.passwordC);
         user.passwordC = password;
-        return await UserRepository.addUser(user);
+        return await registerRepository.addUser(user);
     }
 }
-export default UserService;
+export default RegisterService;

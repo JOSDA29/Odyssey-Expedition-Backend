@@ -1,13 +1,12 @@
-import AdvisorRepository from "../../repository/advisor/advisorRepository";
+import registerRepository from "../../repository/advisor/registerRepository";
 import UserDto from "../../DTO/user/userDto";
 import generateHash from "../../helpers/generateHash";
 
-class AdvisorService{
+class RegisterService{
     static async register(user:UserDto){
-        console.log(user);
         const password: string = await generateHash(user.passwordC);
         user.passwordC = password;
-        return await AdvisorRepository.register(user);
+        return await registerRepository.register(user);
     }
 }
-export default AdvisorService;
+export default RegisterService;

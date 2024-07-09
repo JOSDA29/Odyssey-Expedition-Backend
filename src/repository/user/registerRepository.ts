@@ -1,9 +1,9 @@
 import connection from "../../config/configDB";
 import UserDto from "../../DTO/user/userDto";
 
-class UserRepository{
+class registerRepository{
     static async addUser(user: UserDto){
-        const sql = "INSERT INTO Cliente (id_cliente, nombre, apellido, correo, contrasenia, telefono, imagen) VALUES ($1, $2, $3, $4, $5, $6, decode($7, 'hex'))";
+        const sql = "INSERT INTO Client (clientID, firstName, lastName, email, password , phone, image) VALUES ($1, $2, $3, $4, $5, $6, decode($7, 'hex'))";
         const values = [user.idC, user.nameC, user.lastNameC, user.emailC, user.passwordC, user.phoneNumberC, user.imageC];
         
         try {
@@ -20,4 +20,4 @@ class UserRepository{
         }  
     }
 }
-export default UserRepository;
+export default registerRepository;

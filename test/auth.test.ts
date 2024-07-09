@@ -5,7 +5,6 @@ import generateToken from '../src/helpers/generateToken';
 import app from '../src/app'
 import supertest from 'supertest';
 
-
 jest.mock('../src/helpers/generateToken');
 jest.mock('../src/services/AuthService');
 jest.mock('bcryptjs', () => ({
@@ -14,7 +13,7 @@ jest.mock('bcryptjs', () => ({
 }));
 
 describe('register', () => {
-
+  
     const request = supertest(app);
 
     const req = {

@@ -1,11 +1,12 @@
 import connection from "../../config/configDB";
 import UserDto from "../../DTO/user/userDto";
 
-class AdvisorRepository{
+class registerRepository{
 
     static async register(user: UserDto){
-        const sql = "INSERT INTO Adviser(AdviserID, firstName, lastName, email, password , phone, image, FK_AdministratorID) VALUES ($1, $2, $3, $4, $5, $6, decode($7, 'hex'), $8)";
+        const sql = "INSERT INTO Adviser(AdviserID, firstName, lastName, email, password , phone, image, fkadvisorid) VALUES ($1, $2, $3, $4, $5, $6, decode($7, 'hex'), $8)";
         const values = [user.idC, user.nameC, user.lastNameC, user.emailC, user.passwordC, user.phoneNumberC, user.imageC, user.id_Admin];
+        
         try {
             const client = await connection.connect();
             try{
@@ -21,4 +22,4 @@ class AdvisorRepository{
     }
 
 }
-export default AdvisorRepository;
+export default registerRepository;
