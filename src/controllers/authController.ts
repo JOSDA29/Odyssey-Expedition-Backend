@@ -1,11 +1,13 @@
 import { Request, Response } from "express";
 import AuthService from "../services/AuthService";
 import Auth from "../DTO/authDTO";
+import { setTokenCookie } from "../middlewares/cookie";
 
 let auth = async(req:Request, res:Response) => {
     try {
         const {email, password} = req.body;
-        const token = await  AuthService.auth(new Auth(email, password));
+        const token: any = await  AuthService.auth(new Auth(email, password));
+        setTokenCookie(res, token);
         if (token) {
             return res.status(200).json({ 
                 status: 'Successful authentication',
