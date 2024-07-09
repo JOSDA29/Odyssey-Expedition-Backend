@@ -1,40 +1,40 @@
 class UserDto {
   private Id_Client: string;
-  private email_C: string;
-  private password_C: string;
   private name_C: string;
   private lastName_C: string;
+  private email_C: string;
+  private password_C: string;
   private phoneNumber_C: string;
   private image_C: string;
   private _id_Admin?: number;
 
   constructor(
     Id_Client: string,
-    email_C: string,
-    password_C: string,
     name_C: string,
     lastName_C: string,
+    email_C: string,
+    password_C: string,
     phoneNumber_C: string,
     image_C: string,
     id_Admin?: number
   ) {
     this.Id_Client = Id_Client;
-    this.email_C = email_C;
-    this.password_C = password_C;
     this.name_C = name_C;
     this.lastName_C = lastName_C;
+    this.email_C = email_C;
+    this.password_C = password_C;
     this.phoneNumber_C = phoneNumber_C;
     this.image_C = image_C;
     this._id_Admin = id_Admin;
   }
 
-  public get IdClient(): string {
+  public get idC(): string {
     return this.Id_Client;
-  }
+}
 
-  public set IdClient(IdClient: string) {
-    this.Id_Client = IdClient;
-  }
+  public  set idC(value: string) {
+    this.Id_Client = value;
+}
 
   public get emailC(): string {
     return this.email_C;

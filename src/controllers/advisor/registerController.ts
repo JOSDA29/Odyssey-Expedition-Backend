@@ -6,6 +6,7 @@ import UserDto from "../../DTO/user/userDto";
 let register = async (req: Request, res: Response) => {
     try {
         const {
+            id,
             name,
             lastName,
             email,
@@ -14,9 +15,11 @@ let register = async (req: Request, res: Response) => {
             image,
             id_Admin
         } = req.body;
+
         console.log(req.body);
-        const registerAdvisor = await AdvisorService.register(new UserDto(name, lastName, email, password, phoneNumber, image, id_Admin));
-        console.log(registerAdvisor)
+        
+
+        const registerAdvisor = await AdvisorService.register(new UserDto(id, name, lastName, email, password, phoneNumber, image, id_Admin));
         return res.status(201).json(
             {status: "register ok"}
         )

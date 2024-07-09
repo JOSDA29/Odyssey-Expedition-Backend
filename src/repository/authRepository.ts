@@ -3,7 +3,7 @@ import connection from "../config/configDB";
 class AuthRepository {
 
     static async authUser(email: string) {
-        const sql = 'SELECT contrasenia FROM Cliente WHERE correo = $1';
+        const sql = 'SELECT password FROM Client WHERE email = $1';
         const values = [email];
 
         try {
@@ -22,7 +22,7 @@ class AuthRepository {
     
 
     static async authAdmin(email: string) {
-        const sql = 'SELECT contrasenia FROM Administrador WHERE correo = $1';
+        const sql = 'SELECT password FROM Administrator WHERE email = $1';
         const values = [email];
 
         try {
@@ -40,7 +40,7 @@ class AuthRepository {
     }
 
     static async authAdviser(email: string) {
-        const sql = 'SELECT contrasenia FROM Asesor WHERE correo = $1';
+        const sql = 'SELECT password FROM Adviser WHERE email = $1';
         const values = [email];
 
         try {

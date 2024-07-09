@@ -7,6 +7,8 @@ let auth = async(req:Request, res:Response) => {
     try {
         const {email, password} = req.body;
         const token: any = await  AuthService.auth(new Auth(email, password));
+    
+        
         setTokenCookie(res, token);
         if (token) {
             return res.status(200).json({ 
