@@ -12,12 +12,5 @@ const connection = new Pool({
   connectionTimeoutMillis: 2000,
 });
 
-connection.connect((err, client, release) =>{
-    if (err) {
-        console.log('Error de conexion a la base de datos', err);
-        return;
-    }
-    console.log('Conexion exitosa');
 
-});
 export default connection;
