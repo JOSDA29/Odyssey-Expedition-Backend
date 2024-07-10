@@ -11,7 +11,6 @@ const validsParameters = [
     // Validaciones
     check('names').optional().isString(),
     check('lastnames').optional().isString(),
-    check('password').optional().isString(),
     check('phone').optional().isString(),
     check('image').optional().isString()
 ];

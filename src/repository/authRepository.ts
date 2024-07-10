@@ -2,7 +2,7 @@ import connection from "../config/configDB";
 
 class AuthRepository {
 
-    static async authUser(email: string) {
+    static async authClient(email: string) {
         const sql = 'SELECT password FROM Client WHERE email = $1';
         const values = [email];        
         try {

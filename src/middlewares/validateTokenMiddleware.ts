@@ -5,24 +5,31 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 interface JwtPayload {
-    data: {role: string},
+    data: { role: string },
     exp: number,
     iat: number
 }
+const validateToken = (allowedRoles: string[]) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const token = req.cookies.token;
+            if (!token) {
+                return res.status(401).json({ status: 'You dont send token' });
+            }
 
-const validateToken = async (req: Request, res: Response, next: NextFunction ) => {
-    try {
-        const token = req.cookies.token; 
+            let decoded = jwt.verify(token, process.env.SECRET as string) as JwtPayload;
+            const userRole = decoded.data.role;
+            
 
-        if(!token){
-            return res.status(401).json({ status: 'You dont send token'})
+            if (!allowedRoles.includes(userRole)) {
+                return res.status(403).json({ status: 'Access denied' });
+            }
+
+            req.body.role = userRole;
+            return next();
+        } catch (error: any) {
+            return res.status(403).json({ status: 'Invalid Token', error: error.message });
         }
-
-        let decoded = jwt.verify(token, process.env.SECRET as string) as JwtPayload;
-        req.body.role = decoded.data.role;
-        return next();
-    } catch (error: any) {
-        return res.status(403).json({ status: 'Invalid Token', error: error.message });
     }
 }
 

@@ -2,8 +2,6 @@ class User {
     private _id: string;
     private _names?: string;
     private _lastNames?: string;
-    private _email?: string;
-    private _password?: string;
     private _phone?: string;
     private _image?: string;
     private _fkAdministratorId?: string;
@@ -12,8 +10,6 @@ class User {
         id: string,
         names?: string,
         lastNames?: string,
-        email?: string,
-        password?: string,
         phone?: string,
         image?: string,
         fkAdministratorId?: string
@@ -21,15 +17,13 @@ class User {
         this._id = id;
         this._names = names;
         this._lastNames = lastNames;
-        this._email = email;
-        this._password = password;
         this._phone = phone;
         this._image = image;
         this._fkAdministratorId = fkAdministratorId;
     }
 
     //Getter y Setter para 'id'
-    get id(): string | undefined {
+    get id(): string {
         return this._id;
     }
 
@@ -51,22 +45,6 @@ class User {
     }
     set lastNames(value: string | undefined) {
         this._lastNames = value;
-    }
-
-    //Getter y Setter para 'email'
-    get email(): string | undefined{
-        return this._email;
-    }
-    set email(value: string | undefined){
-        this._email = value;
-    }
-
-    // Getter y Setter para 'password'
-    get password(): string | undefined {
-        return this._password;
-    }
-    set password(value: string | undefined) {
-        this._password = value;
     }
 
     // Getter y Setter para 'phone'
