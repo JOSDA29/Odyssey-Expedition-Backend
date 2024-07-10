@@ -1,7 +1,7 @@
-import connection from "../../config/configDB";
-import UserDto from "../../DTO/user/userDto";
-import EmailVerification from "../../helpers/verification/EmailVerification";
-import IdVerification from "../../helpers/verification/IdVerification";
+import connection from "../../../config/configDB";
+import UserDto from "../../../DTO/user/userDto";
+import EmailVerification from "../../../helpers/verification/EmailVerification";
+import IdVerification from "../../../helpers/verification/IdVerification";
 
 class RegisterService {
     static async register(user: UserDto) {

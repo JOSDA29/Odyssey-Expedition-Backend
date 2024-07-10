@@ -6,8 +6,8 @@ import dotenv from 'dotenv';
 
 //ROUTES
 import auth from './routes/authRoute';
-import register from './routes/client/registerRoute';
-import registerAdviser from './routes/admin/registerAdviser';
+import register from './routes/user/client/registerRoute';
+import registerAdviser from './routes/user/admin/registerAdviser';
 import updateClient from './routes/user/client/update';
 import updateAdmin from './routes/user/admin/update';
 import updateAdviser from './routes/user/adviser/update';

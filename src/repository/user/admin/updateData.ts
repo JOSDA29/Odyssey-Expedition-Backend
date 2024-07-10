@@ -6,7 +6,7 @@ import generateHash from "../../../helpers/generateHash";
 
 class AdminR {
     static async updateAdmin(user: User){
-        const tables = ["admin", "Administrator", "Adviser"];
+        const tables = ["Client", "Administrator", "Adviser"];
         let tableName = "";
         
         // Verificar a qué tabla pertenece el usuario
@@ -83,7 +83,7 @@ class AdminR {
     static async changePassword(userPassword: ChangePassword){
         const { id, oldPassword, newPassword } = userPassword;
         
-        const sql = 'SELECT password FROM Administrator WHERE AdministratorID = $1';
+        const sql = 'SELECT password FROM Administrator WHERE administratorid = $1';
         const values = [id];
         try {
             const admin = await connection.connect();
@@ -113,7 +113,7 @@ class AdminR {
     }
 
     static async updatePassword(id: string, newPassword: string){
-        const sql = "UPDATE Administrator SET password = $1 WHERE AdministratorID = $2";
+        const sql = "UPDATE Administrator SET password = $1 WHERE administratorid = $2";
         const values = [newPassword, id];
         try {
             const res = await connection.connect();

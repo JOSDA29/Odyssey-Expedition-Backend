@@ -1,7 +1,7 @@
-import registerRepository from "../../repository/client/registerRepository";
+import registerRepository from "../../repository/user/client/registerRepository";
 import UserDto from "../../DTO/user/userDto";
 import generateHash from "../../helpers/generateHash";
-import RegisterRepository from "../../repository/admin/registerAdviser";
+import RegisterRepository from "../../repository/user/admin/registerAdviser";
 
 class RegisterService{
     static async register(user:UserDto){

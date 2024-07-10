@@ -5,34 +5,12 @@ import generateHash from "../../../helpers/generateHash";
 import bcrypt from 'bcryptjs';
 
 class AdviserR {
-    static async updateAdviser(user: User){
-        const tables = ["Client", "Adviser"];
-        let tableName = "";
-        
-        // Verificar a qué tabla pertenece el usuario
-        for (const table of tables) {
-            const checkSql = `SELECT 1 FROM ${table} WHERE ${table.toLowerCase()}ID = $1`;
-            try {
-                const client = await connection.connect();
-                try {
-                    const result: any = await client.query(checkSql, [user.id]);
-                    if (result.rowCount > 0) {
-                        tableName = table;
-                        break;
-                    }
-                } finally {
-                    client.release();
-                }
-            } catch (error: any) {
-                console.log('Error Executing query', error.stack);
-                throw error;
-            }
-        }
+    static async update(user: User){
 
         const fieldsToUpdate = [];
         const values = [];
-        
         const userIdIndex = 1;
+
         values.push(user.id);
         
         let index = userIdIndex + 1; 
@@ -60,17 +38,18 @@ class AdviserR {
         
         // Construcción de la cláusula SET y la consulta SQL
         const setClause = fieldsToUpdate.join(", ");
-        const sql = `UPDATE ${tableName} SET ${setClause} WHERE ${tableName.toLowerCase()}ID = $1`;
+        const sql = `UPDATE Adviser SET ${setClause} WHERE adviserid = $1`;
+        
 
-        try {
+        try{
             const client = await connection.connect();
-            try {
-                const result = await client.query(sql, values);
+            try{
+                const result = await client.query(sql, values);                 
                 return result.rows;
             } finally {
                 client.release();
             }
-        } catch (error: any) {
+        } catch (error: any){
             console.log('Error Executing query', error.stack);
             throw error;
         }
@@ -79,14 +58,14 @@ class AdviserR {
     static async changePassword(userPassword: ChangePassword){
         const { id, oldPassword, newPassword } = userPassword;
         
-        const sql = 'SELECT password FROM Adviser WHERE AdviserID = $1';
+        const sql = 'SELECT password FROM Adviser WHERE adviserid = $1';
         const values = [id];
         try {
             const admin = await connection.connect();
             try{
                 const result: any = await admin.query(sql, values);
                 if(result.rows.length > 0) {
-                    const user = result[0][0];
+                    const user = result.rows[0];
                     const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
                     if(isPasswordValid){
                         const hashedPassword = await generateHash(newPassword);
@@ -107,12 +86,14 @@ class AdviserR {
     }
 
     static async updatePassword(id: string, newPassword: string){
-        const sql = "UPDATE Adviser SET password = $1 WHERE AdviserID = $2";
+        const sql = "UPDATE Adviser SET password = $1 WHERE adviserid = $2";
         const values = [newPassword, id];
         try {
             const res = await connection.connect();
             try{
                 const result = await res.query(sql, values);
+                console.log(result);
+                
                 return result.rows;
             } finally {
                 res.release();

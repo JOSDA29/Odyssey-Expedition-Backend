@@ -13,7 +13,19 @@ let update = async(req: Request, res: Response) => {
             idAdministrator
         } = req.body
 
-        const adviser = await updateDataAd.updateAdviser(new User(id, names, lastnames, phone, image, idAdministrator));
+        const adviser = await updateDataAd.update(new User(id, names, lastnames, phone, image, idAdministrator));
+
+        if(adviser){
+            return res.status(200).json({
+                status: 'Successful Update'
+            })
+        }
+        
+        return res.status(401).json({ 
+            status: 'Invalid email or password'
+        });
+
+
         
     } catch (error) {
         return res.status(500).send({ errorInfo: "Internal Server Error", error });

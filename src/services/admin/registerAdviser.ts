@@ -1,4 +1,4 @@
-import registerRepository from "../../repository/admin/registerAdviser";
+import registerRepository from "../../repository/user/admin/registerAdviser";
 import UserDto from "../../DTO/user/userDto";
 import generateHash from "../../helpers/generateHash";
 
