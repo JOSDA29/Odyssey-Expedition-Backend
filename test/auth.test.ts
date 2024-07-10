@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import auth from '../src/controllers/authController';
 import AuthService from '../src/services/AuthService';
-import generateToken from '../src/helpers/generateToken';
 import app from '../src/app'
 import supertest from 'supertest';
 

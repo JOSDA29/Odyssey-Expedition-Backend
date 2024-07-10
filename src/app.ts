@@ -3,8 +3,8 @@ import bodyParser from 'body-parser';
 
 //ROUTES
 import auth from './routes/authRoute';
-import register from './routes/users/registerRoute';
-import register_advisor from './routes/advisor/registerRoute';
+import register from './routes/client/registerRoute';
+import registerAdviser from './routes/admin/registerAdviser';
 
 import dotenv from 'dotenv';
 import cookieParser from "cookie-parser";
@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use('/auth', auth);
 
 app.use('/register', register);
-app.use('/register-advisor', register_advisor);
+app.use('/admin/register-advisor', registerAdviser);
 
 const PORT = process.env.PORT || 10240;
 
