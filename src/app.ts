@@ -15,26 +15,27 @@ import changePasswordAdmin from './routes/user/admin/changePassword';
 import changePasswordClient from './routes/user/client/changePassword';
 import changePasswordAdviser from './routes/user/adviser/changePassword';
 
-
-
 dotenv.config();
 
 const app = express().use(bodyParser.json());
 app.use(cookieParser());
 
-app.use(cookieParser());
-
 // Define las rutas
 app.use('/auth', auth);
+app.use('/register', register);
+
+//Client routes
 app.use('/client/update', updateClient);
 app.use('/client/changePassword', changePasswordClient );
+
+//Admin routes
 app.use('/admin/update', updateAdmin);
 app.use('/admin/changePassword', changePasswordAdmin);
+app.use('/admin/register-advisor', registerAdviser);
+
+//Adviser routes
 app.use('/adviser/changePassword', changePasswordAdviser);
 app.use('/adviser/update', updateAdviser);
-
-app.use('/register', register);
-app.use('/admin/register-advisor', registerAdviser);
 
 const PORT = process.env.PORT || 10240;
 

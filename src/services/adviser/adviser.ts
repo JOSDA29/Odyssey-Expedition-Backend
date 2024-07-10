@@ -4,7 +4,7 @@ import AdviserR from "../../repository/user/adviser/updateData";
 
 class Adviser {
     static async updateAd(user: User){
-        await AdviserR.updateAdviser(user);
+        await AdviserR.update(user);
         return { message: 'Succesfull Update'}
     }
     static async changePassword(changePassword: ChangePassword) {
