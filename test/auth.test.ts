@@ -1,62 +1,45 @@
-import { Request, Response } from 'express';
-import auth from '../src/controllers/authController';
-import AuthService from '../src/services/AuthService';
-import app from '../src/app'
 import supertest from 'supertest';
+import app from '../src/app';
+import AuthService from '../src/services/AuthService';
 
-jest.mock('../src/helpers/generateToken');
 jest.mock('../src/services/AuthService');
-jest.mock('bcryptjs', () => ({
-  genSalt: jest.fn().mockResolvedValue('mockSalt'),
-  hash: jest.fn().mockResolvedValue('hashedPassword')
-}));
 
-describe('register', () => {
-  
+describe('Auth Controller', () => {
     const request = supertest(app);
 
-    const req = {
-      body: {
+    const validUser = {
         email: 'test@gmail.com',
         password: 'Test123.'
-      }
-    } as Request;
-  
-    const res = {
-      status: jest.fn().mockReturnThis(),
-      json: jest.fn(),
-      send: jest.fn()
-    } as unknown as Response;
-
+    };
 
     const invalidUser = {
         email: 'invalid-email',
         password: 'short'
     };
 
-
-  
     beforeEach(() => {
-      jest.clearAllMocks();
+        jest.clearAllMocks();
     });
-  
+
     it('should return status 500 with error info if AuthService.auth throws an error', async () => {
         (AuthService.auth as jest.Mock).mockRejectedValue(new Error('Mock error'));
 
-        await auth(req, res);
+        const response = await request.post('/auth')
+            .send(validUser);
 
-        expect(res.status).toHaveBeenCalledWith(500);
-        expect(res.send).toHaveBeenCalledWith({ error: 'Internal Server Error', errorInfo: 'Mock error' });
+        expect(response.status).toBe(500);
+        expect(response.body).toEqual({ error: 'Internal Server Error', errorInfo: 'Mock error' });
     });
 
     it('should return status 200 with access token if authentication is successful', async () => {
         const mockToken = 'mockToken';
         (AuthService.auth as jest.Mock).mockResolvedValue(mockToken);
 
-        await auth(req, res);
+        const response = await request.post('/auth')
+            .send(validUser);
 
-        expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith({
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual({
             status: 'Successful authentication',
             AccessToken: mockToken
         });
@@ -65,21 +48,18 @@ describe('register', () => {
     it('should return status 401 if authentication fails', async () => {
         (AuthService.auth as jest.Mock).mockResolvedValue(null);
 
-        await auth(req, res);
+        const response = await request.post('/auth')
+            .send(validUser);
 
-        expect(res.status).toHaveBeenCalledWith(401);
-        expect(res.json).toHaveBeenCalledWith({
+        expect(response.status).toBe(401);
+        expect(response.body).toEqual({
             status: 'Invalid email or password'
         });
     });
 
-
     it('should return 422 with validation errors if email is invalid', async () => {
         const response = await request.post('/auth')
-            .send({
-                email: invalidUser.email,
-                password: invalidUser.password
-            });
+            .send(invalidUser);
 
         expect(response.status).toBe(422);
         expect(response.body.errors).toHaveLength(1);
