@@ -6,12 +6,12 @@ import compareHash from "../helpers/compareHash";
 class AuthService {
     static async auth(auth: Auth) {
         try {
-            const userResult = await AuthRepository.authUser(auth.$email);
+            const clientResult = await AuthRepository.authClient(auth.$email);
             const adminResult = await AuthRepository.authAdmin(auth.$email);
             const adviserResult = await AuthRepository.authAdviser(auth.$email);
 
             const roles = [
-                { result: userResult, role: "User" },
+                { result: clientResult, role: "Client" },
                 { result: adminResult, role: "Administrator" },
                 { result: adviserResult, role: "Adviser" }
             ];
