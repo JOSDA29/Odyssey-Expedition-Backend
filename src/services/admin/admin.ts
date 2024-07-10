@@ -5,7 +5,7 @@ import admin from "../../repository/user/admin/updateData";
 
 class Admin {
     static async updateA(user: User){
-        await AdminR.updateAdmin(user);
+        await AdminR.update(user);
         return { message: 'Succesfull Update'}
     }
     static async changePassword(changePassword: ChangePassword) {

@@ -12,7 +12,7 @@ let update = async(req: Request, res: Response) => {
             image,
         } = req.body
 
-        const admin = await updateDataA.updateAdmin(new User(id, names, lastnames, phone, image));
+        const admin = await updateDataA.update(new User(id, names, lastnames, phone, image));
 
         if(admin){
             return res.status(200).json({
