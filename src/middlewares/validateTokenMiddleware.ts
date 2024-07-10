@@ -24,8 +24,7 @@ const validateToken = (allowedRoles: string[]) => {
             if (!allowedRoles.includes(userRole)) {
                 return res.status(403).json({ status: 'Access denied' });
             }
-
-            req.body.role = userRole;
+            
             return next();
         } catch (error: any) {
             return res.status(403).json({ status: 'Invalid Token', error: error.message });
