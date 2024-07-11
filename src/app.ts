@@ -37,7 +37,7 @@ app.use('/admin/register-advisor', registerAdviser);
 app.use('/adviser/changePassword', changePasswordAdviser);
 app.use('/adviser/update', updateAdviser);
 
-const PORT = process.env.PORT || 10240;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
     console.log(`Server ejecutandose en el puerto: ${PORT}`);

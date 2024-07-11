@@ -1,6 +1,7 @@
-FROM node:20-alpine
-WORKDIR /app
+FROM buildpack-deps:bookworm
+ENV NODE_VERSION 20.15.1
+WORKDIR /app.js
 COPY . .
 RUN npm install --production
-CMD ["npm start", "./dist/app.js"]
+CMD ["npm run start", "./dist/app.js"]
 EXPOSE 8080
