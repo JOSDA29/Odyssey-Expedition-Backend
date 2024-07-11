@@ -1,7 +1,8 @@
-FROM buildpack-deps:bookworm
-ENV NODE_VERSION 20.15.1
-WORKDIR /app.js
+FROM node:20
+ENV NODE_VERSION=20.15.1
+WORKDIR /app
 COPY . .
 RUN npm install --production
-CMD ["npm run start", "./dist/app.js"]
+RUN npm run build
 EXPOSE 8080
+CMD ["npm", "start"]
