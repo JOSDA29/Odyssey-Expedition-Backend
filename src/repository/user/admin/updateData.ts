@@ -13,15 +13,15 @@ class AdminR {
         for (const table of tables) {
             const checkSql = `SELECT 1 FROM ${table} WHERE ${table.toLowerCase()}ID = $1`;
             try {
-                const admin = await connection.connect();
+                const client = await connection.connect();
                 try {
-                    const result: any = await admin.query(checkSql, [user.id]);
+                    const result: any = await client.query(checkSql, [user.id]);
                     if (result.rowCount > 0) {
                         tableName = table;
                         break;
                     }
                 } finally {
-                    admin.release();
+                    client.release();
                 }
             } catch (error: any) {
                 console.log('Error Executing query', error.stack);
@@ -67,12 +67,12 @@ class AdminR {
         const sql = `UPDATE ${tableName} SET ${setClause} WHERE ${tableName.toLowerCase()}ID = $1`;
 
         try {
-            const admin = await connection.connect();
+            const client = await connection.connect();
             try {
-                const result = await admin.query(sql, values);
+                const result = await client.query(sql, values);
                 return result.rows;
             } finally {
-                admin.release();
+                client.release();
             }
         } catch (error: any) {
             console.log('Error Executing query', error.stack);
@@ -86,9 +86,9 @@ class AdminR {
         const sql = 'SELECT password FROM Administrator WHERE administratorid = $1';
         const values = [id];
         try {
-            const admin = await connection.connect();
+            const client = await connection.connect();
             try{
-                const result: any  = await admin.query(sql, values);
+                const result: any  = await client.query(sql, values);
                 
                 if(result.rows.length > 0) {
                     const user = result.rows[0];
@@ -104,7 +104,7 @@ class AdminR {
                 }
                 return result.rows;
             } finally {
-                admin.release();
+                client.release();
             }
         } catch (error: any) {
             console.log('Error Executing query', error.stack);
@@ -116,12 +116,12 @@ class AdminR {
         const sql = "UPDATE Administrator SET password = $1 WHERE administratorid = $2";
         const values = [newPassword, id];
         try {
-            const res = await connection.connect();
+            const client = await connection.connect();
             try{
-                const result = await res.query(sql, values);
+                const result = await client.query(sql, values);
                 return result.rows;
             } finally {
-                res.release();
+                client.release();
             }
         } catch (error: any) {
             console.log('Error Executing query', error.stack);
