@@ -8,10 +8,6 @@ let auth = async (req: Request, res: Response) => {
         
         const token: any = await  AuthService.auth(new Auth(email, password));
         if (token) {
-
-            //Guardar el token en localstorage
-            localStorage.setItem('AccessToken', token)
-
             return res.status(200).json({
                 status: 'Successful authentication',
                 AccessToken: token

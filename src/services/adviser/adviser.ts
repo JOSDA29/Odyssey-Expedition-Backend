@@ -1,5 +1,5 @@
 import ChangePassword from "../../DTO/changePasswordDTO";
-import User from "../../DTO/userDTO";
+import User from "../../DTO/updateDTO";
 import AdviserR from "../../repository/user/adviser/updateData";
 
 class Adviser {

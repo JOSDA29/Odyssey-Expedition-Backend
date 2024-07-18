@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import updateDataA from "../../../repository/user/admin/updateData";
-import User from "../../../DTO/userDTO";
+import User from "../../../DTO/updateDTO";
 
 let update = async(req: Request, res: Response) => {
     try {

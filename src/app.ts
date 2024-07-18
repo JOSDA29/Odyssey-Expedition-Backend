@@ -14,6 +14,8 @@ import updateAdviser from './routes/user/adviser/update';
 import changePasswordAdmin from './routes/user/admin/changePassword';
 import changePasswordClient from './routes/user/client/changePassword';
 import changePasswordAdviser from './routes/user/adviser/changePassword';
+import getByEmail from './routes/user/client/findByEmail';
+import getAll from './routes/user/client/findAll';
 
 dotenv.config();
 
@@ -27,6 +29,8 @@ app.use('/register', register);
 //Client routes
 app.use('/client/update', updateClient);
 app.use('/client/changePassword', changePasswordClient );
+app.use('/client/getByEmail', getByEmail);
+app.use('/client/getAll', getAll);
 
 //Admin routes
 app.use('/admin/update', updateAdmin);

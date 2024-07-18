@@ -1,5 +1,5 @@
 import ChangePassword from "../../../DTO/changePasswordDTO";
-import User from "../../../DTO/userDTO";
+import User from "../../../DTO/updateDTO";
 import connection from "../../../config/configDB";
 import bcrypt from "bcryptjs";
 import generateHash from "../../../helpers/generateHash";

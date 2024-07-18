@@ -1,5 +1,5 @@
 import ChangePassword from "../../DTO/changePasswordDTO";
-import User from "../../DTO/userDTO";
+import User from "../../DTO/updateDTO";
 import AdminR from "../../repository/user/admin/updateData";
 import admin from "../../repository/user/admin/updateData";
 
