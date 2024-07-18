@@ -8,7 +8,7 @@ class findByEmail{
             const client = await connection.connect();
             try {
                 const res = await client.query(sql, values);
-                return { success: true, data: res.rows };
+                return  res.rows;
             } finally {
                 client.release();
             }

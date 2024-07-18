@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
-import findService from "../../../services/client/findAll";
+import FindService from "../../../services/client/findAll";
 
-let findAll = async (req: Request, res: Response) => {
+const findAll = async (req: Request, res: Response) => {
+    try {
+        const clients = await FindService.findAll();
 
-    const client = await findService.findAll();
-     if(client){
-            return res.status(202).json({
-                status: 'Get all',
-                client
-            })
+        if (clients) {
+            return res.status(200).json(clients);
+        } else {
+            return res.status(404).json({ status: 'No clients found' });
         }
-        return res.status(401).json({
-            status: 'Error'
-        })
+    } catch (error: any) {
+        return res.status(500).json({ status: 'Error', message: error.message });
     }
+}
 
-    export default findAll
+export default findAll;
