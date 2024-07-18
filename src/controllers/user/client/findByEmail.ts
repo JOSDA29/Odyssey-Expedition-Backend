@@ -1,5 +1,4 @@
 import { Request, Response } from "express"
-import find from "../../../services/client/FindByEmail";
 import findService from "../../../services/client/FindByEmail";
 
 let findByEmail = async (req: Request, res: Response) => {
@@ -12,7 +11,6 @@ let findByEmail = async (req: Request, res: Response) => {
 
         if(client){
             return res.status(202).json({
-                status: 'Get all',
                 client
             })
         }

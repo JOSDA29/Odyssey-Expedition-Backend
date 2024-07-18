@@ -5,7 +5,7 @@ import User from "../../../DTO/updateDTO";
 let update = async(req: Request, res: Response) => {
     try {
         const {
-            id,
+            email,
             names,
             lastnames,
             phone,
@@ -13,7 +13,7 @@ let update = async(req: Request, res: Response) => {
             idAdministrator
         } = req.body
 
-        const adviser = await updateDataAd.update(new User(id, names, lastnames, phone, image, idAdministrator));
+        const adviser = await updateDataAd.update(new User(email, names, lastnames, phone, image, idAdministrator));
 
         if(adviser){
             return res.status(200).json({

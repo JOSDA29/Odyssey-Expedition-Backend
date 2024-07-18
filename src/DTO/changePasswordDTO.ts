@@ -10,7 +10,7 @@ class ChangePassword {
    ) {
     this._email = email;
     this._oldPassword = oldPassword;
-    this._newPassword = newPassword;7
+    this._newPassword = newPassword;
    }
 
    get email(): string {

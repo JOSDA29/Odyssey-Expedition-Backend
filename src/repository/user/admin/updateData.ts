@@ -11,11 +11,11 @@ class AdminR {
         
         // Verificar a qué tabla pertenece el usuario
         for (const table of tables) {
-            const checkSql = `SELECT 1 FROM ${table} WHERE ${table.toLowerCase()}ID = $1`;
+            const checkSql = `SELECT 1 FROM ${table} WHERE ${table.toLowerCase()}email = $1`;
             try {
                 const client = await connection.connect();
                 try {
-                    const result: any = await client.query(checkSql, [user.id]);
+                    const result: any = await client.query(checkSql, [user.email]);
                     if (result.rowCount > 0) {
                         tableName = table;
                         break;
@@ -36,10 +36,10 @@ class AdminR {
         const fieldsToUpdate = [];
         const values = [];
         
-        const userIdIndex = 1;
-        values.push(user.id);
+        const userEmailIndex = 1;
+        values.push(user.email);
         
-        let index = userIdIndex + 1; 
+        let index = userEmailIndex + 1; 
 
         if (user.names !== undefined) {
             fieldsToUpdate.push(`firstName = $${index}`);
@@ -64,7 +64,7 @@ class AdminR {
         
         // Construcción de la cláusula SET y la consulta SQL
         const setClause = fieldsToUpdate.join(", ");
-        const sql = `UPDATE ${tableName} SET ${setClause} WHERE ${tableName.toLowerCase()}ID = $1`;
+        const sql = `UPDATE ${tableName} SET ${setClause} WHERE ${tableName.toLowerCase()}email = $1`;
 
         try {
             const client = await connection.connect();
@@ -81,10 +81,10 @@ class AdminR {
     }
 
     static async changePassword(userPassword: ChangePassword){
-        const { id, oldPassword, newPassword } = userPassword;
+        const { email, oldPassword, newPassword } = userPassword;
         
-        const sql = 'SELECT password FROM Administrator WHERE administratorid = $1';
-        const values = [id];
+        const sql = 'SELECT password FROM Administrator WHERE email = $1';
+        const values = [email];
         try {
             const client = await connection.connect();
             try{
@@ -95,7 +95,7 @@ class AdminR {
                     const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
                     if(isPasswordValid){ 
                         const hashedPassword = await generateHash(newPassword);   
-                        await this.updatePassword(id, hashedPassword);
+                        await this.updatePassword(email, hashedPassword);
                         
                         return { message: 'Password Update Succesful'}
                     } else {
@@ -112,9 +112,9 @@ class AdminR {
         }
     }
 
-    static async updatePassword(id: string, newPassword: string){
-        const sql = "UPDATE Administrator SET password = $1 WHERE administratorid = $2";
-        const values = [newPassword, id];
+    static async updatePassword(email: string, newPassword: string){
+        const sql = "UPDATE Administrator SET password = $1 WHERE email = $2";
+        const values = [newPassword, email];
         try {
             const client = await connection.connect();
             try{

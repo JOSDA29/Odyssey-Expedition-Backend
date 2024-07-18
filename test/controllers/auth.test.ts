@@ -1,6 +1,6 @@
 import supertest from 'supertest';
-import app from '../src/app';
-import AuthService from '../src/services/AuthService';
+import app from '../../src/app';
+import AuthService from '../../src/services/AuthService';
 
 jest.mock('../src/services/AuthService');
 

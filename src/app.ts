@@ -36,10 +36,12 @@ app.use('/client/getAll', getAll);
 app.use('/admin/update', updateAdmin);
 app.use('/admin/changePassword', changePasswordAdmin);
 app.use('/admin/register-advisor', registerAdviser);
+app.use('/admin/getByEmail', );
 
 //Adviser routes
 app.use('/adviser/changePassword', changePasswordAdviser);
 app.use('/adviser/update', updateAdviser);
+app.use('/adviser/getByEmail');
 
 const PORT = process.env.PORT || 10240;
 

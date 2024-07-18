@@ -9,11 +9,11 @@ class AdviserR {
 
         const fieldsToUpdate = [];
         const values = [];
-        const userIdIndex = 1;
+        const userEmailIndex = 1;
 
-        values.push(user.id);
+        values.push(user.email);
         
-        let index = userIdIndex + 1; 
+        let index = userEmailIndex + 1; 
 
         if (user.names !== undefined) {
             fieldsToUpdate.push(`firstName = $${index}`);
@@ -38,7 +38,7 @@ class AdviserR {
         
         // Construcción de la cláusula SET y la consulta SQL
         const setClause = fieldsToUpdate.join(", ");
-        const sql = `UPDATE Adviser SET ${setClause} WHERE adviserid = $1`;
+        const sql = `UPDATE Adviser SET ${setClause} WHERE email = $1`;
         
 
         try{
@@ -56,10 +56,10 @@ class AdviserR {
     }
 
     static async changePassword(userPassword: ChangePassword){
-        const { id, oldPassword, newPassword } = userPassword;
+        const { email, oldPassword, newPassword } = userPassword;
         
-        const sql = 'SELECT password FROM Adviser WHERE adviserid = $1';
-        const values = [id];
+        const sql = 'SELECT password FROM Adviser WHERE email = $1';
+        const values = [email];
         try {
             const admin = await connection.connect();
             try{
@@ -69,7 +69,7 @@ class AdviserR {
                     const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
                     if(isPasswordValid){
                         const hashedPassword = await generateHash(newPassword);
-                        await this.updatePassword(id, hashedPassword);
+                        await this.updatePassword(email, hashedPassword);
                         return { message: 'Password Update Succesful'}
                     } else {
                         throw new Error("Incorrect Old Password");
@@ -85,9 +85,9 @@ class AdviserR {
         }
     }
 
-    static async updatePassword(id: string, newPassword: string){
-        const sql = "UPDATE Adviser SET password = $1 WHERE adviserid = $2";
-        const values = [newPassword, id];
+    static async updatePassword(email: string, newPassword: string){
+        const sql = "UPDATE Adviser SET password = $1 WHERE email = $2";
+        const values = [newPassword, email];
         try {
             const res = await connection.connect();
             try{

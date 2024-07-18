@@ -5,12 +5,13 @@ import Client from "../../../services/client/client";
 let changePassword = async(req: Request , res: Response) => {
     try{
         const {
-            id, 
+            email, 
             oldPassword,
             newPassword
         } = req.body
 
-        const client = await Client.changePassword(new ChangePassword(id, oldPassword, newPassword));
+        const client = await Client.changePassword(new ChangePassword(email, oldPassword, newPassword));
+        
         if(client){
             return res.status(202).json({
                 status: 'Password Update Succesful'

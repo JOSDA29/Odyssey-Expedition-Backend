@@ -5,12 +5,12 @@ import Adviser from "../../../services/adviser/adviser";
 let changePassword = async(req: Request , res: Response) => {
     try{
         const {
-            id, 
+            email, 
             oldPassword,
             newPassword
         } = req.body
 
-        const adviser = await Adviser.changePassword(new ChangePassword(id, oldPassword, newPassword));
+        const adviser = await Adviser.changePassword(new ChangePassword(email, oldPassword, newPassword));
         if(adviser){
             return res.status(202).json({
                 status: 'Password Update Succesful'

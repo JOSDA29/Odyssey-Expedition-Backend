@@ -5,8 +5,8 @@ import IdVerification from "../../../helpers/verification/IdVerification";
 
 class RegisterService {
     static async register(user: UserDto) {
-        const emailExists = !(await EmailVerification(user.emailC));
-        const idExists = !(await IdVerification(user.idC));
+        const emailExists = !(await EmailVerification(user.email));
+        const idExists = !(await IdVerification(user.id));
 
         if (emailExists && idExists) {
             return { success: false, message: "Both email and ID already exist" };
@@ -16,7 +16,7 @@ class RegisterService {
             return { success: false, message: "ID already exists" };
         } else {
             const sql = "INSERT INTO Client(clientID, firstName, lastName, email, password, phone, image) VALUES ($1, $2, $3, $4, $5, $6, decode($7, 'hex'))";
-            const values = [user.idC, user.nameC, user.lastNameC, user.emailC, user.passwordC, user.phoneNumberC, user.imageC];
+            const values = [user.id, user.name, user.last_Name, user.email, user.password, user.phoneNumber, user.image];
 
             try {
                 const client = await connection.connect();

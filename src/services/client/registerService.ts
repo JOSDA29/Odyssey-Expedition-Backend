@@ -4,8 +4,8 @@ import generateHash from "../../helpers/generateHash";
 
 class RegisterService{
     static async register(user:UserDto){
-        const password: string = await generateHash(user.passwordC);
-        user.passwordC = password;
+        const password: string = await generateHash(user.password);
+        user.password = password;
         return await registerRepository.register(user);
     }
 }
