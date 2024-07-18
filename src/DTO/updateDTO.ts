@@ -1,5 +1,5 @@
 class User {
-    private _id: string;
+    private _email: string;
     private _names?: string;
     private _lastNames?: string;
     private _phone?: string;
@@ -7,14 +7,14 @@ class User {
     private _fkAdministratorId?: string;
 
     constructor(
-        id: string,
+        email: string,
         names?: string,
         lastNames?: string,
         phone?: string,
         image?: string,
         fkAdministratorId?: string
     ) {
-        this._id = id;
+        this._email = email;
         this._names = names;
         this._lastNames = lastNames;
         this._phone = phone;
@@ -22,13 +22,13 @@ class User {
         this._fkAdministratorId = fkAdministratorId;
     }
 
-    //Getter y Setter para 'id'
-    get id(): string {
-        return this._id;
+    //Getter y Setter para 'email'
+    get email(): string {
+        return this._email;
     }
 
-    set id(value: string) {
-        this._id = value;
+    set email(value: string) {
+        this._email = value;
     }
 
     // Getter y Setter para 'names'

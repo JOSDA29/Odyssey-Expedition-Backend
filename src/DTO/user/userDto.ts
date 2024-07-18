@@ -1,5 +1,5 @@
 class UserDto {
-  private Id_Client: string;
+  private Id_Client?: string;
   private name_C: string;
   private lastName_C: string;
   private email_C: string;
@@ -9,14 +9,14 @@ class UserDto {
   private _id_Admin?: number;
 
   constructor(
-    Id_Client: string,
     name_C: string,
     lastName_C: string,
     email_C: string,
     password_C: string,
     phoneNumber_C: string,
     image_C: string,
-    id_Admin?: number
+    id_Admin?: number,
+    Id_Client?: string,
   ) {
     this.Id_Client = Id_Client;
     this.name_C = name_C;
@@ -28,7 +28,7 @@ class UserDto {
     this._id_Admin = id_Admin;
   }
 
-  public get idC(): string {
+  public get idC(): string | undefined{
     return this.Id_Client;
 }
 

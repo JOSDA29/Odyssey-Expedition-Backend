@@ -5,12 +5,12 @@ import Admin from "../../../services/admin/admin";
 let changePassword = async(req: Request, res: Response) => {
     try{
         const {
-            id, 
+            email, 
             oldPassword,
             newPassword
         } = req.body
 
-        const admin = await Admin.changePassword(new ChangePassword(id, oldPassword, newPassword));
+        const admin = await Admin.changePassword(new ChangePassword(email, oldPassword, newPassword));
         if(admin){
             return res.status(202).json({
                 status: 'Password Update Succesful'

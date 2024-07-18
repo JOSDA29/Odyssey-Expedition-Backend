@@ -1,23 +1,23 @@
 class ChangePassword {
-   private _id: string;
+   private _email: string;
    private _oldPassword: string;
    private _newPassword: string;
 
    constructor(
-    id: string,
+    email: string,
     oldPassword: string,
     newPassword: string,
    ) {
-    this._id = id;
+    this._email = email;
     this._oldPassword = oldPassword;
     this._newPassword = newPassword;7
    }
 
-   get id(): string {
-    return this._id;
+   get email(): string {
+    return this._email;
    }
-   set id(value: string){
-    this._id = value;
+   set email(value: string){
+    this._email = value;
    }
 
    get oldPassword(): string {
