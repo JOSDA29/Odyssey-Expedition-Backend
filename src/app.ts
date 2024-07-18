@@ -1,6 +1,5 @@
 import express from "express";
 import bodyParser from 'body-parser';
-import cookieParser from "cookie-parser";
 import dotenv from 'dotenv';
 
 
@@ -18,7 +17,6 @@ import changePasswordAdviser from './routes/user/adviser/changePassword';
 dotenv.config();
 
 const app = express().use(bodyParser.json());
-app.use(cookieParser());
 
 // Define las rutas
 app.use('/auth', auth);
