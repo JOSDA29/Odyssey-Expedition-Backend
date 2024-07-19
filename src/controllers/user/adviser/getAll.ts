@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
-import FindService from "../../../services/client/findAll";
-
-const findAll = async (req: Request, res: Response) => {
+import getService from "../../../services/adviser/getAll";
+const getAll = async (req: Request, res: Response) => {
     try {
-        const clients = await FindService.findAll();
+        const clients = await getService.getAll();
 
         if (clients) {
             return res.status(200).json(clients);
@@ -15,4 +14,4 @@ const findAll = async (req: Request, res: Response) => {
     }
 }
 
-export default findAll;
+export default getAll;

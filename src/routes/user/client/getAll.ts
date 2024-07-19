@@ -1,9 +1,9 @@
 import express, { Router } from 'express';
+import findAll from '../../../controllers/user/client/getAll';
 import validateToken from '../../../middlewares/validateTokenMiddleware';
-import getAllController from '../../../controllers/user/adviser/getAll';
 
 const router = express.Router();
 
-router.patch('/', validateToken(['Administrator']), getAllController);
+router.patch('/', validateToken(['Client', 'Adviser', 'Administrator']), findAll);
 
 export default router;

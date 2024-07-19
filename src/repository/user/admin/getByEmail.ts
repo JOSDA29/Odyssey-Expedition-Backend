@@ -1,14 +1,15 @@
 import connection from "../../../config/configDB";
 
+class getByEmail{
+    static async getByEm(email: string){
+        const sql = 'SELECT * FROM Administrator WHERE email = $1';
+        const values = [email];
 
-class FindAll{
-    static async findAll(){
-        const sql = 'SELECT * FROM Client';
         try {
             const client = await connection.connect();
             try {
-                const res = await client.query(sql);
-                return res.rows;
+                const res = await client.query(sql, values);
+                return  res.rows;
             } finally {
                 client.release();
             }
@@ -19,4 +20,4 @@ class FindAll{
     }
 }
 
-export default FindAll;
+export default getByEmail;

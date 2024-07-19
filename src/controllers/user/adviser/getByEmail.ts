@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
-import findService from "../../../services/client/FindByEmail";
+import findService from "../../../services/client/getByEmail";
 
-let findByEmail = async (req: Request, res: Response) => {
+let getByEmail = async (req: Request, res: Response) => {
     try{
         const {
             email
@@ -28,4 +28,4 @@ let findByEmail = async (req: Request, res: Response) => {
 
 }
 
-export default findByEmail;
+export default getByEmail;

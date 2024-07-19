@@ -13,8 +13,11 @@ import updateAdviser from './routes/user/adviser/update';
 import changePasswordAdmin from './routes/user/admin/changePassword';
 import changePasswordClient from './routes/user/client/changePassword';
 import changePasswordAdviser from './routes/user/adviser/changePassword';
-import getByEmail from './routes/user/client/findByEmail';
-import getAll from './routes/user/client/findAll';
+import getByEmailClient from './routes/user/client/getByEmail';
+import getAllClient from './routes/user/client/getAll';
+import getByEmailAviser from './routes/user/adviser/getByEmail';
+import getAllAdviser from './routes/user/adviser/getAll';
+import getByEmailAdmin from './routes/user/admin/getByEmail';
 
 dotenv.config();
 
@@ -27,19 +30,20 @@ app.use('/register', register);
 //Client routes
 app.use('/client/update', updateClient);
 app.use('/client/changePassword', changePasswordClient );
-app.use('/client/getByEmail', getByEmail);
-app.use('/client/getAll', getAll);
+app.use('/client/getByEmail', getByEmailClient);
+app.use('/client/getAll', getAllClient);
 
 //Admin routes
 app.use('/admin/update', updateAdmin);
 app.use('/admin/changePassword', changePasswordAdmin);
 app.use('/admin/register-advisor', registerAdviser);
-app.use('/admin/getByEmail', );
+app.use('/admin/getByEmail', getByEmailAdmin);
 
 //Adviser routes
 app.use('/adviser/changePassword', changePasswordAdviser);
 app.use('/adviser/update', updateAdviser);
-app.use('/adviser/getByEmail');
+app.use('/adviser/getByEmail', getByEmailAviser);
+app.use('./adviser/getAll', getAllAdviser);
 
 const PORT = process.env.PORT || 10240;
 

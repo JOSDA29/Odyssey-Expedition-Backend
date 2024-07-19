@@ -1,10 +1,10 @@
 import express, { Router } from 'express';
-import findAll from '../../../controllers/user/client/FindAll';
+import getByEmail from '../../../controllers/user/client/getByEmail';
 import { validatorParams, validator } from '../../../middlewares/finByEmailValidator';
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 
 const router = express.Router();
 
-router.patch('/', validateToken(['Client']), validatorParams, validator, findAll);
+router.get('/', validateToken(['Client', 'Adviser', 'Administrator']), validatorParams, validator, getByEmail);
 
-export default router;
+export default router
