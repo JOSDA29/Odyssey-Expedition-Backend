@@ -14,7 +14,7 @@ const register = async (req: Request, res: Response) => {
             image
         } = req.body;
         
-        const result = await RegisterService.register(new UserDto(id_client, name, lastName, email, password, phoneNumber, image));
+        const result = await RegisterService.register(new UserDto(name, lastName, email, password, phoneNumber, image));
         
         if (!result.success) {
             return res.status(409).json({

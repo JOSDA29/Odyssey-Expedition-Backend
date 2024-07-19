@@ -1,22 +1,18 @@
-import { Request, Response } from "express"
-import findService from "../../../services/client/getByEmail";
+import { Request, Response } from "express";
+import getService from "../../../services/client/getByEmail";
 
 let getByEmail = async (req: Request, res: Response) => {
-    try{
-        const {
-            email
-        } = req.body
+    try {
+        const { email } = req.body;
 
-        const client = await findService.findByEmail(email);
+        const client = await getService.getByEmail(email);
 
-        if(client){
-            return res.status(202).json({
-                client
-            })
+        if (client) {
+            return res.status(202).json(client);
         }
         return res.status(401).json({
             status: 'Error'
-        })
+        });
 
     } catch (error: any) {
         if (error && error.code === "ER_DUP_ENTRY") {
@@ -25,7 +21,6 @@ let getByEmail = async (req: Request, res: Response) => {
             return res.status(500).json({ errorInfo: error.message });
         }
     }
-
-}
+};
 
 export default getByEmail;

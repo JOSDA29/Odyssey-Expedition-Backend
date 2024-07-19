@@ -8,7 +8,7 @@ class getByEmail{
             const client = await connection.connect();
             try {
                 const res = await client.query(sql, values);
-                return  res.rows;
+                return res.rows;
             } finally {
                 client.release();
             }

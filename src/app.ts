@@ -43,7 +43,7 @@ app.use('/admin/getByEmail', getByEmailAdmin);
 app.use('/adviser/changePassword', changePasswordAdviser);
 app.use('/adviser/update', updateAdviser);
 app.use('/adviser/getByEmail', getByEmailAviser);
-app.use('./adviser/getAll', getAllAdviser);
+app.use('/adviser/getAll', getAllAdviser);
 
 const PORT = process.env.PORT || 10240;
 

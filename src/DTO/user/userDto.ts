@@ -15,8 +15,8 @@ class UserDto {
     _password: string,
     _phoneNumber: string,
     _image: string,
-    id_Admin?: number,
     _id?: string,
+    id_Admin?: number
   ) {
     this._id = _id;
     this._name = _name;
