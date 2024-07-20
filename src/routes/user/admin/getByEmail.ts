@@ -5,6 +5,6 @@ import validateToken from '../../../middlewares/validateTokenMiddleware';
 
 const router = express.Router();
 
-router.patch('/', validateToken(['Administrator']), validatorParams, validator, getByEmailController);
+router.get('/', validateToken(['Administrator']), validatorParams, validator, getByEmailController);
 
 export default router;

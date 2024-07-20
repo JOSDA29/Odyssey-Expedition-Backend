@@ -1,4 +1,4 @@
-import getByEmail from "../../repository/user/client/getByEmail";
+import getByEmail from "../../repository/user/admin/getByEmail";
 
 class getService {
     static async getByEmail(email: string){

@@ -10,9 +10,7 @@ let getByEmail = async (req: Request, res: Response) => {
         const client = await getService.getByEmail(email);
 
         if(client){
-            return res.status(202).json({
-                client
-            })
+            return res.status(202).json(client)
         }
         return res.status(401).json({
             status: 'Error'
