@@ -4,7 +4,7 @@ class User {
     private _lastNames?: string;
     private _phone?: string;
     private _image?: string;
-    private _fkAdministratorId?: string;
+    private _fkAdministratorEmail?: string;
 
     constructor(
         email: string,
@@ -12,14 +12,14 @@ class User {
         lastNames?: string,
         phone?: string,
         image?: string,
-        fkAdministratorId?: string
+        fkAdministratorEmail?: string
     ) {
         this._email = email;
         this._names = names;
         this._lastNames = lastNames;
         this._phone = phone;
         this._image = image;
-        this._fkAdministratorId = fkAdministratorId;
+        this._fkAdministratorEmail = fkAdministratorEmail;
     }
 
     //Getter y Setter para 'email'
@@ -64,11 +64,11 @@ class User {
     }
 
     //Getter y Setter para la foranea de administrador que se va a utlizar en el asesor unicamente
-    get fkAdministratorId(): string | undefined {
-        return this._fkAdministratorId;
+    get fkAdministratorEmail(): string | undefined {
+        return this._fkAdministratorEmail;
     }
-    set fkAdministratorId(value: string | undefined) {
-        this._fkAdministratorId = value;
+    set fkAdministratorEmail(value: string | undefined) {
+        this._fkAdministratorEmail = value;
     }
 }
 

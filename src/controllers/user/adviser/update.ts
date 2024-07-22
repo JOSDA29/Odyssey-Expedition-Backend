@@ -1,31 +1,30 @@
 import { Request, Response } from "express";
-import updateDataAd from "../../../repository/user/adviser/updateData";
+import AdviserUpdate from "../../../services/adviser/adviserUpdate";
+
 import User from "../../../DTO/updateDTO";
 
 let update = async(req: Request, res: Response) => {
     try {
         const {
             email,
-            names,
-            lastnames,
-            phone,
+            name,
+            lastName,
+            phoneNumber,
             image,
-            idAdministrator
+            tokenEmail
         } = req.body
 
-        const adviser = await updateDataAd.update(new User(email, names, lastnames, phone, image, idAdministrator));
+        const result = await AdviserUpdate.updateAd(new User(email, name, lastName, phoneNumber, image, tokenEmail));
 
-        if(adviser){
-            return res.status(200).json({
-                status: 'Successful Update'
+        if(result.message == 'Data not found' ){
+            return res.status(404).json({
+                status: result.message
             })
         }
         
-        return res.status(401).json({ 
-            status: 'Invalid email or password'
+        return res.status(201).json({ 
+            status: result.message
         });
-
-
         
     } catch (error) {
         return res.status(500).send({ errorInfo: "Internal Server Error", error });

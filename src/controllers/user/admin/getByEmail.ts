@@ -1,21 +1,20 @@
 import { Request, Response } from "express"
-import getService from "../../../services/client/getByEmail";
+import getService from "../../../services/admin/getByEmail";
 
 let getByEmail = async (req: Request, res: Response) => {
     try{
         const {
-            email
+            tokenEmail
         } = req.body
 
-        const client = await getService.getByEmail(email);
+        const client = await getService.getByEmail(tokenEmail);
 
         if(client){
-            return res.status(202).json({
-                client
-            })
+            return res.status(202).json({ client })
         }
-        return res.status(401).json({
-            status: 'Error'
+
+        return res.status(404).json({
+            status: 'No found'
         })
 
     } catch (error: any) {

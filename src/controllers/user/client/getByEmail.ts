@@ -3,18 +3,28 @@ import getService from "../../../services/client/getByEmail";
 
 let getByEmail = async (req: Request, res: Response) => {
     try {
-        const { email } = req.body;
+        const { email, tokenRole, tokenEmail} = req.body;
+        let result:any =[];
 
-        const client = await getService.getByEmail(email);
-
-        if (client) {
-            console.log(client);
-            return res.status(202).json(client);
+        switch (tokenRole) {
+            case "Client":
+                result = await getService.getByEmail(tokenEmail);
+                break;
+            case "Adviser":
+                if (!email) {
+                    return res.status(400).send({ message: 'Email is required' });
+                }
+                result = await getService.getByEmail(email);
+                break;
+            default:
+                return res.status(401).send({ message: 'Invalid tokenRole' });
         }
 
-        return res.status(401).json({
-            status: 'Error'
-        });
+        if (result.length > 0) {
+            return res.status(200).json(result);
+        } else {
+            return res.status(404).json({ status: 'Data not found' });
+        }
 
     } catch (error: any) {
         if (error && error.code === "ER_DUP_ENTRY") {

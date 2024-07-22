@@ -9,8 +9,8 @@ class Client {
         return { message: 'Succesfull Update'}
     }
     static async changePassword(changePassword: ChangePassword) {
-        await ClientR.changePassword(changePassword);
-        return{ message: 'Password Update Succesful'}
+        const client =await ClientR.changePassword(changePassword);
+        return{ message: client.message}
     }
 }
 

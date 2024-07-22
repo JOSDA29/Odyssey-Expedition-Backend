@@ -64,17 +64,17 @@ class ClientR {
             try{
                 const result: any = await client.query(sql, values);
                 if(result.rows.length > 0) {
-                    const user = result.rows[0];
-                    const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
+                    const user = result.rows[0];                    
+                    const isPasswordValid = await bcrypt.compare(oldPassword, user.password);                    
                     if(isPasswordValid){
                         const hashedPassword = await generateHash(newPassword);
                         await this.updatePassword(email, hashedPassword);
                         return { message: 'Password Update Succesful'}
-                    } else {
-                        throw new Error("Incorrect Old Password");
                     }
+                }else{
+                    return { message: 'Client not found'}
                 }
-                return result.rows;
+                return { message: 'Incorrect Old Password'}
             } finally {
                 client.release();
             }
@@ -85,7 +85,7 @@ class ClientR {
     }
 
     static async updatePassword(email: string, newPassword: string){
-        const sql = "UPDATE Client SET password = $1 WHERE clientID = $2";
+        const sql = "UPDATE Client SET password = $1 WHERE email = $2";
         const values = [newPassword, email];
         try {
             const client = await connection.connect();

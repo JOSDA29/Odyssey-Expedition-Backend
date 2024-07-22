@@ -6,7 +6,7 @@ class UserDto {
   private _password: string;
   private _phoneNumber: string;
   private _image: string;
-  private _id_Admin?: number;
+  private _email_Admin?: string;
 
   constructor(
     _name: string,
@@ -16,7 +16,7 @@ class UserDto {
     _phoneNumber: string,
     _image: string,
     _id?: string,
-    id_Admin?: number
+    _email_Admin?: string
   ) {
     this._id = _id;
     this._name = _name;
@@ -25,7 +25,7 @@ class UserDto {
     this._password = _password;
     this._phoneNumber = _phoneNumber;
     this._image = _image;
-    this._id_Admin = id_Admin;
+    this._email_Admin = _email_Admin;
   }
 
   public get id(): any{
@@ -84,11 +84,11 @@ class UserDto {
     this._image = _image;
   }
 
-  public get id_Admin(): any{
-    return this._id_Admin;
+  public get email_Admin(): any{
+    return this._email_Admin;
   }
-  public set id_Admin(_id_Admin: number) {
-    this._id_Admin = _id_Admin;
+  public set email_Admin(_email_Admin: string) {
+    this._email_Admin = _email_Admin;
   }
 }
 export default UserDto;

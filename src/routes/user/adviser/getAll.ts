@@ -4,6 +4,6 @@ import getAllController from '../../../controllers/user/adviser/getAll';
 
 const router = express.Router();
 
-router.patch('/', validateToken(['Administrator']), getAllController);
+router.get('/', validateToken(['Administrator']), getAllController);
 
 export default router;

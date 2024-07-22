@@ -5,7 +5,6 @@ import RegisterService from '../../../services/client/registerService';
 const register = async (req: Request, res: Response) => {
     try {
         const {
-            id_client,
             name,
             lastName,
             email,

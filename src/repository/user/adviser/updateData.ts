@@ -44,8 +44,11 @@ class AdviserR {
         try{
             const client = await connection.connect();
             try{
-                const result = await client.query(sql, values);                 
-                return result.rows;
+                const result = await client.query(sql, values);   
+                if (result.rowCount! >0) {
+                    return {message: 'Successful Update'};
+                }
+                return {message: 'Data not found'};
             } finally {
                 client.release();
             }
@@ -65,17 +68,17 @@ class AdviserR {
             try{
                 const result: any = await admin.query(sql, values);
                 if(result.rows.length > 0) {
-                    const user = result.rows[0];
-                    const isPasswordValid = await bcrypt.compare(oldPassword, user.password);
+                    const user = result.rows[0];                    
+                    const isPasswordValid = await bcrypt.compare(oldPassword, user.password);                    
                     if(isPasswordValid){
                         const hashedPassword = await generateHash(newPassword);
                         await this.updatePassword(email, hashedPassword);
                         return { message: 'Password Update Succesful'}
-                    } else {
-                        throw new Error("Incorrect Old Password");
                     }
+                }else{
+                    return { message: 'Client not found'}
                 }
-                return result.rows;
+                return { message: 'Incorrect Old Password'}
             } finally {
                 admin.release();
             }

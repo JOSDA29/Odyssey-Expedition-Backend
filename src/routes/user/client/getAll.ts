@@ -4,6 +4,6 @@ import validateToken from '../../../middlewares/validateTokenMiddleware';
 
 const router = express.Router();
 
-router.get('/', validateToken(['Client', 'Adviser', 'Administrator']), findAll);
+router.get('/', validateToken(['Adviser']), findAll);
 
 export default router;

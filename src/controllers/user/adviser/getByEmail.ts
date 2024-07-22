@@ -1,17 +1,25 @@
 import { Request, Response } from "express";
-import getService from "../../../services/client/getByEmail";
+import getService from "../../../services/adviser/getByEmail";
 
 let getByEmail = async (req: Request, res: Response) => {
     try {
-        const { email } = req.body;
 
-        const client = await getService.getByEmail(email);
+        const { email, tokenRole, tokenEmail} = req.body;
+        let administrator:any =[];
 
-        if (client) {
-            return res.status(202).json(client);
+        if (tokenRole == 'Adviser') {
+            administrator = await getService.getByEmail(tokenEmail);
+        }else{
+            administrator = await getService.getByEmail(email);
         }
-        return res.status(401).json({
-            status: 'Error'
+
+
+        if (administrator !== null && administrator.length>0) {
+            return res.status(202).json(administrator);
+        }
+
+        return res.status(404).json({
+            status: 'Data not found'
         });
 
     } catch (error: any) {

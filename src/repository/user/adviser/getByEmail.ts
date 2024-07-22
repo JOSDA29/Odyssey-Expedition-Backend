@@ -1,8 +1,8 @@
 import connection from "../../../config/configDB";
 
 class getByEmail{
-    static async getByEm(email: string){
-        const sql = 'SELECT * FROM Advisor WHERE email = $1';
+    static async getByEmail(email: string){
+        const sql = 'SELECT * FROM Adviser WHERE email = $1';
         const values = [email];
 
         try {
