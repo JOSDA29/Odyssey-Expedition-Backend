@@ -2,16 +2,10 @@ import { check, validationResult, body } from "express-validator";
 import { Request, Response, NextFunction } from "express";
 
 const validsParameters = [
-    body('email').custom((value, { req }) => {
-        if (value) {
-            throw new Error('You must not update the email.');
-        }
-        return true;
-    }),
     // Validaciones
     check('names').optional().isString(),
     check('lastnames').optional().isString(),
-    check('phone').optional().isString(),
+    check('phone').optional().isNumeric(),
     check('image').optional().isString()
 ];
 

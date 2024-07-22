@@ -1,94 +1,94 @@
 class UserDto {
-  private Id_Client: string;
-  private name_C: string;
-  private lastName_C: string;
-  private email_C: string;
-  private password_C: string;
-  private phoneNumber_C: string;
-  private image_C: string;
-  private _id_Admin?: number;
+  private _id?: string;
+  private _name: string;
+  private _lastName: string;
+  private _email: string;
+  private _password: string;
+  private _phoneNumber: string;
+  private _image: string;
+  private _email_Admin?: string;
 
   constructor(
-    Id_Client: string,
-    name_C: string,
-    lastName_C: string,
-    email_C: string,
-    password_C: string,
-    phoneNumber_C: string,
-    image_C: string,
-    id_Admin?: number
+    _name: string,
+    last_Name: string,
+    _email: string,
+    _password: string,
+    _phoneNumber: string,
+    _image: string,
+    _id?: string,
+    _email_Admin?: string
   ) {
-    this.Id_Client = Id_Client;
-    this.name_C = name_C;
-    this.lastName_C = lastName_C;
-    this.email_C = email_C;
-    this.password_C = password_C;
-    this.phoneNumber_C = phoneNumber_C;
-    this.image_C = image_C;
-    this._id_Admin = id_Admin;
+    this._id = _id;
+    this._name = _name;
+    this._lastName = last_Name;
+    this._email = _email;
+    this._password = _password;
+    this._phoneNumber = _phoneNumber;
+    this._image = _image;
+    this._email_Admin = _email_Admin;
   }
 
-  public get idC(): string {
-    return this.Id_Client;
+  public get id(): any{
+    return this._id;
 }
 
-  public  set idC(value: string) {
-    this.Id_Client = value;
+  public  set id(value: string) {
+    this._id = value;
 }
 
-  public get emailC(): string {
-    return this.email_C;
+  public get email(): string {
+    return this._email;
   }
 
-  public set emailC(emailC: string) {
-    this.email_C = emailC;
+  public set email(_email: string) {
+    this._email = _email;
   }
 
-  public get passwordC(): string {
-    return this.password_C;
+  public get password(): string {
+    return this._password;
   }
 
-  public set passwordC(passwordC: string) {
-    this.password_C = passwordC;
+  public set password(_password: string) {
+    this._password = _password;
   }
 
-  public get nameC(): string {
-    return this.name_C;
+  public get name(): string {
+    return this._name;
   } 
 
-  public set nameC(nameC: string) {
-    this.name_C = nameC;
+  public set name(_name: string) {
+    this._name = _name;
   }
 
-  public get lastNameC(): string {
-    return this.lastName_C;
+  public get last_Name(): string {
+    return this._lastName;
   }
 
-  public set lastNameC(lastNameC: string) {
-    this.lastName_C = lastNameC;
+  public set last_Name(last_Name: string) {
+    this._lastName = last_Name;
   }
 
-  public get phoneNumberC(): string {
-    return this.phoneNumber_C;
+  public get phoneNumber(): string {
+    return this._phoneNumber;
   }
 
-  public set phoneNumberC(phoneNumberC: string) {
-    this.phoneNumber_C = phoneNumberC;
+  public set phoneNumber(_phoneNumber: string) {
+    this._phoneNumber = _phoneNumber;
   }
 
-  public get imageC(): string {
-    return this.image_C;
+  public get image(): string {
+    return this._image;
   }
 
-  public set imageC(imageC: string) {
-    this.image_C = imageC;
+  public set image(_image: string) {
+    this._image = _image;
   }
 
-  public get id_Admin(): any{
-    return this._id_Admin;
+  public get email_Admin(): any{
+    return this._email_Admin;
   }
-  public set id_Admin(id_Admin: number) {
-    this._id_Admin = id_Admin;
+  public set email_Admin(_email_Admin: string) {
+    this._email_Admin = _email_Admin;
   }
 }
 export default UserDto;

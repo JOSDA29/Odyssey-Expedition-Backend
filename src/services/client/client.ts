@@ -1,5 +1,5 @@
 import ChangePassword from "../../DTO/changePasswordDTO";
-import User from "../../DTO/userDTO";
+import User from "../../DTO/updateDTO";
 import AdviserR from "../../repository/user/adviser/updateData";
 import ClientR from "../../repository/user/client/updateData";
 
@@ -9,8 +9,8 @@ class Client {
         return { message: 'Succesfull Update'}
     }
     static async changePassword(changePassword: ChangePassword) {
-        await ClientR.changePassword(changePassword);
-        return{ message: 'Password Update Succesful'}
+        const client =await ClientR.changePassword(changePassword);
+        return{ message: client.message}
     }
 }
 

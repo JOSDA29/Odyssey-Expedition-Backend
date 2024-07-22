@@ -1,5 +1,5 @@
 import express from 'express';
-import registerController from '../../../controllers/user/admin/registerAdviser';
+import registerController from '../../../controllers/user/adviser/registerAdviser';
 import { validator, validatorParams } from '../../../middlewares/registerValidator';
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 

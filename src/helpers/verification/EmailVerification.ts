@@ -16,15 +16,15 @@ const EmailVerification = async (email: string) => {
                 client.query(sqlAdviser, values)
             ]);
 
-            const isClientExists = responseClient.rowCount !== null && responseClient.rowCount > 0;
-            const isAdministratorExists = responseAdministrator.rowCount !== null && responseAdministrator.rowCount > 0;
-            const isAdviserExists = responseAdviser.rowCount !== null && responseAdviser.rowCount > 0;
+            const isClientExists = responseClient.rowCount! > 0;
+            const isAdministratorExists = responseAdministrator.rowCount! > 0;
+            const isAdviserExists = responseAdviser.rowCount! > 0;
 
             if (isClientExists || isAdministratorExists || isAdviserExists) {
-                return false;
+                return true;
             }
 
-            return true;
+            return false;
         } finally {
             client.release();
         }

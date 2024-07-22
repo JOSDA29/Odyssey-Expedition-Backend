@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import updateDataA from "../../../repository/user/admin/updateData";
-import User from "../../../DTO/userDTO";
+import User from "../../../DTO/updateDTO";
 
 let update = async(req: Request, res: Response) => {
     try {
@@ -12,9 +12,9 @@ let update = async(req: Request, res: Response) => {
             image,
         } = req.body
 
-        const admin = await updateDataA.updateAdmin(new User(id, names, lastnames, phone, image));
+        const result = await updateDataA.updateAdmin(new User(id, names, lastnames, phone, image));
 
-        if(admin){
+        if(result){
             return res.status(200).json({
                 status: 'Successful Update'
             })
