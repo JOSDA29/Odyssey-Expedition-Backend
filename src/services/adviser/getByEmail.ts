@@ -1,7 +1,7 @@
-import getByEmail from "../../repository/user/adviser/getByEmail";
+import getByEmail from '../../repository/user/adviser/getByEmail';
 
 class getService {
-    static async getByEmail(email: string){
+    static async getByEmail(email: string) {
         return await getByEmail.getByEmail(email);
     }
 }

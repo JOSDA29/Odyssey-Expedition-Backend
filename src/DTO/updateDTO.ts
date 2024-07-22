@@ -12,7 +12,7 @@ class User {
         lastNames?: string,
         phone?: string,
         image?: string,
-        fkAdministratorEmail?: string
+        fkAdministratorEmail?: string,
     ) {
         this._email = email;
         this._names = names;

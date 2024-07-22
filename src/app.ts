@@ -1,7 +1,6 @@
-import express from "express";
+import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-
 
 //ROUTES
 import auth from './routes/authRoute';
@@ -29,7 +28,7 @@ app.use('/auth', auth);
 //Client routes
 app.use('/client/register', register);
 app.use('/client/update', updateClient);
-app.use('/client/changePassword', changePasswordClient );
+app.use('/client/changePassword', changePasswordClient);
 app.use('/client/getByEmail', getByEmailClient);
 app.use('/client/getAll', getAllClient);
 
@@ -42,9 +41,8 @@ app.use('/admin/getByEmail', getByEmailAdmin);
 app.use('/adviser/changePassword', changePasswordAdviser);
 app.use('/adviser/update', updateAdviser);
 app.use('/adviser/getByEmail', getByEmailAdviser);
-app.use('/adviser/getAll', getAllAdviser); 
+app.use('/adviser/getAll', getAllAdviser);
 app.use('/adviser/register-adviser', registerAdviser);
-
 
 const PORT = process.env.PORT || 10240;
 

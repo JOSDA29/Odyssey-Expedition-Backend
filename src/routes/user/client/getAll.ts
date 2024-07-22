@@ -1,4 +1,4 @@
-import express, { Router } from 'express';
+import express from 'express';
 import findAll from '../../../controllers/user/client/getAll';
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 

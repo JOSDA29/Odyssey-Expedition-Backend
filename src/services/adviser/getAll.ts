@@ -1,7 +1,7 @@
-import getAll from "../../repository/user/adviser/getAll";
+import getAll from '../../repository/user/adviser/getAll';
 
 class getService {
-    static async getAll(){
+    static async getAll() {
         return getAll.getAll();
     }
 }

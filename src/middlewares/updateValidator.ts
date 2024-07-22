@@ -1,12 +1,26 @@
-import { check, validationResult, body } from "express-validator";
-import { Request, Response, NextFunction } from "express";
+import { check, validationResult } from 'express-validator';
+import { Request, Response, NextFunction } from 'express';
 
 const validsParameters = [
     // Validaciones
-    check('names').optional().isString(),
-    check('lastnames').optional().isString(),
-    check('phone').optional().isNumeric(),
-    check('image').optional().isString()
+    check('name')
+        .isLength({ min: 3, max: 25 })
+        .withMessage('El nombre debe contener minimo 3 y maximo 25 caracteres')
+        .toLowerCase()
+        .optional(),
+    check('lastName')
+        .isLength({ min: 3, max: 25 })
+        .withMessage('El nombre debe contener minimo 3 y maximo 25 caracteres')
+        .toLowerCase()
+        .optional(),
+    check('phoneNumber')
+        .isLength({ min: 10, max: 10 })
+        .withMessage('El telefono debe contener 10 digitos')
+        .matches(/^\d+$/)
+        .withMessage('El telefono debe contener solo numeros')
+        .optional(),
+    check('image')
+        .optional(),
 ];
 
 function validator(req: Request, res: Response, next: NextFunction) {
