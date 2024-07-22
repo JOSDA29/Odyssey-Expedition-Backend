@@ -12,6 +12,8 @@ const register = async (req: Request, res: Response) => {
             phoneNumber,
             image
         } = req.body;
+
+        
         
         const result = await RegisterService.register(new UserDto(name, lastName, email, password, phoneNumber, image));
         
