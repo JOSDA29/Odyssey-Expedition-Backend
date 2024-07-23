@@ -13,6 +13,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@azure/arm-communication": "^4.1.0",
+    "@azure/identity": "^4.4.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/jest": "^29.5.12",
     "@types/pg": "^8.11.6",

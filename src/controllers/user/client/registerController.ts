@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import UserDto from '../../../DTO/user/userDto';
 import RegisterService from '../../../services/client/registerService';
-import { sendEmail } from '../../../services/emailService';
 
 const register = async (req: Request, res: Response) => {
     try {
@@ -19,7 +18,6 @@ const register = async (req: Request, res: Response) => {
         }
 
         if(result){
-            await sendEmail(email, "Registro exitoso", `Hola ${name}, te damos la bienvenida a Odyssey Expedition.`);
             return res.status(201).json({
                 status: 'register ok',
             });
