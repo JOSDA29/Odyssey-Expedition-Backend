@@ -4,8 +4,8 @@ class UserDto {
     private _lastName: string;
     private _email: string;
     private _password: string;
-    private _phoneNumber: string;
-    private _image: string;
+    private _phoneNumber?: string;
+    private _image?: string;
     private _email_Admin?: string;
 
     constructor(
@@ -13,8 +13,8 @@ class UserDto {
         last_Name: string,
         _email: string,
         _password: string,
-        _phoneNumber: string,
-        _image: string,
+        _phoneNumber?: string,
+        _image?: string,
         _id?: string,
         _email_Admin?: string,
     ) {
@@ -68,7 +68,7 @@ class UserDto {
         this._lastName = last_Name;
     }
 
-    public get phoneNumber(): string {
+    public get phoneNumber(): string | undefined {
         return this._phoneNumber;
     }
 
@@ -76,7 +76,7 @@ class UserDto {
         this._phoneNumber = _phoneNumber;
     }
 
-    public get image(): string {
+    public get image(): string | undefined {
         return this._image;
     }
 

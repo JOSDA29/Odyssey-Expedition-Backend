@@ -28,7 +28,8 @@ const validatorParams = [
         .isLength({ min: 10, max: 10 })
         .withMessage('El telefono debe contener 10 digitos')
         .matches(/^\d+$/)
-        .withMessage('El telefono debe contener solo numeros'),
+        .withMessage('El telefono debe contener solo numeros')
+        .optional(),
 ];
 
 function validator(req: Request, res: Response, next: NextFunction) {
