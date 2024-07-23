@@ -9,7 +9,7 @@ import validateToken from '../../../middlewares/validateTokenMiddleware';
 const router = express.Router();
 
 router.get(
-    '/',
+    '/:email',
     validateToken(['Client', 'Adviser']),
     validatorParams,
     validator,
