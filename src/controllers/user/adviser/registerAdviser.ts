@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import RegisterService from "../../../services/admin/registerAdviser";
+import RegisterService from "../../../services/adviser/registerAdviser";
 import UserDto from "../../../DTO/user/userDto";
 
 const register = async (req: Request, res: Response) => {
@@ -12,10 +12,10 @@ const register = async (req: Request, res: Response) => {
             password,
             phoneNumber,
             image,
-            id_Admin
+            email_Admin
         } = req.body;
 
-        const result = await RegisterService.register(new UserDto(id, name, lastName, email, password, phoneNumber, image, id_Admin));
+        const result = await RegisterService.register(new UserDto(name, lastName, email, password, phoneNumber, image, id, email_Admin));
 
         if (!result.success) {
             return res.status(409).json({
