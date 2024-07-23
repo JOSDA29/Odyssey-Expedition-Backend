@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import UserDto from '../../../DTO/user/userDto';
 import RegisterService from '../../../services/client/registerService';
+import { sendEmail } from '../../../services/emailService';
 
 const register = async (req: Request, res: Response) => {
     try {
@@ -17,9 +18,12 @@ const register = async (req: Request, res: Response) => {
             });
         }
 
-        return res.status(201).json({
-            status: 'register ok',
-        });
+        if(result){
+            await sendEmail(email, "Registro exitoso", `Hola ${name}, te damos la bienvenida a Odyssey Expedition.`);
+            return res.status(201).json({
+                status: 'register ok',
+            });
+        }
     } catch (error: any) {
         if (error && error.code === 'ER_DUP_ENTRY') {
             return res.status(500).json({ errorInfo: error.sqlMessage });
