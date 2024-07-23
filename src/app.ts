@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 //ROUTES
 import auth from './routes/authRoute';
@@ -18,9 +19,10 @@ import getByEmailAdviser from './routes/user/adviser/getByEmail';
 import getAllAdviser from './routes/user/adviser/getAll';
 import getByEmailAdmin from './routes/user/admin/getByEmail';
 
-dotenv.config();
-
 const app = express().use(bodyParser.json());
+
+app.use(cors())
+dotenv.config();
 
 // Define las rutas
 app.use('/auth', auth);
