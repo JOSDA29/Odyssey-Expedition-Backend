@@ -4,41 +4,12 @@ import connection from '../../../config/configDB';
 import bcrypt from 'bcryptjs';
 import generateHash from '../../../helpers/generateHash';
 
-class AdminR {
+class  AdminR {
     static async updateAdmin(user: User) {
-        const tables = ['Client', 'Administrator', 'Adviser'];
-        let tableName = '';
-
-        // Verificar a qué tabla pertenece el usuario
-        for (const table of tables) {
-            const checkSql = `SELECT 1 FROM ${table} WHERE ${table.toLowerCase()}email = $1`;
-            try {
-                const client = await connection.connect();
-                try {
-                    const result: any = await client.query(checkSql, [
-                        user.email,
-                    ]);
-                    if (result.rowCount > 0) {
-                        tableName = table;
-                        break;
-                    }
-                } finally {
-                    client.release();
-                }
-            } catch (error: any) {
-                console.log('Error Executing query', error.stack);
-                throw error;
-            }
-        }
-
-        if (tableName === '') {
-            throw new Error('User not found in any table');
-        }
-
         const fieldsToUpdate = [];
         const values = [];
-
         const userEmailIndex = 1;
+
         values.push(user.email);
 
         let index = userEmailIndex + 1;
@@ -66,7 +37,7 @@ class AdminR {
 
         // Construcción de la cláusula SET y la consulta SQL
         const setClause = fieldsToUpdate.join(', ');
-        const sql = `UPDATE ${tableName} SET ${setClause} WHERE ${tableName.toLowerCase()}email = $1`;
+        const sql = `UPDATE Administrator SET ${setClause} WHERE email = $1`;
 
         try {
             const client = await connection.connect();
