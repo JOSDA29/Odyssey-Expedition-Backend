@@ -22,14 +22,8 @@ const validatorParams = [
         .toLowerCase(),
     check('lastName')
         .isLength({ min: 3, max: 25 })
-        .withMessage('El nombre debe contener minimo 3 y maximo 25 caracteres')
+        .withMessage('El apellido debe contener minimo 3 y maximo 25 caracteres')
         .toLowerCase(),
-    check('phoneNumber')
-        .isLength({ min: 10, max: 10 })
-        .withMessage('El telefono debe contener 10 digitos')
-        .matches(/^\d+$/)
-        .withMessage('El telefono debe contener solo numeros')
-        .optional(),
 ];
 
 function validator(req: Request, res: Response, next: NextFunction) {
