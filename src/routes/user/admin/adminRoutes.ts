@@ -1,6 +1,6 @@
 import express from 'express';
 import { changePasswordValidator, handleValidation } from '../../../middlewares/updatePasswordValidator';
-import { validatorParamsGetByEmail, validatorGetByEmail } from '../../../middlewares/finByEmailValidator';
+import { validatorParamsEmail, validatorEmail } from '../../../middlewares/emailValidator';
 import { validsParametersUpdate, validatorUpdate } from '../../../middlewares/updateValidator';
 import changePasswordController from '../../../controllers/user/admin/changePassword';
 import getByEmailController from '../../../controllers/user/admin/getByEmail';
@@ -22,8 +22,8 @@ router.patch(
 router.get(
     '/getByEmail',
     validateToken(['Administrator']),
-    validatorParamsGetByEmail,
-    validatorGetByEmail,
+    validatorParamsEmail,
+    validatorEmail,
     getByEmailController,
 );
 

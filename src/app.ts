@@ -15,6 +15,7 @@ const app = express().use(bodyParser.json());
 
 app.use(cors())
 dotenv.config();
+app.use(morgan('dev'))
 
 // Define las rutas
 app.use('/auth', auth);
