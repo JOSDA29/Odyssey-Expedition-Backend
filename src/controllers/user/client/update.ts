@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import updateService from '../../../services/client/client';
 import User from '../../../DTO/updateDTO';
-
 const update = async (req: Request, res: Response) => {
     try {
         const { tokenEmail, name, lastName, phoneNumber, image } = req.body;
