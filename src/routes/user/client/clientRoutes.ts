@@ -6,9 +6,9 @@ import register from '../../../controllers/user/client/registerController';
 import updateDataController from '../../../controllers/user/client/update';
 
 import {
-    validatorParamsGetByEmail,
-    validatorGetByEmail,
-} from '../../../middlewares/finByEmailValidator';
+    validatorParamsEmail,
+    validatorEmail,
+} from '../../../middlewares/emailValidator';
 
 import {
     changePasswordValidator,
@@ -44,8 +44,8 @@ router.get('/getAll', validateToken(['Adviser']), getAll);
 router.get(
     '/getByEmail/:email?',
     validateToken(['Client', 'Adviser']),
-    validatorParamsGetByEmail,
-    validatorGetByEmail,
+    validatorParamsEmail,
+    validatorEmail,
     getByEmail,
 );
 

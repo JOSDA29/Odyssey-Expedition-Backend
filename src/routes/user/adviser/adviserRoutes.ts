@@ -5,9 +5,9 @@ import {
 } from '../../../middlewares/updatePasswordValidator';
 
 import {
-    validatorParamsGetByEmail,
-    validatorGetByEmail,
-} from '../../../middlewares/finByEmailValidator';
+    validatorParamsEmail,
+    validatorEmail,
+} from '../../../middlewares/emailValidator';
 
 import {
     validatorRegister,
@@ -25,6 +25,7 @@ import getByEmailController from '../../../controllers/user/adviser/getByEmail';
 import registerController from '../../../controllers/user/adviser/registerAdviser';
 import updateDataController from '../../../controllers/user/adviser/update';
 import changePasswordController from '../../../controllers/user/adviser/changePassword';
+import deleteAdviserController from '../../../controllers/user/adviser/delete';
 
 
 
@@ -43,8 +44,8 @@ router.get('/getAll', validateToken(['Administrator']), getAllController);
 router.get(
     '/getByEmail/:email?',
     validateToken(['Adviser', 'Administrator']),
-    validatorParamsGetByEmail,
-    validatorGetByEmail,
+    validatorParamsEmail,
+    validatorEmail,
     getByEmailController,
 );
 
@@ -64,6 +65,14 @@ router.put(
     validsParametersUpdate,
     validatorUpdate,
     updateDataController,
+);
+
+router.delete(
+    '/delete/:email',
+    validateToken(['Administrator']),
+    validatorParamsEmail,
+    validatorEmail,
+    deleteAdviserController,
 );
 
 export default router;
