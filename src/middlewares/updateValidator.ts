@@ -1,7 +1,7 @@
 import { check, validationResult } from 'express-validator';
 import { Request, Response, NextFunction } from 'express';
 
-const validsParameters = [
+const validsParametersUpdate = [
     // Validaciones
     check('name')
         .isLength({ min: 3, max: 25 })
@@ -23,7 +23,7 @@ const validsParameters = [
         .optional(),
 ];
 
-function validator(req: Request, res: Response, next: NextFunction) {
+function validatorUpdate(req: Request, res: Response, next: NextFunction) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
@@ -31,4 +31,4 @@ function validator(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
-export { validsParameters, validator };
+export { validsParametersUpdate, validatorUpdate };

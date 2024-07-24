@@ -9,6 +9,7 @@ let changePassword = async (req: Request, res: Response) => {
         const result = await Admin.changePassword(
             new ChangePassword(tokenEmail, oldPassword, newPassword),
         );
+        
         switch (result.message) {
             case 'Password Update Succesful':
                 return res.status(202).json({ status: result.message });

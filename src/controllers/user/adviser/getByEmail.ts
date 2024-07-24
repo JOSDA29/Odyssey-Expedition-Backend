@@ -3,17 +3,18 @@ import getService from '../../../services/adviser/getByEmail';
 
 let getByEmail = async (req: Request, res: Response) => {
     try {
-        const { email, tokenRole, tokenEmail } = req.body;
-        let administrator: any = [];
+        const { tokenRole, tokenEmail } = req.body;
+        const email = req.params.email;
+        let result: any = [];
 
         if (tokenRole == 'Adviser') {
-            administrator = await getService.getByEmail(tokenEmail);
+            result = await getService.getByEmail(tokenEmail);
         } else {
-            administrator = await getService.getByEmail(email);
+            result = await getService.getByEmail(email);
         }
 
-        if (administrator !== null && administrator.length > 0) {
-            return res.status(202).json(administrator);
+        if (result !== null && result.length > 0) {
+            return res.status(202).json(result[0]);
         }
 
         return res.status(404).json({

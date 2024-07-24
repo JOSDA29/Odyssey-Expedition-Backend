@@ -1,7 +1,7 @@
 import { check, validationResult } from 'express-validator';
 import { Request, Response, NextFunction } from 'express';
 
-const validatorParams = [
+const validatorParamsRegister = [
     check('email').isEmail().withMessage('Se debe ingresar un email valido'),
     check('password')
         .isLength({ min: 8, max: 20 })
@@ -26,7 +26,7 @@ const validatorParams = [
         .toLowerCase(),
 ];
 
-function validator(req: Request, res: Response, next: NextFunction) {
+function validatorRegister(req: Request, res: Response, next: NextFunction) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
@@ -34,4 +34,4 @@ function validator(req: Request, res: Response, next: NextFunction) {
     next();
 }
 
-export { validatorParams, validator };
+export { validatorParamsRegister, validatorRegister };
