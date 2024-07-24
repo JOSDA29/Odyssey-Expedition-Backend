@@ -18,6 +18,7 @@ import getAllClient from './routes/user/client/getAll';
 import getByEmailAdviser from './routes/user/adviser/getByEmail';
 import getAllAdviser from './routes/user/adviser/getAll';
 import getByEmailAdmin from './routes/user/admin/getByEmail';
+import changeState from './routes/user/client/changeState';
 
 const app = express().use(bodyParser.json());
 
@@ -33,6 +34,7 @@ app.use('/client/update', updateClient);
 app.use('/client/changePassword', changePasswordClient);
 app.use('/client/getByEmail', getByEmailClient);
 app.use('/client/getAll', getAllClient);
+app.use('/client/changeState', changeState);
 
 //Admin routes
 app.use('/admin/update', updateAdmin); //Corregir
