@@ -5,10 +5,10 @@ const getByEmail = async (req: Request, res: Response) => {
     try {
         const { tokenEmail } = req.body;
 
-        const client = await getService.getByEmail(tokenEmail);
+        const result = await getService.getByEmail(tokenEmail);
 
-        if (client) {
-            return res.status(202).json({ client });
+        if (result) {
+            return res.status(202).json(result[0]);
         }
 
         return res.status(404).json({

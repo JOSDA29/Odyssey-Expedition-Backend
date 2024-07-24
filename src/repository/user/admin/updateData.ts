@@ -106,7 +106,7 @@ class AdminR {
                 } else {
                     return { message: 'Client not found' };
                 }
-                return { message: 'Incorrect Old Password' };
+                return { message: 'Incorrect old password' };
             } finally {
                 client.release();
             }

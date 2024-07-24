@@ -96,8 +96,6 @@ class AdviserR {
             const res = await connection.connect();
             try {
                 const result = await res.query(sql, values);
-                console.log(result);
-
                 return result.rows;
             } finally {
                 res.release();

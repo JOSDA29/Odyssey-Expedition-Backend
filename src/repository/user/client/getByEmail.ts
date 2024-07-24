@@ -8,8 +8,6 @@ class getByEmail {
             const client = await connection.connect();
             try {
                 const res = await client.query(sql, values);
-                console.log(res);
-
                 return res.rows;
             } finally {
                 client.release();

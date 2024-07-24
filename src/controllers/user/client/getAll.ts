@@ -3,10 +3,10 @@ import getService from '../../../services/client/getAll';
 
 const getAll = async (req: Request, res: Response) => {
     try {
-        const clients = await getService.getAll();
+        const result = await getService.getAll();
 
-        if (clients) {
-            return res.status(200).json(clients);
+        if (result) {
+            return res.status(200).json(result);
         } else {
             return res.status(404).json({ status: 'No clients found' });
         }
