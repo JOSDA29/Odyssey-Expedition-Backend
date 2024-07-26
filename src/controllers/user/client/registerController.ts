@@ -2,13 +2,13 @@ import { Request, Response } from 'express';
 import UserDto from '../../../DTO/user/userDto';
 import RegisterService from '../../../services/client/registerService';
 
+
 const register = async (req: Request, res: Response) => {
     try {
-        const { name, lastName, email, password, phoneNumber, image } =
-            req.body;
+        const { name, lastName, email, password, phoneNumber } = req.body;
 
         const result = await RegisterService.register(
-            new UserDto(name, lastName, email, password, phoneNumber, image),
+            new UserDto( name, lastName, email, password, phoneNumber ),
         );
 
         if (!result.success) {

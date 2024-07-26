@@ -11,7 +11,6 @@ const register = async (req: Request, res: Response) => {
             email,
             password,
             phoneNumber,
-            image,
             email_Admin,
         } = req.body;
 
@@ -22,7 +21,6 @@ const register = async (req: Request, res: Response) => {
                 email,
                 password,
                 phoneNumber,
-                image,
                 id,
                 email_Admin,
             ),

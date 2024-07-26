@@ -10,14 +10,13 @@ class RegisterService {
             return { success: false, message: 'Email already exists' };
         } else {
             const sql =
-                "INSERT INTO Client( firstName, lastName, email, password, phone, image) VALUES ($1, $2, $3, $4, $5, decode($6, 'hex'))";
+                "INSERT INTO Client( firstName, lastName, email, password, phone ) VALUES ($1, $2, $3, $4, $5 )";
             const values = [
                 user.name,
                 user.last_Name,
                 user.email,
                 user.password,
                 user.phoneNumber,
-                user.image,
             ];
 
             try {

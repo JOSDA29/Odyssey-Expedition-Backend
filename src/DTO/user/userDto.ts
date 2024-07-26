@@ -5,7 +5,6 @@ class UserDto {
     private _email: string;
     private _password: string;
     private _phoneNumber?: string;
-    private _image?: string;
     private _email_Admin?: string;
 
     constructor(
@@ -14,7 +13,6 @@ class UserDto {
         _email: string,
         _password: string,
         _phoneNumber?: string,
-        _image?: string,
         _id?: string,
         _email_Admin?: string,
     ) {
@@ -24,7 +22,6 @@ class UserDto {
         this._email = _email;
         this._password = _password;
         this._phoneNumber = _phoneNumber;
-        this._image = _image;
         this._email_Admin = _email_Admin;
     }
 
@@ -74,14 +71,6 @@ class UserDto {
 
     public set phoneNumber(_phoneNumber: string) {
         this._phoneNumber = _phoneNumber;
-    }
-
-    public get image(): string | undefined {
-        return this._image;
-    }
-
-    public set image(_image: string) {
-        this._image = _image;
     }
 
     public get email_Admin(): any {

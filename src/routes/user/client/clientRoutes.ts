@@ -4,6 +4,7 @@ import getAll from '../../../controllers/user/client/getAll';
 import getByEmail from '../../../controllers/user/client/getByEmail';
 import register from '../../../controllers/user/client/registerController';
 import updateDataController from '../../../controllers/user/client/update';
+import uploadImage from '../../../controllers/user/client/uploadImage';
 
 import {
     validatorParamsEmail,
@@ -27,6 +28,8 @@ import {
 
 
 import validateToken from '../../../middlewares/validateTokenMiddleware';
+import upload from '../../../middlewares/multerMiddleware';
+
 
 const router = express.Router();
 
@@ -37,6 +40,14 @@ router.patch(
     handleValidation,
     changePasswordController,
 );
+
+router.post(
+    '/uploadImage',
+    upload.single('file'),
+    validateToken(['Client']),    
+    uploadImage              
+);
+
 
 
 router.get('/getAll', validateToken(['Adviser']), getAll);
