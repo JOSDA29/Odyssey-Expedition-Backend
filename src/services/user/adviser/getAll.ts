@@ -1,4 +1,4 @@
-import getAll from '../../repository/user/adviser/getAll';
+import getAll from '../../../repository/user/adviser/getAll';
 
 class getService {
     static async getAll() {

@@ -1,6 +1,6 @@
-import ChangePassword from '../../DTO/changePasswordDTO';
-import User from '../../DTO/updateDTO';
-import ClientR from '../../repository/user/client/updateData';
+import ChangePassword from '../../../DTO/changePasswordDTO';
+import User from '../../../DTO/updateDTO';
+import ClientR from '../../../repository/user/client/updateData';
 
 class Client {
     static async updateC(user: User) {

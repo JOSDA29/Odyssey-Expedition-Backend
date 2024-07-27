@@ -1,4 +1,4 @@
-import uploadImageR from "../../repository/user/client/uploadImage";
+import uploadImageR from "../../../repository/user/client/uploadImage";
 
 class uploadImage{
     static async UploadImage(email: string, file: Buffer,){

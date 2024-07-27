@@ -1,4 +1,4 @@
-import Delete from "../../repository/user/adviser/delete";
+import Delete from "../../../repository/user/adviser/delete";
 
 class DeleteAdviser {
     public static async deleteAdviser(email:string){

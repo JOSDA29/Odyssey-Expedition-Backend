@@ -1,6 +1,6 @@
-import ChangePassword from '../../DTO/changePasswordDTO';
-import User from '../../DTO/updateDTO';
-import AdminR from '../../repository/user/admin/updateData';
+import ChangePassword from '../../../DTO/changePasswordDTO';
+import User from '../../../DTO/updateDTO';
+import AdminR from '../../../repository/user/admin/updateData';
 
 class AdminUpdate {
     static async updateA(user: User) {

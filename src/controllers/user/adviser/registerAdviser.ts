@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import RegisterService from '../../../services/adviser/registerAdviser';
+import RegisterService from '../../../services/user/adviser/registerAdviser';
 import UserDto from '../../../DTO/user/userDto';
 
 const register = async (req: Request, res: Response) => {

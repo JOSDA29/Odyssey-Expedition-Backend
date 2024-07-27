@@ -1,5 +1,5 @@
 import SearchFilterDTO from "../../../DTO/searchFilterDTO";
-import SearchFilterService from "../../../services/adviser/searchFilter";
+import SearchFilterService from "../../../services/user/adviser/searchFilter";
 import { Request, Response } from "express";
 
 const searchFilter = async (req: Request, res: Response) => {
