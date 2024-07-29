@@ -29,6 +29,7 @@ import {
 
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 import upload from '../../../middlewares/multerMiddleware';
+import getImage from '../../../controllers/user/client/getImage';
 
 
 const router = express.Router();
@@ -60,6 +61,7 @@ router.get(
     getByEmail,
 );
 
+router.get('/getImage', validateToken(['Client']), getImage);
 
 router.post('/register', validatorParamsRegister, validatorRegister, register);
 

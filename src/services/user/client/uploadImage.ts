@@ -1,7 +1,7 @@
 import uploadImageR from "../../../repository/user/client/uploadImage";
 
 class uploadImage{
-    static async UploadImage(email: string, file: Buffer,){
+    static async UploadImage(email: string, file: string,){
         return await uploadImageR.upload(email, file);
     }
 }
