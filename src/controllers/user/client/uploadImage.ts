@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import uploadImageR from "../../../repository/user/client/uploadImage";
+import uploadImageR from "../../../services/client/uploadImage";
+import { uploadImageToAzure } from "../../../config/azureBlobStorage";
 
 const uploadImage = async (req: Request, res: Response) => {
   try {
@@ -10,7 +11,10 @@ const uploadImage = async (req: Request, res: Response) => {
       return res.status(400).json({ error: 'No file uploaded or invalid file format' });
     }
 
-    const result = await uploadImageR.upload(tokenEmail, file.buffer);
+    const imageUrl = await uploadImageToAzure(file);
+
+    const result = await uploadImageR.UploadImage(tokenEmail, imageUrl);
+
     if (result.success) {
       return res.status(202).json({ status: "Upload Image Successfully" });
     } else {

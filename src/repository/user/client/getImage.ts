@@ -1,14 +1,14 @@
 import connection from "../../../config/configDB";
 
-class uploadImageR {
-    static async upload(email: string, file: string){
-        const sql = 'UPDATE Client SET imageURL = $2 WHERE email = $1';
-        const values = [ email, file];
+class GetImage {
+    static async get (email: string){
+        const sql = 'SELECT imageURL from Client WHERE email = $1';
+        const values = [email];        
         try {
             const client = await connection.connect();
             try {
                 const res = await client.query(sql, values);
-                return { success: true, data: res.rows };
+                return res.rows[0].imageurl;
             } finally {
                 client.release();
             }
@@ -19,4 +19,4 @@ class uploadImageR {
     }
 }
 
-export default uploadImageR;
+export default GetImage;
