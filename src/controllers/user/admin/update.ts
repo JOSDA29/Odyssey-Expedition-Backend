@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
-import updateDataA from '../../../repository/user/admin/updateData';
+import AdminUpdate from '../../../services/user/admin/adminUpdate';
 import User from '../../../DTO/updateDTO';
 
 const update = async (req: Request, res: Response) => {
     try {
         const { id, names, lastnames, phone, image } = req.body;
 
-        const result = await updateDataA.updateAdmin(
+        const result = await AdminUpdate.updateA(
             new User(id, names, lastnames, phone, image),
         );
 

@@ -8,6 +8,8 @@ import auth from './routes/authRoute';
 import adminRoutes from './routes/user/admin/adminRoutes';
 import clientRoutes from './routes/user/client/clientRoutes';
 import adviserRoutes from './routes/user/adviser/adviserRoutes';
+import supplierRoutes from './routes/supplier/supplierRoutes';
+
 import morgan from 'morgan';
 
 
@@ -28,6 +30,9 @@ app.use('/admin', adminRoutes);
 
 //Adviser routes
 app.use('/adviser', adviserRoutes);
+
+//Supplier routes
+app.use('/supplier', supplierRoutes);
 
 
 const PORT = process.env.PORT || 10240;

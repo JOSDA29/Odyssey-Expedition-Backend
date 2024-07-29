@@ -59,7 +59,7 @@ router.get(
 
 
 router.post(
-    '/registerAdviser',
+    '/register',
     validateToken(['Administrator']),
     validatorParamsRegister,
     validatorRegister,

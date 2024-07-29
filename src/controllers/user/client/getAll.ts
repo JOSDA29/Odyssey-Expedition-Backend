@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import getService from '../../../services/client/getAll';
+import getService from '../../../services/user/client/getAll';
 
 const getAll = async (req: Request, res: Response) => {
     try {
