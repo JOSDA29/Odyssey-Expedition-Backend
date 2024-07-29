@@ -7,8 +7,8 @@ class uploadImageR {
         try {
             const client = await connection.connect();
             try {
-                const res = await client.query(sql, values);
-                return { success: true, data: res.rows };
+                const res = await client.query(sql, values);                
+                return res;
             } finally {
                 client.release();
             }
