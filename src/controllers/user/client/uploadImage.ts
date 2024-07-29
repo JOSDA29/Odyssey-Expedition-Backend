@@ -15,11 +15,13 @@ const uploadImage = async (req: Request, res: Response) => {
 
     const result = await uploadImageR.UploadImage(tokenEmail, imageUrl);
 
-    if (result.success) {
+
+    if (result) {
       return res.status(202).json({ status: "Upload Image Successfully" });
-    } else {
-      return res.status(500).json({ error: 'Error uploading image' });
-    }
+    } 
+
+    return res.status(400).json({ status: "Error inserting image, try again" });
+
   } catch (error: any) {
     console.error(error);
     return res.status(500).json({ error: 'Internal Server Error' });
