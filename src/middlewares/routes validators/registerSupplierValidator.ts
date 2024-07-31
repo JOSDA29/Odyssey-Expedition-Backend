@@ -18,8 +18,8 @@ const validatorParamsRegister = [
         .optional() 
         .isLength({ min: 10 })
         .withMessage('La dirección debe contener mínimo 10 caracteres')
-        .matches(/^[a-zA-Z0-9\s,.-]+$/)
-        .withMessage('La dirección solo puede contener letras, números, espacios y ciertos caracteres de puntuación')
+        .matches(/^[a-zA-Z0-9\s,.#*-]+$/)
+        .withMessage('La dirección solo puede contener letras, números, espacios y ciertos caracteres de especiales')
         .toLowerCase(), 
 
     check('supplierID')

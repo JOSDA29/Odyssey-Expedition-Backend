@@ -1,5 +1,5 @@
 import connection from "../../config/configDB";
-import SupplierDTO from "../../DTO/SupplierDTO";
+import SupplierDTO from "../../DTO/user/SupplierDTO";
 
 class RegisterSupplierRepository {
   static async registerSupplier(supplierDTO: SupplierDTO) {

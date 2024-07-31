@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import RegisterSupplierService from "../../services/supplier/register";
-import SupplierDTO from "../../DTO/SupplierDTO";
+import SupplierDTO from "../../DTO/user/SupplierDTO";
 
 const registerSupplier = async (req: Request, res: Response) => {
   const { supplierID, companyName, email, schedule, address, phoneNumber, state, image, tokenEmail } = req.body;
 
   try {
     if (!supplierID || !companyName || !email || !phoneNumber || !tokenEmail) {
-      return res.status(400).json({ error: "Missing required fields" });
+      return res.status(402).json({ error: "Missing required fields" });
     }
 
     const supplierDTO = new SupplierDTO(
