@@ -4,8 +4,8 @@ import ClientR from '../../../repository/user/client/updateData';
 
 class Client {
     static async updateC(user: User) {
-        await ClientR.update(user);
-        return { message: 'Succesfull Update' };
+        const client  = await ClientR.update(user);
+        return { message: client?.message };
     }
     static async changePassword(changePassword: ChangePassword) {
         const client = await ClientR.changePassword(changePassword);
