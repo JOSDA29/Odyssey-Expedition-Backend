@@ -43,7 +43,9 @@ class ClientR {
             const client = await connection.connect();
             try {
                 const result = await client.query(sql, values);
-                return result.rows;
+                if(result.rowCount! > 0){
+                    return { message: 'Update Succesfully' }
+                }
             } finally {
                 client.release();
             }
