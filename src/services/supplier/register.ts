@@ -1,5 +1,5 @@
 import RegisterSupplierRepository from "../../repository/supplier/register";
-import SupplierDTO from "../../DTO/SupplierDTO";
+import SupplierDTO from "../../DTO/user/SupplierDTO";
 
 class RegisterSupplierService {
   static async registerSupplier(supplierDTO: SupplierDTO) {
