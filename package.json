@@ -13,6 +13,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@azure/communication-email": "^1.0.0",
     "@azure/storage-blob": "^12.24.0",
     "@types/bcryptjs": "^2.4.6",
     "@types/jest": "^29.5.12",

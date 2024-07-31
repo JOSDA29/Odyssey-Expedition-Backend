@@ -8,11 +8,24 @@ class Hotel {
     private _description: string;
     private _location: string;
     private _hotelServices: string;
-    private _state: boolean;
     private _price: number;
     private _fkAdvisorEmail: string;
+    private _state?: boolean;
 
-    constructor(_name: string, _destination: string, _startDate: Date, _endDate: Date, _numberOfPeople: number, _room: string, _description: string, _location: string, _hotelServices: string, _state: boolean, _price: number, _fkAdvisorEmail: string){
+    constructor(
+        _name: string, 
+        _destination: string, 
+        _startDate: Date, 
+        _endDate: Date, 
+        _numberOfPeople: number, 
+        _room: string, 
+        _description: string, 
+        _location: string, 
+        _hotelServices: string, 
+        _price: number, 
+        _fkAdvisorEmail: string,
+        _state?: boolean
+    ){
         this._name= _name;
         this._destination= _destination;
         this._startDate= _startDate;
@@ -100,7 +113,7 @@ class Hotel {
         this._hotelServices = value;
     }
 
-    public get state(): boolean {
+    public get state(): boolean | undefined {
         return this._state;
     }
 

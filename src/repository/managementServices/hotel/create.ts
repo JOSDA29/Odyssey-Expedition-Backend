@@ -36,7 +36,7 @@ class create {
             const client = await connection.connect();
             try {
                 const res = await client.query(sql, values);
-                return res.rows;
+                return res.rowCount;
             } finally {
                 client.release();
             }
