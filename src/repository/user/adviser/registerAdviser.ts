@@ -19,7 +19,7 @@ class RegisterRepository {
             return { success: false, message: 'ID already exists' };
         } else {
             const sql =
-                "INSERT INTO Adviser(AdviserID, firstName, lastName, email, password, phone, FKEmail) VALUES ($1, $2, $3, $4, $5, $6, $7)";
+                'INSERT INTO Adviser(AdviserID, firstName, lastName, email, password, phone, FKEmail) VALUES ($1, $2, $3, $4, $5, $6, $7)';
             const values = [
                 user.id,
                 user.name,

@@ -24,8 +24,6 @@ import {
     validatorFilter,
 } from '../../../middlewares/filterValidators';
 
-
-
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 import getAllController from '../../../controllers/user/adviser/getAll';
 import getByEmailController from '../../../controllers/user/adviser/getByEmail';
@@ -34,8 +32,6 @@ import updateDataController from '../../../controllers/user/adviser/update';
 import changePasswordController from '../../../controllers/user/adviser/changePassword';
 import deleteAdviserController from '../../../controllers/user/adviser/delete';
 import searchFilterController from '../../../controllers/user/adviser/searchFilter';
-
-
 
 const router = express.Router();
 
@@ -57,7 +53,6 @@ router.get(
     getByEmailController,
 );
 
-
 router.post(
     '/register',
     validateToken(['Administrator']),
@@ -65,7 +60,6 @@ router.post(
     validatorRegister,
     registerController,
 );
-
 
 router.put(
     '/update',

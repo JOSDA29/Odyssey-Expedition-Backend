@@ -1,5 +1,8 @@
 import express from 'express';
-import { validatorParamsRegister, validatorRegister } from '../../middlewares/registerSupplierValidator';
+import {
+    validatorParamsRegister,
+    validatorRegister,
+} from '../../middlewares/registerSupplierValidator';
 import registerSupplier from '../../controllers/supplier/register';
 import validateToken from '../../middlewares/validateTokenMiddleware';
 
@@ -12,6 +15,5 @@ router.post(
     validatorRegister,
     registerSupplier,
 );
-
 
 export default router;

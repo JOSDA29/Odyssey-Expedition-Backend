@@ -2,9 +2,8 @@ class SearchFilterDTO {
     private _id: string | null;
     private _firstname: string | null;
     private _lastName: string | null;
-    private _email: string  | null;
+    private _email: string | null;
     private _phoneNumber: string | null;
-
 
     constructor(
         _firstname: string | null,
@@ -12,14 +11,12 @@ class SearchFilterDTO {
         _email: string | null,
         _phoneNumber: string | null,
         _id: string | null,
-
     ) {
         this._id = _id;
         this._firstname = _firstname;
         this._lastName = _lastName;
         this._email = _email;
         this._phoneNumber = _phoneNumber;
-
     }
 
     public get id(): any {
@@ -30,7 +27,7 @@ class SearchFilterDTO {
         this._id = value;
     }
 
-    public get email(): string | null{
+    public get email(): string | null {
         return this._email;
     }
 
@@ -38,7 +35,7 @@ class SearchFilterDTO {
         this._email = _email;
     }
 
-    public get firstname(): string | null{
+    public get firstname(): string | null {
         return this._firstname;
     }
 

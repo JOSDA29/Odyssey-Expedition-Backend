@@ -22,7 +22,9 @@ const validatorParamsRegister = [
         .toLowerCase(),
     check('lastName')
         .isLength({ min: 3, max: 25 })
-        .withMessage('El apellido debe contener minimo 3 y maximo 25 caracteres')
+        .withMessage(
+            'El apellido debe contener minimo 3 y maximo 25 caracteres',
+        )
         .toLowerCase(),
 ];
 

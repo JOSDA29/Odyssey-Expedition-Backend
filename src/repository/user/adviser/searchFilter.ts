@@ -1,10 +1,16 @@
-import connection from "../../../config/configDB";
-import searchFilterDTO from "../../../DTO/searchFilterDTO";
+import connection from '../../../config/configDB';
+import searchFilterDTO from '../../../DTO/searchFilterDTO';
 
 class SearchFilter {
-    static async searchFilter(searchFilterDTO: searchFilterDTO){
+    static async searchFilter(searchFilterDTO: searchFilterDTO) {
         const sql = 'select * from filter_advisers($1, $2, $3, $4, $5)';
-        const values = [searchFilterDTO.id, searchFilterDTO.firstname, searchFilterDTO.last_Name, searchFilterDTO.phoneNumber, searchFilterDTO.email]
+        const values = [
+            searchFilterDTO.id,
+            searchFilterDTO.firstname,
+            searchFilterDTO.last_Name,
+            searchFilterDTO.phoneNumber,
+            searchFilterDTO.email,
+        ];
         try {
             const client = await connection.connect();
             try {
@@ -13,7 +19,6 @@ class SearchFilter {
             } finally {
                 client.release();
             }
-
         } catch (error: any) {
             console.error('Error executing query', error.stack);
             throw error;

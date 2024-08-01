@@ -1,11 +1,19 @@
 import express from 'express';
-import { changePasswordValidator, handleValidation } from '../../../middlewares/updatePasswordValidator';
-import { validatorParamsEmail, validatorEmail } from '../../../middlewares/emailValidator';
-import { validsParametersUpdate, validatorUpdate } from '../../../middlewares/updateValidator';
+import {
+    changePasswordValidator,
+    handleValidation,
+} from '../../../middlewares/updatePasswordValidator';
+import {
+    validatorParamsEmail,
+    validatorEmail,
+} from '../../../middlewares/emailValidator';
+import {
+    validsParametersUpdate,
+    validatorUpdate,
+} from '../../../middlewares/updateValidator';
 import changePasswordController from '../../../controllers/user/admin/changePassword';
 import getByEmailController from '../../../controllers/user/admin/getByEmail';
 import updateDataController from '../../../controllers/user/admin/update';
-
 
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 

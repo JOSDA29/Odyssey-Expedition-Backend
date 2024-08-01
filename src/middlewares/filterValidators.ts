@@ -7,7 +7,7 @@ const validsParametersFilter = [
         .withMessage('El telefono debe contener 10 digitos')
         .matches(/^\d+$/)
         .withMessage('El telefono debe contener solo numeros')
-        .optional()
+        .optional(),
 ];
 
 function validatorFilter(req: Request, res: Response, next: NextFunction) {

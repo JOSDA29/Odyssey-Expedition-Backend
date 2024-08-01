@@ -5,8 +5,7 @@ import User from '../../../DTO/updateDTO';
 
 const update = async (req: Request, res: Response) => {
     try {
-        const { email, name, lastName, phoneNumber, image} =
-            req.body;
+        const { email, name, lastName, phoneNumber, image } = req.body;
 
         const result = await AdviserUpdate.updateAd(
             new User(email, name, lastName, phoneNumber, image),

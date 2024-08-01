@@ -5,22 +5,28 @@ const validatorParamsRegister = [
     check('email')
         .isEmail()
         .withMessage('Se debe ingresar un email válido')
-        .normalizeEmail(), 
+        .normalizeEmail(),
 
     check('companyName')
         .isLength({ min: 3 })
-        .withMessage('El nombre de la empresa debe contener mínimo 3 caracteres')
+        .withMessage(
+            'El nombre de la empresa debe contener mínimo 3 caracteres',
+        )
         .matches(/^[a-zA-Z0-9\s,.-]+$/)
-        .withMessage('El nombre de la empresa solo puede contener letras, números, espacios y ciertos caracteres de puntuación')
-        .toLowerCase(), 
+        .withMessage(
+            'El nombre de la empresa solo puede contener letras, números, espacios y ciertos caracteres de puntuación',
+        )
+        .toLowerCase(),
 
     check('address')
-        .optional() 
+        .optional()
         .isLength({ min: 10 })
         .withMessage('La dirección debe contener mínimo 10 caracteres')
         .matches(/^[a-zA-Z0-9\s,.-]+$/)
-        .withMessage('La dirección solo puede contener letras, números, espacios y ciertos caracteres de puntuación')
-        .toLowerCase(), 
+        .withMessage(
+            'La dirección solo puede contener letras, números, espacios y ciertos caracteres de puntuación',
+        )
+        .toLowerCase(),
 
     check('supplierID')
         .isLength({ min: 5 })

@@ -4,7 +4,7 @@ import getService from '../../../services/user/client/getByEmail';
 const getByEmail = async (req: Request, res: Response) => {
     try {
         const { tokenRole, tokenEmail } = req.body;
-        const email:string = req.params.email;
+        const email: string = req.params.email;
 
         let result: any = [];
 
@@ -14,7 +14,9 @@ const getByEmail = async (req: Request, res: Response) => {
                 break;
             case 'Adviser':
                 if (!email) {
-                    return res.status(400).send({ message: 'Email is required' });
+                    return res
+                        .status(400)
+                        .send({ message: 'Email is required' });
                 }
                 result = await getService.getByEmail(email);
                 break;
@@ -28,7 +30,7 @@ const getByEmail = async (req: Request, res: Response) => {
             return res.status(404).json({ status: 'Data not found' });
         }
     } catch (error: any) {
-        if (error && error.code === 'ER_DUP_ENTRY') {            
+        if (error && error.code === 'ER_DUP_ENTRY') {
             return res.status(500).json({ errorInfo: error.sqlMessage });
         } else if (error) {
             return res.status(500).json({ errorInfo: error.message });
