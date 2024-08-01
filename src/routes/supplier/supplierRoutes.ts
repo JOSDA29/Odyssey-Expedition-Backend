@@ -2,6 +2,7 @@ import express from 'express';
 import validateToken from '../../middlewares/validateTokenMiddleware';
 
 import registerSupplier from '../../controllers/supplier/register';
+import changeState from '../../controllers/supplier/changeState';
 import updateSupplier from '../../controllers/supplier/update';
 
 import { 
@@ -13,6 +14,11 @@ import {
     validatorParamsUpdateSupplier, 
     validatorUpdateSupplier 
 } from '../../middlewares/routes validators/updateSupplierValidator';
+
+import { 
+    changeStateValidator, 
+    validator 
+} from '../../middlewares/changeStateValidator';
 
 
 const router = express.Router();
@@ -31,6 +37,14 @@ router.put(
     validatorParamsUpdateSupplier,
     validatorUpdateSupplier,
     updateSupplier,
+);
+
+router.put(
+    '/changeState',
+    validateToken(['Adviser']),
+    changeStateValidator,
+    validator,
+    changeState,
 );
 
 
