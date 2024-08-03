@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import RegisterService from '../../../services/adviser/registerAdviser';
+import RegisterService from '../../../services/user/adviser/registerAdviser';
 import UserDto from '../../../DTO/user/userDto';
 
 const register = async (req: Request, res: Response) => {
@@ -11,7 +11,7 @@ const register = async (req: Request, res: Response) => {
             email,
             password,
             phoneNumber,
-            email_Admin,
+            tokenEmail,
         } = req.body;
 
         const result = await RegisterService.register(
@@ -22,7 +22,7 @@ const register = async (req: Request, res: Response) => {
                 password,
                 phoneNumber,
                 id,
-                email_Admin,
+                tokenEmail,
             ),
         );
 

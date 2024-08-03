@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import getImage from "../../../services/client/getImage";
+import getImage from "../../../services/user/client/getImage";
 
 const get = async (req: Request, res: Response) => {
     const {tokenEmail} = req.body;

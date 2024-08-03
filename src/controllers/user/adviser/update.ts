@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import AdviserUpdate from '../../../services/adviser/adviserUpdate';
+import AdviserUpdate from '../../../services/user/adviser/adviserUpdate';
 
 import User from '../../../DTO/updateDTO';
 

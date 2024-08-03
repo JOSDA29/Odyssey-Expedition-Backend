@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
-import updateDataA from '../../../repository/user/admin/updateData';
+import AdminUpdate from '../../../services/user/admin/adminUpdate';
 import User from '../../../DTO/updateDTO';
 
 const update = async (req: Request, res: Response) => {
     try {
-        const { id, names, lastnames, phone, image } = req.body;
+        const { tokenEmail, name, lastName, phoneNumber, image } = req.body;
 
-        const result = await updateDataA.updateAdmin(
-            new User(id, names, lastnames, phone, image),
+        const result = await AdminUpdate.updateA(
+            new User(tokenEmail, name, lastName, phoneNumber, image),
         );
 
         if (result) {
@@ -15,10 +15,6 @@ const update = async (req: Request, res: Response) => {
                 status: 'Successful Update',
             });
         }
-
-        return res.status(401).json({
-            status: 'Invalid email or password',
-        });
     } catch (error) {
         return res
             .status(500)

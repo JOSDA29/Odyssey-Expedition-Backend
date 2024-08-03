@@ -5,26 +5,33 @@ import getByEmail from '../../../controllers/user/client/getByEmail';
 import register from '../../../controllers/user/client/registerController';
 import updateDataController from '../../../controllers/user/client/update';
 import uploadImage from '../../../controllers/user/client/uploadImage';
+import changeStateController from '../../../controllers/user/client/changeState';
+
 
 import {
     validatorParamsEmail,
     validatorEmail,
-} from '../../../middlewares/emailValidator';
+} from '../../../middlewares/routes validators/emailValidator';
 
 import {
     changePasswordValidator,
     handleValidation,
-} from '../../../middlewares/updatePasswordValidator';
+} from '../../../middlewares/routes validators/updatePasswordValidator';
 
 import {
     validatorParamsRegister,
     validatorRegister,
-} from '../../../middlewares/registerValidator';
+} from '../../../middlewares/routes validators/registerValidator';
 
 import {
     validsParametersUpdate,
     validatorUpdate,
-} from '../../../middlewares/updateValidator';
+} from '../../../middlewares/routes validators/updateValidator';
+
+import {
+    changeStateValidator, 
+    validator 
+} from '../../../middlewares/changeStateValidator';
 
 
 import validateToken from '../../../middlewares/validateTokenMiddleware';
@@ -65,6 +72,12 @@ router.get('/getImage', validateToken(['Client']), getImage);
 
 router.post('/register', validatorParamsRegister, validatorRegister, register);
 
+router.put('/',
+     validateToken(['Client']),
+     changeStateValidator,
+     validator,
+     changeStateController
+);
 
 router.put(
     '/update',

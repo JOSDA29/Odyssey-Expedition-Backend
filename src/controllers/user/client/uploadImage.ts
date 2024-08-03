@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import uploadImageR from "../../../services/client/uploadImage";
+import uploadImageR from "../../../services/user/client/uploadImage";
 import { uploadImageToAzure } from "../../../config/azureBlobStorage";
 
 const uploadImage = async (req: Request, res: Response) => {

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import ChangePassword from '../../../DTO/changePasswordDTO';
-import Client from '../../../services/client/client';
+import Client from '../../../services/user/client/client';
 
 const changePassword = async (req: Request, res: Response) => {
     try {

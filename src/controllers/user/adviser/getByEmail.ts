@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import getService from '../../../services/adviser/getByEmail';
+import getService from '../../../services/user/adviser/getByEmail';
 
 let getByEmail = async (req: Request, res: Response) => {
     try {

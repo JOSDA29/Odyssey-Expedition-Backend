@@ -2,22 +2,29 @@ import express from 'express';
 import {
     changePasswordValidator,
     handleValidation,
-} from '../../../middlewares/updatePasswordValidator';
+} from '../../../middlewares/routes validators/updatePasswordValidator';
 
 import {
     validatorParamsEmail,
     validatorEmail,
-} from '../../../middlewares/emailValidator';
+} from '../../../middlewares/routes validators/emailValidator';
 
 import {
     validatorRegister,
     validatorParamsRegister,
-} from '../../../middlewares/registerValidator';
+} from '../../../middlewares/routes validators/registerValidator';
 
 import {
     validsParametersUpdate,
     validatorUpdate,
-} from '../../../middlewares/updateValidator';
+} from '../../../middlewares/routes validators/updateValidator';
+
+import {
+    validsParametersFilter,
+    validatorFilter,
+} from '../../../middlewares/routes validators/filterValidators';
+
+
 
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 import getAllController from '../../../controllers/user/adviser/getAll';
@@ -26,6 +33,7 @@ import registerController from '../../../controllers/user/adviser/registerAdvise
 import updateDataController from '../../../controllers/user/adviser/update';
 import changePasswordController from '../../../controllers/user/adviser/changePassword';
 import deleteAdviserController from '../../../controllers/user/adviser/delete';
+import searchFilterController from '../../../controllers/user/adviser/searchFilter';
 
 
 
@@ -51,7 +59,7 @@ router.get(
 
 
 router.post(
-    '/registerAdviser',
+    '/register',
     validateToken(['Administrator']),
     validatorParamsRegister,
     validatorRegister,
@@ -73,6 +81,14 @@ router.delete(
     validatorParamsEmail,
     validatorEmail,
     deleteAdviserController,
+);
+
+router.get(
+    '/filter',
+    validateToken(['Administrator']),
+    validatorParamsRegister,
+    validatorFilter,
+    searchFilterController,
 );
 
 export default router;

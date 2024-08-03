@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import ChangePassword from '../../../DTO/changePasswordDTO';
-import Adviser from '../../../services/adviser/adviserUpdate';
+import Adviser from '../../../services/user/adviser/adviserUpdate';
 
 let changePassword = async (req: Request, res: Response) => {
     try {

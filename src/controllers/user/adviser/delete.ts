@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import DeleteAdviser from "../../../services/adviser/delete";
+import DeleteAdviser from "../../../services/user/adviser/delete";
 
 const deleteAdviser = async(req: Request, res: Response)=>{
     try {

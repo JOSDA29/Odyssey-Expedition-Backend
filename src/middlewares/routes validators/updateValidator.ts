@@ -2,7 +2,6 @@ import { check, validationResult } from 'express-validator';
 import { Request, Response, NextFunction } from 'express';
 
 const validsParametersUpdate = [
-    // Validaciones
     check('name')
         .isLength({ min: 3, max: 25 })
         .withMessage('El nombre debe contener minimo 3 y maximo 25 caracteres')
