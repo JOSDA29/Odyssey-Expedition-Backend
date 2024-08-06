@@ -4,6 +4,7 @@ import validateToken from '../../middlewares/validateTokenMiddleware';
 import registerSupplier from '../../controllers/supplier/register';
 import changeState from '../../controllers/supplier/changeState';
 import updateSupplier from '../../controllers/supplier/update';
+import deleteSupplier from '../../controllers/supplier/delete';
 
 import { 
     validatorParamsRegister, 
@@ -19,6 +20,11 @@ import {
     changeStateValidator, 
     validator 
 } from '../../middlewares/changeStateValidator';
+
+import {
+    validatorParamsEmail,
+    validatorEmail, 
+} from '../../middlewares/routes validators/emailValidator';
 
 
 const router = express.Router();
@@ -47,5 +53,13 @@ router.put(
     changeState,
 );
 
+
+router.delete(
+    '/delete/:email',
+    validateToken(['Adviser']),
+    validatorParamsEmail,
+    validatorEmail,
+    deleteSupplier,
+);
 
 export default router;
