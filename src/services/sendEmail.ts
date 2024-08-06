@@ -5,6 +5,10 @@ const emailClient = new EmailClient(connectionString);
 
 async function sendEmail() {
     const emailMessage = {
-        sender: "luiseduardovelez88@gmail.com"
+        sender: "luiseduardovelez88@gmail.com",
+        content: {
+            subject: "Welcum",
+            plainText: ""
+        }
     }
 }

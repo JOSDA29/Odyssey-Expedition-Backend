@@ -34,6 +34,7 @@ app.use('/adviser', adviserRoutes);
 
 //Supplier routes
 app.use('/supplier', supplierRoutes);
+
 //Hotel routes
 app.use('/hotel', hotelRoutes);
 
