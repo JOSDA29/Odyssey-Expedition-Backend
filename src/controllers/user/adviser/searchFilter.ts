@@ -16,10 +16,10 @@ const searchFilter = async (req: Request, res: Response) => {
             )
         );
 
-        res.status(200).json(result);
+        return res.status(200).json(result);
 
     } catch (error:any) {
-        res.status(500).send({ errorInfo: 'Internal Server Error', error: error.message });
+        return res.status(500).send({ errorInfo: 'Internal Server Error', error: error.message });
     }
 };
 
