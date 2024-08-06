@@ -1,5 +1,5 @@
 import connection from "../../config/configDB";
-import UpdateSupplierDTO from "../../DTO/updateSupplierDTO";
+import UpdateSupplierDTO from "../../DTO/user/supplier/UpdateSupplierDTO";
 
 class UpdateSupplierRepository {
   static async updateSupplier(updateSupplierDTO: UpdateSupplierDTO): Promise<boolean> {

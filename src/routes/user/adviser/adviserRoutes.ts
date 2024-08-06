@@ -19,11 +19,6 @@ import {
     validatorUpdate,
 } from '../../../middlewares/routes validators/updateValidator';
 
-import {
-    validsParametersFilter,
-    validatorFilter,
-} from '../../../middlewares/routes validators/filterValidators';
-
 
 
 import validateToken from '../../../middlewares/validateTokenMiddleware';
@@ -86,8 +81,6 @@ router.delete(
 router.get(
     '/filter',
     validateToken(['Administrator']),
-    validatorParamsRegister,
-    validatorFilter,
     searchFilterController,
 );
 

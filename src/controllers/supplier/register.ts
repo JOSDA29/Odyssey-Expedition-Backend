@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import RegisterSupplierService from "../../services/supplier/register";
-import SupplierDTO from "../../DTO/user/SupplierDTO";
+import SupplierDTO from "../../DTO/user/supplier/SupplierDTO";
 
 const registerSupplier = async (req: Request, res: Response) => {
-  const { supplierID, companyName, email, schedule, address, phoneNumber, state, image, tokenEmail } = req.body;
+  const { supplierID, companyName, email, schedule, address, phoneNumber, state, tokenEmail } = req.body;
 
   try {
     if (!supplierID || !companyName || !email || !phoneNumber || !tokenEmail) {
@@ -19,7 +19,6 @@ const registerSupplier = async (req: Request, res: Response) => {
       schedule ?? null,
       address ?? null,
       state ?? null,
-      image ?? null
     );
 
     await RegisterSupplierService.registerSupplier(supplierDTO);
@@ -29,9 +28,7 @@ const registerSupplier = async (req: Request, res: Response) => {
     });
     
   } catch (error: any) {
-    if (error.code === "ER_DUP_ENTRY") {
-      console.log(error.code);
-      
+    if (error.code === "23505") {      
       return res.status(409).json({ error: "Supplier already exists", details: error.sqlMessage });
     }
 

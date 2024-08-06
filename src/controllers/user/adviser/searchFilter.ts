@@ -1,4 +1,4 @@
-import SearchFilterDTO from "../../../DTO/searchFilterDTO";
+import SearchFilterDTO from "../../../DTO/searchFilterAdviserDTO";
 import SearchFilterService from "../../../services/user/adviser/searchFilter";
 import { Request, Response } from "express";
 

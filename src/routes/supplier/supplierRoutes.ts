@@ -5,6 +5,7 @@ import registerSupplier from '../../controllers/supplier/register';
 import changeState from '../../controllers/supplier/changeState';
 import updateSupplier from '../../controllers/supplier/update';
 import deleteSupplier from '../../controllers/supplier/delete';
+import searchSupplier from '../../controllers/supplier/searchSupplier';
 
 import { 
     validatorParamsRegister, 
@@ -60,6 +61,12 @@ router.delete(
     validatorParamsEmail,
     validatorEmail,
     deleteSupplier,
+);
+
+router.get(
+    '/filter',
+    validateToken(['Adviser', 'Administrator']),
+    searchSupplier,
 );
 
 export default router;

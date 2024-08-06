@@ -15,6 +15,7 @@ const deleteSupplier = async(req: Request, res: Response)=>{
         return res.status(404).json({
             menssage: 'Supplier not found',
         })
+        
     } catch (error: any) {
         console.log(error.stack);
         return res.status(500).json({ error: 'Internal server error', details: error.message });

@@ -1,9 +1,9 @@
 import connection from "../../config/configDB";
-import SupplierDTO from "../../DTO/user/SupplierDTO";
+import SupplierDTO from "../../DTO/user/supplier/SupplierDTO";
 
 class RegisterSupplierRepository {
   static async registerSupplier(supplierDTO: SupplierDTO) {
-    const sql = "SELECT create_supplier($1, $2, $3, $4, $5, $6, $7, $8, $9)";
+    const sql = "SELECT create_supplier($1, $2, $3, $4, $5, $6, $7, $8)";
     const values = [
       supplierDTO.supplierID,
       supplierDTO.companyName,
@@ -13,7 +13,6 @@ class RegisterSupplierRepository {
       supplierDTO.schedule,
       supplierDTO.address,
       supplierDTO.state,
-      supplierDTO.image,
     ];
 
     const client = await connection.connect();

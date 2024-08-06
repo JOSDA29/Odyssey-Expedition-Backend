@@ -6,7 +6,6 @@ class SupplierDTO {
     private _address: string | null;
     private _phone: string;
     private _state: boolean | null;
-    private _image: string | null;
     private _fkAdvisorEmail: string;
   
     constructor(
@@ -18,7 +17,6 @@ class SupplierDTO {
       schedule: string | null = null,
       address: string | null = null,
       state: boolean | null = null,
-      image: string | null = null
     ) {
       this._supplierID = supplierID;
       this._companyName = companyName;
@@ -28,8 +26,7 @@ class SupplierDTO {
       this._schedule = schedule;
       this._address = address;
       this._state = state;
-      this._image = image;
-    }
+   }
   
     // Getters and setters
   
@@ -87,14 +84,6 @@ class SupplierDTO {
   
     public set state(value: boolean | null) {
       this._state = value;
-    }
-  
-    public get image(): string | null {
-      return this._image;
-    }
-  
-    public set image(value: string | null) {
-      this._image = value;
     }
   
     public get fkAdvisorEmail(): string {

@@ -1,5 +1,5 @@
 import connection from "../../../config/configDB";
-import searchFilterDTO from "../../../DTO/searchFilterDTO";
+import searchFilterDTO from "../../../DTO/searchFilterAdviserDTO";
 
 class SearchFilter {
     static async searchFilter(searchFilterDTO: searchFilterDTO){

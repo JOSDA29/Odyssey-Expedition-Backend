@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import UpdateSupplierService from "../../services/supplier/update";
-import UpdateSupplierDTO from "../../DTO/updateSupplierDTO";
+import UpdateSupplierDTO from "../../DTO/user/supplier/UpdateSupplierDTO";
 
 const updateSupplier = async (req: Request, res: Response) => {
   const { supplierID, email, schedule, address, phoneNumber } = req.body;
@@ -27,8 +27,11 @@ const updateSupplier = async (req: Request, res: Response) => {
     });
 
   } catch (error: any) {
-    console.log(error.stack);
-    return res.status(500).json({ error: 'Internal server error', details: error.message });
+    if (error.code === "23505") {      
+      return res.status(409).json({ error: "Supplier already exists", details: error.sqlMessage });
+    }
+
+    return res.status(500).json({ error: "Internal server error", details: error.message });
   }
 };
 

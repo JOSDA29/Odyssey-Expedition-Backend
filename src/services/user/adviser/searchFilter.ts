@@ -1,4 +1,4 @@
-import searchFilterDTO from "../../../DTO/searchFilterDTO";
+import searchFilterDTO from "../../../DTO/searchFilterAdviserDTO";
 import SearchFilterRepository from "../../../repository/user/adviser/searchFilter";
 
 class SearchFilter {
