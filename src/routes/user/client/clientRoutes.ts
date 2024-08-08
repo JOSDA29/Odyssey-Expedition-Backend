@@ -35,6 +35,7 @@ import {
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 import upload from '../../../middlewares/multerMiddleware';
 import getImage from '../../../controllers/user/client/getImage';
+import addIdController from '../../../controllers/user/client/addId';
 
 const router = express.Router();
 
@@ -67,12 +68,13 @@ router.get('/getImage', validateToken(['Client']), getImage);
 
 router.post('/register', validatorParamsRegister, validatorRegister, register);
 
-router.put(
-    '/',
-    validateToken(['Client']),
-    changeStateValidator,
-    validator,
-    changeStateController,
+router.post('/insertId', validateToken(['Client']), addIdController);
+
+router.put('/ChangeState',
+     validateToken(['Client']),
+     changeStateValidator,
+     validator,
+     changeStateController
 );
 
 router.put(
