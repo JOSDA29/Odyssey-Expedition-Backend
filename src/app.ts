@@ -9,16 +9,16 @@ import adminRoutes from './routes/user/admin/adminRoutes';
 import clientRoutes from './routes/user/client/clientRoutes';
 import adviserRoutes from './routes/user/adviser/adviserRoutes';
 import supplierRoutes from './routes/supplier/supplierRoutes';
+import chatRoutes from './routes/chat/chatAI';
 
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
 import morgan from 'morgan';
 
-
 const app = express().use(bodyParser.json());
 
-app.use(cors())
+app.use(cors());
 dotenv.config();
-app.use(morgan('dev'))
+app.use(morgan('dev'));
 
 // Define las rutas
 app.use('/auth', auth);
@@ -38,6 +38,8 @@ app.use('/supplier', supplierRoutes);
 //Hotel routes
 app.use('/hotel', hotelRoutes);
 
+//AI routes
+app.use('/chat', chatRoutes);
 
 const PORT = process.env.PORT || 10240;
 

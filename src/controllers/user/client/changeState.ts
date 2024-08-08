@@ -11,17 +11,20 @@ const changeStatee = async (req: Request, res: Response) => {
         }else{
             return res.status(401).json({ status: 'Incorrect update'});
         }
-    } catch(error: unknown){
-        if(error instanceof Error){
-            return res.status(500).send(
-                { errorInfo: 'Internal Server Error', error: error.message });
-        }  else {
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return res.status(500).send({
+                errorInfo: 'Internal Server Error',
+                error: error.message,
+            });
+        } else {
             //Aqui se maneja el caso de que el error no sea una instancia de error
-            return res
-                .status(500)
-                .send({ errorInfo: 'Internal Server Error', error: 'An unknown error occurred' });
+            return res.status(500).send({
+                errorInfo: 'Internal Server Error',
+                error: 'An unknown error occurred',
+            });
         }
     }
-}
+};
 
 export default changeStatee;

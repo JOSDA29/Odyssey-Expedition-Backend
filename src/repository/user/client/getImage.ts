@@ -1,9 +1,9 @@
-import connection from "../../../config/configDB";
+import connection from '../../../config/configDB';
 
 class GetImage {
-    static async get (email: string){
+    static async get(email: string) {
         const sql = 'SELECT imageURL from Client WHERE email = $1';
-        const values = [email];        
+        const values = [email];
         try {
             const client = await connection.connect();
             try {

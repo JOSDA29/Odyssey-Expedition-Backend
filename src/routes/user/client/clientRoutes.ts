@@ -7,7 +7,6 @@ import updateDataController from '../../../controllers/user/client/update';
 import uploadImage from '../../../controllers/user/client/uploadImage';
 import changeStateController from '../../../controllers/user/client/changeState';
 
-
 import {
     validatorParamsEmail,
     validatorEmail,
@@ -29,15 +28,13 @@ import {
 } from '../../../middlewares/routes validators/updateValidator';
 
 import {
-    changeStateValidator, 
-    validator 
+    changeStateValidator,
+    validator,
 } from '../../../middlewares/changeStateValidator';
-
 
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 import upload from '../../../middlewares/multerMiddleware';
 import getImage from '../../../controllers/user/client/getImage';
-
 
 const router = express.Router();
 
@@ -52,11 +49,9 @@ router.patch(
 router.post(
     '/uploadImage',
     upload.single('file'),
-    validateToken(['Client']),    
-    uploadImage              
+    validateToken(['Client']),
+    uploadImage,
 );
-
-
 
 router.get('/getAll', validateToken(['Adviser']), getAll);
 
@@ -72,11 +67,12 @@ router.get('/getImage', validateToken(['Client']), getImage);
 
 router.post('/register', validatorParamsRegister, validatorRegister, register);
 
-router.put('/',
-     validateToken(['Client']),
-     changeStateValidator,
-     validator,
-     changeStateController
+router.put(
+    '/',
+    validateToken(['Client']),
+    changeStateValidator,
+    validator,
+    changeStateController,
 );
 
 router.put(
@@ -86,6 +82,5 @@ router.put(
     validatorUpdate,
     updateDataController,
 );
-
 
 export default router;

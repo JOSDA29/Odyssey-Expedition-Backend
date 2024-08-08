@@ -7,7 +7,7 @@ const registerSupplier = async (req: Request, res: Response) => {
 
   try {
     if (!supplierID || !companyName || !email || !phoneNumber || !tokenEmail) {
-      return res.status(400).json({ error: "Missing required fields" });
+      return res.status(402).json({ error: "Missing required fields" });
     }
 
     const supplierDTO = new SupplierDTO(

@@ -15,17 +15,17 @@ class RegisterSupplierRepository {
       supplierDTO.state,
     ];
 
-    const client = await connection.connect();
-    try {
-      const result = await client.query(sql, values);
-      return result.rows[0];
-    } catch (error: any) {
-      console.error("Error executing query:", error.stack);
-      throw error;  
-    } finally {
-      client.release();
+        const client = await connection.connect();
+        try {
+            const result = await client.query(sql, values);
+            return result.rows[0];
+        } catch (error: any) {
+            console.error('Error executing query:', error.stack);
+            throw error;
+        } finally {
+            client.release();
+        }
     }
-  }
 }
 
 export default RegisterSupplierRepository;

@@ -1,4 +1,4 @@
-import connection from "../../../config/configDB";
+import connection from '../../../config/configDB';
 
 class Delete {
     public static async deleteAdviser(email: string) {
@@ -13,12 +13,12 @@ class Delete {
 
                 if (result.rowCount! > 0) {
                     return {
-                        message: 'Adviser deleted successfully.'
+                        message: 'Adviser deleted successfully.',
                     };
                 }
 
                 return {
-                    message: 'Adviser not found.'
+                    message: 'Adviser not found.',
                 };
             } finally {
                 client.release();

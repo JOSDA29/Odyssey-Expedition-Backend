@@ -6,7 +6,6 @@ import changePasswordController from '../../../controllers/user/admin/changePass
 import getByEmailController from '../../../controllers/user/admin/getByEmail';
 import updateDataController from '../../../controllers/user/admin/update';
 
-
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 
 const router = express.Router();

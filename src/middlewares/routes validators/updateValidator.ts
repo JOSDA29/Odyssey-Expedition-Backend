@@ -18,8 +18,7 @@ const validsParametersUpdate = [
         .matches(/^\d+$/)
         .withMessage('El telefono debe contener solo numeros')
         .optional(),
-    check('image')
-        .optional(),
+    check('image').optional(),
 ];
 
 function validatorUpdate(req: Request, res: Response, next: NextFunction) {

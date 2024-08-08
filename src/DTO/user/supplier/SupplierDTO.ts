@@ -7,7 +7,7 @@ class SupplierDTO {
     private _phone: string;
     private _state: boolean | null;
     private _fkAdvisorEmail: string;
-  
+
     constructor(
       supplierID: string,
       companyName: string,
@@ -29,71 +29,70 @@ class SupplierDTO {
    }
   
     // Getters and setters
-  
+
     public get supplierID(): string {
-      return this._supplierID;
+        return this._supplierID;
     }
-  
+
     public set supplierID(value: string) {
-      this._supplierID = value;
+        this._supplierID = value;
     }
-  
+
     public get companyName(): string {
-      return this._companyName;
+        return this._companyName;
     }
-  
+
     public set companyName(value: string) {
-      this._companyName = value;
+        this._companyName = value;
     }
-  
+
     public get email(): string {
-      return this._email;
+        return this._email;
     }
-  
+
     public set email(value: string) {
-      this._email = value;
+        this._email = value;
     }
-  
+
     public get schedule(): string | null {
-      return this._schedule;
+        return this._schedule;
     }
-  
+
     public set schedule(value: string | null) {
-      this._schedule = value;
+        this._schedule = value;
     }
-  
+
     public get address(): string | null {
-      return this._address;
+        return this._address;
     }
-  
+
     public set address(value: string | null) {
-      this._address = value;
+        this._address = value;
     }
-  
+
     public get phone(): string {
-      return this._phone;
+        return this._phone;
     }
-  
+
     public set phone(value: string) {
-      this._phone = value;
+        this._phone = value;
     }
-  
+
     public get state(): boolean | null {
-      return this._state;
+        return this._state;
     }
-  
+
     public set state(value: boolean | null) {
-      this._state = value;
+        this._state = value;
     }
   
     public get fkAdvisorEmail(): string {
-      return this._fkAdvisorEmail;
+        return this._fkAdvisorEmail;
     }
-  
+
     public set fkAdvisorEmail(value: string) {
-      this._fkAdvisorEmail = value;
+        this._fkAdvisorEmail = value;
     }
-  }
-  
-  export default SupplierDTO;
-  
+}
+
+export default SupplierDTO;

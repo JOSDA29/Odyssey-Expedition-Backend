@@ -4,8 +4,8 @@ import AdminR from '../../../repository/user/admin/updateData';
 
 class AdminUpdate {
     static async updateA(user: User) {
-       const result = await AdminR.updateAdmin(user);
-       return result;
+        const result = await AdminR.updateAdmin(user);
+        return result;
     }
     static async changePassword(changePassword: ChangePassword) {
         const result = await AdminR.changePassword(changePassword);

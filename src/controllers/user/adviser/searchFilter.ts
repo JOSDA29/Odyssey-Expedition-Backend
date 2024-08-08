@@ -8,12 +8,12 @@ const searchFilter = async (req: Request, res: Response) => {
     try {
         const result = await SearchFilterService.searchFilter(
             new SearchFilterDTO(
-                name as string ?? null, 
-                lastName as string ?? null, 
-                email as string ?? null, 
-                phoneNumber as string ?? null, 
-                id as string ?? null
-            )
+                (name as string) ?? null,
+                (lastName as string) ?? null,
+                (email as string) ?? null,
+                (phoneNumber as string) ?? null,
+                (id as string) ?? null,
+            ),
         );
 
         return res.status(200).json(result);

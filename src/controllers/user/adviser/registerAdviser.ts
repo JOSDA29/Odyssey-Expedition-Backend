@@ -4,15 +4,8 @@ import UserDto from '../../../DTO/user/userDto';
 
 const register = async (req: Request, res: Response) => {
     try {
-        const {
-            id,
-            name,
-            lastName,
-            email,
-            password,
-            phoneNumber,
-            tokenEmail,
-        } = req.body;
+        const { id, name, lastName, email, password, phoneNumber, tokenEmail } =
+            req.body;
 
         const result = await RegisterService.register(
             new UserDto(

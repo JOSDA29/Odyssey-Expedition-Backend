@@ -1,17 +1,17 @@
-import { Request, Response } from "express";
-import getImage from "../../../services/user/client/getImage";
+import { Request, Response } from 'express';
+import getImage from '../../../services/user/client/getImage';
 
 const get = async (req: Request, res: Response) => {
-    const {tokenEmail} = req.body;
+    const { tokenEmail } = req.body;
     try {
         const result = await getImage.getimage(tokenEmail);
-        if(result){
+        if (result) {
             return res.status(200).json({
-                imageUrl: result
+                imageUrl: result,
             });
-        } 
+        }
         return res.status(404).json({
-            status: 'Not found :('
+            status: 'Not found :(',
         });
     } catch (error: any) {
         if (error && error.code === '23505') {            
@@ -20,6 +20,6 @@ const get = async (req: Request, res: Response) => {
             return res.status(500).json({ errorInfo: error.message });
         }
     }
-}
+};
 
 export default get;
