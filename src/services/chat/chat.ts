@@ -1,39 +1,13 @@
 import chatConfig from '../../config/chat/chatConfig';
 import chatDto from '../../DTO/chat/chat';
-import { GoogleGenerativeAI, Content } from '@google/generative-ai';
-import dotenv from 'dotenv';
-dotenv.config();
+import {
+    isValidResponse,
+    parseResponseToList,
+} from '../../helpers/chat/validators';
+import { Content } from '@google/generative-ai';
+import model from '../../config/chat/model';
 
 const { GenerationConfig, StartChat } = chatConfig;
-const APIKEYGEMINI = process.env.APIKEYGEMINI;
-
-const genAI = new GoogleGenerativeAI(APIKEYGEMINI as string);
-const model = genAI.getGenerativeModel({ model: 'gemini 1.5 flash' });
-
-const VALIDTHEMES = [
-    'turismo en colombia',
-    'comidas tipicas de colombia',
-    'lugares turisticos de colmbia',
-];
-const INVALIDTHEMES = [
-    'turismo fuera de colombia',
-    'comidas tipicas en paises diferentes a colombia',
-    'religion',
-    'politica',
-];
-
-const validTheme = (text: string, themes: string[]): boolean => {
-    return themes.some((theme) =>
-        text.toLowerCase().includes(theme.toLowerCase()),
-    );
-};
-
-const isValidResponse = (response: string): boolean => {
-    return (
-        validTheme(response, VALIDTHEMES) &&
-        !validTheme(response, INVALIDTHEMES)
-    );
-};
 
 export const chatService = async (chatAI: chatDto) => {
     const historyChat: Content[] = StartChat.concat(chatAI.history)
@@ -60,20 +34,30 @@ export const chatService = async (chatAI: chatDto) => {
             history: historyChat,
             generationConfig: GenerationConfig,
         });
-
-        const sendPrompt = await chat.sendMessage(chatAI.prompt);
+        const condition = 'La respuesta debe estar basada en Colombia';
+        const sendPrompt = await chat.sendMessage(chatAI.prompt + condition);
         const response = sendPrompt.response;
         const text = response.text();
 
+        // Verificación si la respuesta es válida según los temas permitidos
         if (isValidResponse(text)) {
-            return { response: text };
+            if (
+                text.toLowerCase().includes('lista') ||
+                text.toLowerCase().includes('dame una lista')
+            ) {
+                const listResponse = parseResponseToList(text);
+                return { response: listResponse };
+            } else {
+                const response = text;
+                return { response: response };
+            }
         } else {
             throw new Error(
-                'No existe relacion de la pregunta con los temas permitidos',
+                'La respuesta no está relacionada con los temas permitidos o contiene temas no permitidos.',
             );
         }
     } catch (error) {
-        console.error('Error en el servicio de chat:', error);
-        throw error;
+        console.error('Error en el envío del mensaje:', error);
+        throw error; // Re-lanzar el error para que sea manejado en el controlador
     }
 };

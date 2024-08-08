@@ -1,11 +1,12 @@
 import { chatMessageInterface } from '../../interfaces/chatMessage';
 
 const GenerationConfig = {
-    stopSequences: ['red'],
-    maxOutputTokens: 50,
+    stopSequences: ['.', '!', '?', ''],
+    maxOutputTokens: 70,
     temperature: 0.9,
     topP: 0.1,
     topK: 16,
+    
 };
 const StartChat: chatMessageInterface[] = [
     {
@@ -18,6 +19,25 @@ const StartChat: chatMessageInterface[] = [
         role: 'model',
         parts: 'Difruta viajando con nosotros!',
     },
+    {
+        role: 'user',
+        parts: `lista de lugares turisticos de Colombia
+        `
+    },
+    {
+        role: 'user',
+        parts:'lista de comidas tipicas de Colombia'
+    },
+    {
+        role: 'user',
+        parts: `lista de culturas en Colombia:
+        `
+    },
+    {
+        role: 'user',
+        parts: 'musica tipica de Colombia'
+    }
+   
 ];
 
 export default { GenerationConfig, StartChat };

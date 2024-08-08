@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ChangeStatee from '../../../services/client/changeState';
+import ChangeStatee from '../../../services/user/client/changeState';
 
 const changeStatee = async (req: Request, res: Response) => {
     try {

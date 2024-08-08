@@ -12,8 +12,8 @@ class ChangeState {
             } finally {
                 client.release();
             }
-        } catch (error: any) {
-            console.log('Error Executing query', error.stack);
+        } catch (error) {
+            console.log('Error Executing query', error);
             throw error;
         }
     }
