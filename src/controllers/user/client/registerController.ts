@@ -21,7 +21,7 @@ const register = async (req: Request, res: Response) => {
             status: 'register ok',
         });
     } catch (error: any) {
-        if (error && error.code === 'ER_DUP_ENTRY') {
+        if (error && error.code === '23505') {
             return res.status(500).json({ errorInfo: error.sqlMessage });
         } else if (error) {
             return res.status(500).json({ errorInfo: error.message });

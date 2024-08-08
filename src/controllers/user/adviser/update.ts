@@ -21,6 +21,7 @@ const update = async (req: Request, res: Response) => {
         return res.status(201).json({
             status: result.message,
         });
+        
     } catch (error) {
         return res
             .status(500)

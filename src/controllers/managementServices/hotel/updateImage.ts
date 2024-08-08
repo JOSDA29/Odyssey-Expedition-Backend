@@ -11,11 +11,11 @@ const update = async (req: Request, res: Response) => {
         } = req.body;
         const result = await updateImageService.updateImage(new updateImageDTO(id, tokenEmail, image));
         if(result){
-            return res.status(202).json({
+            return res.status(200).json({
                 status: 'Image Updating Successfully'
             });
         }
-        return res.status(402).json({
+        return res.status(400).json({
             status: 'Bad Request'
         });
     } catch (error: any) {

@@ -7,7 +7,7 @@ const changeStatee = async (req: Request, res: Response) => {
         const result = await ChangeStatee.changeState(state, tokenEmail);
         
         if(result){
-            return res.status(202).json({ status: 'Status update successful' });
+            return res.status(200).json({ status: 'Status update successful' });
         }else{
             return res.status(401).json({ status: 'Incorrect update'});
         }

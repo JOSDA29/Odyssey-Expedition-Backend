@@ -12,7 +12,7 @@ const changePassword = async (req: Request, res: Response) => {
 
         switch (result.message) {
             case 'Password Update Succesful':
-                return res.status(202).json({ status: result.message });
+                return res.status(200).json({ status: result.message });
             case 'Incorrect Old Password':
                 return res.status(401).json({ status: result.message });
             default:

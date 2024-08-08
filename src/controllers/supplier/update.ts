@@ -7,7 +7,7 @@ const updateSupplier = async (req: Request, res: Response) => {
 
   try {
     if (!supplierID) {
-      return res.status(402).json({ error: "Missing required fields: supplierID" });
+      return res.status(400).json({ error: "Missing required fields: supplierID" });
     }
 
     const updateSupplierDTO = new UpdateSupplierDTO(

@@ -27,8 +27,9 @@ const getByEmail = async (req: Request, res: Response) => {
         } 
 
         return res.status(404).json({ status: 'Data not found' });
+
     } catch (error: any) {
-        if (error && error.code === 'ER_DUP_ENTRY') {            
+        if (error && error.code === '23505') {            
             return res.status(500).json({ errorInfo: error.sqlMessage });
         } else if (error) {
             return res.status(500).json({ errorInfo: error.message });

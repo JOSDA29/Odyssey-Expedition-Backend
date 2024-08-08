@@ -23,11 +23,12 @@ const update = async (req: Request, res: Response) => {
         const result = await updateHotel.update(new updateHotelDTO(id, name, destination, startDate, endDate, numberOfPeople, room, description, location, hotelServices, state, price, tokenEmail,));
         
         if(result! > 0){
-            return res.status(202).json({
+            return res.status(200).json({
                 status: 'Update Succesfully'
             });
         }
-        return res.status(402).json({
+
+        return res.status(400).json({
             status: 'Bad Request'
         });
         

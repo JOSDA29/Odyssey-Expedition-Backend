@@ -11,7 +11,7 @@ let changePassword = async (req: Request, res: Response) => {
         );
         switch (adviser.message) {
             case 'Password Update Succesful':
-                return res.status(202).json({ status: adviser.message });
+                return res.status(200).json({ status: adviser.message });
             case 'Incorrect Old Password':
                 return res.status(401).json({ status: adviser.message });
             default:
