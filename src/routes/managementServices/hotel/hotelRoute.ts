@@ -22,7 +22,6 @@ router.post('/uploadImage', upload.single('file'), validateToken(['Adviser']), u
 
 router.delete('/delete/:id', validateToken(['Adviser']), validatorParamsEmail, validatorEmail, deleteHotelController);
 
-//Rutas que faltan por agregar
 router.get('/getAll', validateToken(['Adviser', 'Administrator']), getAllController);
 
 router.get('/getById/:id', validateToken(['Adviser', 'Administrator']), getByIdController);
