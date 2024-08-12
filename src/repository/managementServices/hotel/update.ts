@@ -1,5 +1,5 @@
 import connection from "../../../config/configDB";
-import UpdateHotel from "../../../DTO/managementServices/updateDTO";
+import UpdateHotel from "../../../DTO/managementServices/hotel/updateDTO";
 
 class Update {
     static async updateHotel(hotel: UpdateHotel){

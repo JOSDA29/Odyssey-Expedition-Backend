@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import createService from '../../../services/managementServices/hotel/create';
-import HotelDTO from "../../../DTO/managementServices/hotelDTO";
+import HotelDTO from "../../../DTO/managementServices/hotel/hotelDTO";
 
 const create = async (req: Request, res: Response) => {
     try {

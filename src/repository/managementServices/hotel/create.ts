@@ -1,5 +1,5 @@
 import connection from "../../../config/configDB";
-import HotelDTO from "../../../DTO/managementServices/hotelDTO";
+import HotelDTO from "../../../DTO/managementServices/hotel/hotelDTO";
 
 class create {
     static async Create(hotel: HotelDTO) {

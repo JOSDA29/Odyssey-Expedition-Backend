@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import updateHotel from "../../../services/managementServices/hotel/update";
-import updateHotelDTO from "../../../DTO/managementServices/updateDTO";
+import updateHotelDTO from "../../../DTO/managementServices/hotel/updateDTO";
 
 const update = async (req: Request, res: Response) => {
     try {
