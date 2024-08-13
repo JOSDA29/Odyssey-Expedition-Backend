@@ -9,7 +9,7 @@ export default class chatDto {
         this._prompt = prompt;
     }
 
-    //GETTERS
+    //GETTERS   
     get history(): chatMessageInterface[] {
         return this._history;
     }

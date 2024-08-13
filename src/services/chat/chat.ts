@@ -3,6 +3,7 @@ import chatDto from '../../DTO/chat/chat';
 import {
     isValidResponse,
     parseResponseToList,
+    DEFAULT_MESSAGE
 } from '../../helpers/chat/validators';
 import { Content } from '@google/generative-ai';
 import model from '../../config/chat/model';
@@ -34,8 +35,10 @@ export const chatService = async (chatAI: chatDto) => {
             history: historyChat,
             generationConfig: GenerationConfig,
         });
-        const condition = 'La respuesta debe estar basada en Colombia';
-        const sendPrompt = await chat.sendMessage(chatAI.prompt + condition);
+        const conditionCountry = 'La respuesta debe estar basada en Colombia';
+        const conditionEnterprise = 'Servicios de Oddysey Expedition';
+        
+        const sendPrompt = await chat.sendMessage(chatAI.prompt + conditionCountry || chatAI.prompt + conditionEnterprise);
         const response = sendPrompt.response;
         const text = response.text();
 
@@ -52,9 +55,7 @@ export const chatService = async (chatAI: chatDto) => {
                 return { response: response };
             }
         } else {
-            throw new Error(
-                'La respuesta no está relacionada con los temas permitidos o contiene temas no permitidos.',
-            );
+            return DEFAULT_MESSAGE;
         }
     } catch (error) {
         console.error('Error en el envío del mensaje:', error);
