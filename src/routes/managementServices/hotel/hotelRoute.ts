@@ -18,7 +18,7 @@ router.post('/create', validateToken(['Adviser']), validatorParams, validator, c
 
 router.put('/update', validateToken(['Adviser']), validatorParamsUpdate, validatorUpdate, updateHotelController);
 
-router.post('/uploadImage', upload.single('file'), validateToken(['Adviser']), updateHotelImageController);
+router.put('/uploadImage', upload.single('file'), validateToken(['Adviser']), updateHotelImageController);
 
 router.delete('/delete/:id', validateToken(['Adviser']), validatorParamsEmail, validatorEmail, deleteHotelController);
 
