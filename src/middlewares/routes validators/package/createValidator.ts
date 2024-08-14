@@ -7,15 +7,14 @@ export const validatorParamsPackage = [
     check('departureDate').isDate().withMessage("Debe ser una fecha"),
     check('returnDate').isDate().withMessage("Debe ser una fecha"),
     check('numberOfPeople').isNumeric().withMessage("Debe ser un valor numerico"),
-    check('itinerary').isLength({min: 10, max: 50}).withMessage("El itinerario debe tener minimo y maximo 50 caracteres"),
-    check('packageServices').isLength({ min: 10, max: 30}).withMessage("Los servicios que se ofrecen debe tener minimo 10 y maximo 30 caracteres"),
-    check('customerPreferences').isLength({min: 5, max: 15}).withMessage("Las preferencias del cliente debe tener minimo 5 y maximo 15 caracteres"),
-    check('state').isString().withMessage("El estado debe estar entre prospecto, cotizacion enviada, cerrado ganado, cerrado perdido"),
+    check('itinerary').isLength({min: 10, max: 255}).withMessage("El itinerario debe tener minimo 10 y maximo 50 caracteres"),
+    check('packageServices').isLength({ min: 10, max: 255}).withMessage("Los servicios que se ofrecen debe tener minimo 10 y maximo 30 caracteres"),
+    check('customerPreferences').isLength({min: 5, max: 255}).withMessage("Las preferencias del cliente debe tener minimo 5 y maximo 15 caracteres"),
+    check('state').isBoolean().withMessage("El estado debe ser true o false"),
     check('fkHotelID').isNumeric(),
-    check('fkTransportID').isNumeric(),
-    check('status').isString(),
-    check('totalPrice').isNumeric(),
-    check('fkAdviserEmail').isString()
+    check('fkTransportID').isString(),
+    check('status').isString().withMessage("El estado debe estar entre prospecto, cotizacion enviada, cerrado ganado, cerrado perdido"),
+    check('totalPrice').isNumeric()
 ];
 
 export function validator (req: Request, res: Response, next: NextFunction){
