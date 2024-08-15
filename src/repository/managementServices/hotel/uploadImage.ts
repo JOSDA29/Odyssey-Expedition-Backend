@@ -1,5 +1,5 @@
 import connection from '../../../config/configDB';
-import UpdateImageDTO from '../../../DTO/managementServices/updateImageDTO';
+import UpdateImageDTO from '../../../DTO/managementServices/hotel/updateImageDTO';
 
 class UploadImage{
     static async uploadImage(hotel: UpdateImageDTO){

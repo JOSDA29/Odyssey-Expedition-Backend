@@ -1,5 +1,5 @@
 import connection from "../../../config/configDB";
-import filterDTO from "../../../DTO/managementServices/filterDTO";
+import filterDTO from "../../../DTO/managementServices/hotel/filterDTO";
 
 class Filter{
     static async filter(hotel: filterDTO){

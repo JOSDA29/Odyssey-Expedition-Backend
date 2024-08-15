@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import FilterService from "../../../services/managementServices/hotel/filter";
-import filterDTO from "../../../DTO/managementServices/filterDTO";
+import filterDTO from "../../../DTO/managementServices/hotel/filterDTO";
 
 const Filter = async (req: Request, res: Response) => {
     try{

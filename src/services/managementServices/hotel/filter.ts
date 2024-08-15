@@ -1,4 +1,4 @@
-import filterDTO from "../../../DTO/managementServices/filterDTO";
+import filterDTO from "../../../DTO/managementServices/hotel/filterDTO";
 import filterRepository from '../../../repository/managementServices/hotel/filter';
 class Filter {
     static async filter(hotel: filterDTO): Promise<any>{

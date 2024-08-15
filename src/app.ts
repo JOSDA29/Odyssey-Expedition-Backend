@@ -12,6 +12,8 @@ import supplierRoutes from './routes/supplier/supplierRoutes';
 import chatRoutes from './routes/chat/chatAI';
 
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
+import transportRoutes from './routes/managementServices/transport/transportRoutes'
+
 import morgan from 'morgan';
 
 const app = express().use(bodyParser.json());
@@ -37,6 +39,9 @@ app.use('/supplier', supplierRoutes);
 
 //Hotel routes
 app.use('/hotel', hotelRoutes);
+
+//Transport routes
+app.use('/transport', transportRoutes);
 
 //AI routes
 app.use('/chat', chatRoutes);
