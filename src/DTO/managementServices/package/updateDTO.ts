@@ -8,7 +8,7 @@ class Update {
     private _itinerary?: string;
     private _packageServices?: string;
     private _customerPreferences?: string;
-    private _state?: string;
+    private _state?: boolean;
     private _fkHotelID?: number;
     private _fkTransportID?: string;
     private _status?: string;
@@ -25,7 +25,7 @@ class Update {
         _itinerary?: string,
         _packageServices?: string,
         _customerPreferences?: string,
-        _state?: string,
+        _state?: boolean,
         _fkHotelID?: number,
         _fkTransportID?: string,
         _status?: string,
@@ -86,7 +86,7 @@ class Update {
         return this._customerPreferences;
     }
 
-    public get state(): string | undefined {
+    public get state(): boolean | undefined {
         return this._state;
     }
 
@@ -147,7 +147,7 @@ class Update {
         this._customerPreferences = value;
     }
 
-    public set state(value: string | undefined) {
+    public set state(value: boolean | undefined) {
         this._state = value;
     }
 

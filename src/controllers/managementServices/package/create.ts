@@ -20,7 +20,7 @@ const create = async (req: Request, res: Response) => {
             totalPrice,
             tokenEmail,
         } = req.body;
-
+        
         const result = await packageService.package(new PackageDTO(origin, destination,departureDate, returnDate, numberOfPeople, itinerary, packageServices, customerPreferences, state, fkHotelID, fkTransportID, status, totalPrice, tokenEmail));
 
         if(result! > 0){ 

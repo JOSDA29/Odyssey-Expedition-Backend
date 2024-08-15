@@ -35,6 +35,8 @@ class Create {
             packageRepo.totalPrice,
             packageRepo.fkAdviserEmail,
         ];
+        console.log(values);
+        
         try {
             const client = await connection.connect();
             try{

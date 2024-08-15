@@ -7,7 +7,7 @@ class Package {
     _itinerary: string;
     _packageServices: string;
     _customerPreferences: string;
-    _state: string;
+    _state: boolean;
     _fkHotelID: number;
     _fkTransportID: string;
     _status: string;
@@ -23,7 +23,7 @@ class Package {
     _itinerary: string,
     _packageServices: string,
     _customerPreferences: string,
-    _state: string,
+    _state: boolean,
     _fkHotelID: number,
     _fkTransportID: string,
     _status: string,
@@ -79,7 +79,7 @@ class Package {
         return this._customerPreferences;
     }
 
-    public get state(): string {
+    public get state(): boolean {
         return this._state;
     }
 
@@ -136,7 +136,7 @@ class Package {
         this._customerPreferences = value;
     }
 
-    public set state(value: string) {
+    public set state(value: boolean) {
         this._state = value;
     }
 
