@@ -27,6 +27,7 @@ import updateDataController from '../../../controllers/user/adviser/update';
 import changePasswordController from '../../../controllers/user/adviser/changePassword';
 import deleteAdviserController from '../../../controllers/user/adviser/delete';
 import searchFilterController from '../../../controllers/user/adviser/searchFilter';
+import updateImageController from '../../../controllers/user/adviser/uploadImage';
 
 const router = express.Router();
 
@@ -62,6 +63,12 @@ router.put(
     validsParametersUpdate,
     validatorUpdate,
     updateDataController,
+);
+
+router.post(
+    '/uploadImage',
+    validateToken(['Administrator']),
+    updateImageController
 );
 
 router.delete(
