@@ -1,4 +1,4 @@
-import updateImageDTO from '../../../DTO/managementServices/transport/updateImageDTO';
+import updateImageDTO from '../../../DTO/managementServices/transport/UpdateImageDTO';
 import UpdateImageRepository from '../../../repository/managementServices/transport/updateImage';
 
 class updateImage {
