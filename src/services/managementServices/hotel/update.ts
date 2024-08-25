@@ -1,4 +1,4 @@
-import UpdateHotel from "../../../DTO/managementServices/updateDTO";
+import UpdateHotel from "../../../DTO/managementServices/hotel/updateDTO";
 import Update from "../../../repository/managementServices/hotel/update";
 
 class update {

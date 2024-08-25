@@ -9,6 +9,7 @@ import adminRoutes from './routes/user/admin/adminRoutes';
 import clientRoutes from './routes/user/client/clientRoutes';
 import adviserRoutes from './routes/user/adviser/adviserRoutes';
 import supplierRoutes from './routes/supplier/supplierRoutes';
+import packageRoutes from './routes/managementServices/package/packageRoute';
 import chatRoutes from './routes/chat/chatAI';
 
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
@@ -38,8 +39,13 @@ app.use('/supplier', supplierRoutes);
 //Hotel routes
 app.use('/hotel', hotelRoutes);
 
+//Pacakge routes
+app.use('/package', packageRoutes);
+
 //AI routes
 app.use('/chat', chatRoutes);
+
+
 
 const PORT = process.env.PORT || 10240;
 

@@ -1,16 +1,11 @@
 import { Request, Response } from "express";
-import updateImageService from '../../../services/managementServices/hotel/updateImage';
-import updateImageDTO from '../../../DTO/managementServices/hotel/updateImageDTO';
-
+import uploadImageService from '../../../services/managementServices/package/uploadImage';
 import { uploadImageToAzure } from "../../../config/azureBlobStorage";
 
-const update = async (req: Request, res: Response) => {
+const upload = async (req: Request, res: Response) => {
     try {
-        const {
-            id,
-            tokenEmail,
-            file,
-        } = req.body;
+        const {id} = req.body;
+        const file = req.file;
 
         if (!file) {
             return res
@@ -20,11 +15,11 @@ const update = async (req: Request, res: Response) => {
 
         const imageurl = await uploadImageToAzure(file);
 
-        const result = await updateImageService.updateImage(new updateImageDTO(id, tokenEmail, imageurl));
-
+        const result = await uploadImageService.Upload(id, imageurl);
+        
         if(result){
-            return res.status(200).json({
-                status: 'Image Updating Successfully'
+            return res.status(201).json({
+              status:  'Update image succesfully'
             });
         }
         return res.status(400).json({
@@ -36,5 +31,4 @@ const update = async (req: Request, res: Response) => {
             .send({ error: 'Internal Server Error', errorInfo: error.message });
     }
 }
-
-export default update;
+export default upload;

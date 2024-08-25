@@ -1,4 +1,4 @@
-import HotelDTO from "../../../DTO/managementServices/hotelDTO";
+import HotelDTO from "../../../DTO/managementServices/hotel/hotelDTO";
 import create from "../../../repository/managementServices/hotel/create";
 
 class createHotel {
