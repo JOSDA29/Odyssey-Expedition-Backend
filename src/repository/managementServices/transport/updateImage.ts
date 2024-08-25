@@ -1,5 +1,5 @@
 import connection from '../../../config/configDB';
-import UpdateImageDTO from '../../../DTO/managementServices/transport/UpdateImageDTO';
+import UpdateImageDTO from '../../../DTO/managementServices/transport/updateImageDTO';
 
 class UpdateImage {
     static async updateImage(transport: UpdateImageDTO) {
