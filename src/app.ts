@@ -13,6 +13,8 @@ import packageRoutes from './routes/managementServices/package/packageRoute';
 import chatRoutes from './routes/chat/chatAI';
 
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
+import transportRoutes from './routes/managementServices/transport/transportRoutes'
+
 import morgan from 'morgan';
 
 const app = express().use(bodyParser.json());
@@ -38,6 +40,9 @@ app.use('/supplier', supplierRoutes);
 
 //Hotel routes
 app.use('/hotel', hotelRoutes);
+
+//Transport routes
+app.use('/transport', transportRoutes);
 
 //Pacakge routes
 app.use('/package', packageRoutes);
