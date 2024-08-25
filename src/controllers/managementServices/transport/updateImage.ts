@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import updateImageService from '../../../services/managementServices/transport/updateImage';
-import updateImageDTO from '../../../DTO/managementServices/transport/UpdateImageDTO';
+import updateImageDTO from '../../../DTO/managementServices/transport/updateImageDTO';
 import { uploadImageToAzure } from "../../../config/azureBlobStorage";
 
 const updateImage = async (req: Request, res: Response) => {
