@@ -7,11 +7,14 @@ import createTransport from "../../../controllers/managementServices/transport/c
 import updateTransport from '../../../controllers/managementServices/transport/update';
 import filterTransport from '../../../controllers/managementServices/transport/filter';
 
+import { validator, validatorParams } from '../../../middlewares/routes validators/transport/createTransportValidator';
+import { validatorUpdate, validatorParamsUpdate } from '../../../middlewares/routes validators/transport/updateTransportValidator';
+
 const router = express.Router();
 
-router.post('/create', validateToken(['Adviser']),  createTransport);
+router.post('/create', validateToken(['Adviser']), validatorParams, validator, createTransport);
 
-router.put('/update', validateToken(['Adviser']),  updateTransport);
+router.put('/update', validateToken(['Adviser']), validatorParamsUpdate, validatorUpdate, updateTransport);
 
 router.put('/uploadImage', upload.single('file'), validateToken(['Adviser']), updateImage);
 

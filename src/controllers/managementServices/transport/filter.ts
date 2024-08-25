@@ -21,7 +21,7 @@ const filterTransport = async (req: Request, res: Response) => {
             destination as string ?? null,
             arrivalDate as string ?? null,
             departureDate as string ?? null,
-            state !== undefined ? state === 'true' : undefined
+            state ? Boolean(state) : undefined
         );
 
         const result = await FilterTransportService.filterTransport(filterTransportDTO);
