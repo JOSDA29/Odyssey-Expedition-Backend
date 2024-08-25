@@ -1,4 +1,5 @@
 import { VALID_THEMES, INVALID_THEMES } from './themes';
+
 // Función para verificar si el texto contiene alguno de los temas especificados
 // Función para verificar si el texto contiene alguno de los temas especificados
 const containsTheme = (text: string, themes: string[]): boolean => {
@@ -25,4 +26,6 @@ const parseResponseToList = (response: string): string[] => {
     return items;
 };
 
-export {isValidResponse, parseResponseToList};
+const DEFAULT_MESSAGE = 'Lo siento, no puedo responder tu pregunta, por favor comunicate con un asesor :';
+
+export {isValidResponse, parseResponseToList, DEFAULT_MESSAGE};

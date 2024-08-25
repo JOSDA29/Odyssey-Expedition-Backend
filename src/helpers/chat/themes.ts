@@ -20,6 +20,10 @@ const VALID_THEMES = [
     'hoteles',
     'transportes',
     'aerolieneas',
+    'agrncias',
+    'viajes',
+    'Paquetes',
+    'Cruceros',
     ''
 ];
 
