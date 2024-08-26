@@ -18,7 +18,6 @@ const Filter = async (req: Request, res: Response) => {
             state,
             priceMin,
             priceMax,
-            tokenEmail,
         } = req.body
 
         const result = await FilterService.filter(new filterDTO(id, name, destination, startDate, endDate, numberOfPeople, room, description, location, hotelServices, state, priceMin, priceMax));

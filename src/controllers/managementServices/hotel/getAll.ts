@@ -3,7 +3,6 @@ import getAllService from '../../../services/managementServices/hotel/getAll';
 
 const GetAll = async (req: Request, res: Response) => {
     try {
-        const { tokenEmail } = req.body;
         const result = await getAllService.getAll();
         if(result){
             return res.status(200).json(result);
