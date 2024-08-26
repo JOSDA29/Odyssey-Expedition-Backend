@@ -18,7 +18,7 @@ router.put('/update', validateToken(['Adviser']), validatorParamsUpdate, validat
 
 router.put('/uploadImage', upload.single('file'), validateToken(['Adviser']), updateImage);
 
-router.get('/filter', validateToken(['Adviser']),  filterTransport);
+router.get('/filter', validateToken(['Adviser', 'Administrator']),  filterTransport);
 
 
 

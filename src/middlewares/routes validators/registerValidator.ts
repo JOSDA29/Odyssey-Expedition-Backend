@@ -17,13 +17,13 @@ const validatorParamsRegister = [
             'La contraseña debe contener al menos un carácter especial',
         ),
     check('name')
-        .isLength({ min: 3, max: 25 })
-        .withMessage('El nombre debe contener minimo 3 y maximo 25 caracteres')
+        .isLength({ min: 3, max: 50 })
+        .withMessage('El nombre debe contener minimo 3 y maximo 50 caracteres')
         .toLowerCase(),
     check('lastName')
-        .isLength({ min: 3, max: 25 })
+        .isLength({ min: 3, max: 50 })
         .withMessage(
-            'El apellido debe contener minimo 3 y maximo 25 caracteres',
+            'El apellido debe contener minimo 3 y maximo 50 caracteres',
         )
         .toLowerCase(),
 ];

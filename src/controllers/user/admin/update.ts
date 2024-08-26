@@ -4,10 +4,10 @@ import User from '../../../DTO/updateDTO';
 
 const update = async (req: Request, res: Response) => {
     try {
-        const { tokenEmail, name, lastName, phoneNumber, image } = req.body;
+        const { tokenEmail, name, lastName, phoneNumber } = req.body;
 
         const result = await AdminUpdate.updateA(
-            new User(tokenEmail, name, lastName, phoneNumber, image),
+            new User(tokenEmail, name, lastName, phoneNumber),
         );
 
         if (result) {

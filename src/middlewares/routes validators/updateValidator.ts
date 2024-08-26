@@ -3,12 +3,12 @@ import { Request, Response, NextFunction } from 'express';
 
 const validsParametersUpdate = [
     check('name')
-        .isLength({ min: 3, max: 25 })
+        .isLength({ min: 3, max: 50 })
         .withMessage('El nombre debe contener minimo 3 y maximo 25 caracteres')
         .toLowerCase()
         .optional(),
     check('lastName')
-        .isLength({ min: 3, max: 25 })
+        .isLength({ min: 3, max: 50 })
         .withMessage('El nombre debe contener minimo 3 y maximo 25 caracteres')
         .toLowerCase()
         .optional(),
@@ -18,8 +18,11 @@ const validsParametersUpdate = [
         .matches(/^\d+$/)
         .withMessage('El telefono debe contener solo numeros')
         .optional(),
-    check('image').optional(),
-];
+    check('state')
+    .isBoolean()
+    .withMessage("El estado debe ser un valor booleano")
+    .optional(),
+    ];
 
 function validatorUpdate(req: Request, res: Response, next: NextFunction) {
     const errors = validationResult(req);

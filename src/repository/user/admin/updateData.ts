@@ -29,11 +29,6 @@ class AdminR {
             values.push(user.phone);
             index++;
         }
-        if (user.image !== undefined) {
-            fieldsToUpdate.push(`image = $${index}`);
-            values.push(user.image);
-            index++;
-        }
 
         // Construcción de la cláusula SET y la consulta SQL
         const setClause = fieldsToUpdate.join(', ');

@@ -6,44 +6,15 @@ import bcrypt from 'bcryptjs';
 
 class AdviserR {
     static async update(user: User) {
-        const fieldsToUpdate = [];
-        const values = [];
-        const userEmailIndex = 1;
-
-        values.push(user.email);
-
-        let index = userEmailIndex + 1;
-
-        if (user.names !== undefined) {
-            fieldsToUpdate.push(`firstName = $${index}`);
-            values.push(user.names);
-            index++;
-        }
-        if (user.lastNames !== undefined) {
-            fieldsToUpdate.push(`lastName = $${index}`);
-            values.push(user.lastNames);
-            index++;
-        }
-        if (user.phone !== undefined) {
-            fieldsToUpdate.push(`phone = $${index}`);
-            values.push(user.phone);
-            index++;
-        }
-        if (user.image !== undefined) {
-            fieldsToUpdate.push(`image = $${index}`);
-            values.push(user.image);
-            index++;
-        }
-
-        // Construcción de la cláusula SET y la consulta SQL
-        const setClause = fieldsToUpdate.join(', ');
-        const sql = `UPDATE Adviser SET ${setClause} WHERE email = $1`;
+        
+        const sql = `select update_adviser($1, $2, $3, $4, $5, $6)`;
+        const values = [user.email, user.id, user.names, user.lastNames, user.phone, user.state];
 
         try {
             const client = await connection.connect();
             try {
                 const result = await client.query(sql, values);
-                if (result.rowCount! > 0) {
+                if (result.rows[0].update_adviser == true) {
                     return { message: 'Successful Update' };
                 }
                 return { message: 'Data not found' };

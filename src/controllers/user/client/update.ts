@@ -4,10 +4,11 @@ import User from '../../../DTO/updateDTO';
 
 const update = async (req: Request, res: Response) => {
     try {
-        const { tokenEmail, name, lastName, phoneNumber, image } = req.body;
-
+        const { tokenEmail, name, lastName, phoneNumber } = req.body;
+        console.log(name, lastName, phoneNumber);
+        
         const result = await updateService.updateC(
-            new User(tokenEmail, name, lastName, phoneNumber, image),
+            new User(tokenEmail, name, lastName, phoneNumber),
         );
 
         if (result) {
