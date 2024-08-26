@@ -20,9 +20,27 @@ const Filter = async (req: Request, res: Response) => {
             status,
             minPrice,
             maxPrice
-        } = req.body;
+        } = req.query;
 
-        const result = await filterService.filter(new filterDTO(id, origin, destination, departureDate, returnDate, numberOfPeople, itinerary, packageServices, customerPreferences, state, fkHotelID, fkTransportID, status, minPrice, maxPrice));
+        const filterData = new filterDTO(
+            id ? Number(id) : undefined,
+            origin ? String(origin) : undefined,
+            destination ? String(destination) : undefined,
+            departureDate ? new Date(departureDate as string) : undefined,
+            returnDate ? new Date(returnDate as string) : undefined,
+            numberOfPeople ? Number(numberOfPeople) : undefined,
+            itinerary ? String(itinerary) : undefined,
+            packageServices ? String(packageServices) : undefined,
+            customerPreferences ? String(customerPreferences) : undefined,
+            state ? Boolean(state) : undefined,
+            fkHotelID ? Number(fkHotelID) : undefined,
+            fkTransportID ? String(fkTransportID) : undefined,
+            status ? String(status) : undefined,
+            minPrice ? Number(minPrice) : undefined,
+            maxPrice ? Number(maxPrice) : undefined
+        );
+
+        const result = await filterService.filter(filterData);
 
         if (result.success && Array.isArray(result.data)) {
             if (result.data.length > 0) {
