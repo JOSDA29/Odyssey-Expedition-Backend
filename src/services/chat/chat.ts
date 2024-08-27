@@ -3,12 +3,12 @@ import chatDto from '../../DTO/chat/chat';
 import {
     isValidResponse,
     parseResponseToList,
-    DEFAULT_MESSAGE
+    DEFAULT_MESSAGE,
 } from '../../helpers/chat/validators';
 import { Content } from '@google/generative-ai';
 import model from '../../config/chat/model';
 
-const { GenerationConfig, StartChat } = chatConfig;
+const { GenerationConfig, StartChat, StartChatResponses } = chatConfig;
 
 export const chatService = async (chatAI: chatDto) => {
     const historyChat: Content[] = StartChat.concat(chatAI.history)
@@ -23,12 +23,18 @@ export const chatService = async (chatAI: chatDto) => {
                 return undefined;
             }
         })
-        .filter((msg): msg is Content => msg !== undefined);
+        .filter((msg): msg is Content => msg !== undefined);    
 
     historyChat.push({
         role: 'user',
         parts: [{ text: chatAI.prompt }],
     });
+
+    const predefinedResponse = Array.from(StartChatResponses.keys()).find(key => chatAI.prompt.toLowerCase().includes(key));
+    if (predefinedResponse) {
+        const response = StartChatResponses.get(predefinedResponse);
+        return {response: response?.parts};
+    }
 
     try {
         const chat = model.startChat({
@@ -37,8 +43,11 @@ export const chatService = async (chatAI: chatDto) => {
         });
         const conditionCountry = 'La respuesta debe estar basada en Colombia';
         const conditionEnterprise = 'Servicios de Oddysey Expedition';
-        
-        const sendPrompt = await chat.sendMessage(chatAI.prompt + conditionCountry || chatAI.prompt + conditionEnterprise);
+
+        const sendPrompt = await chat.sendMessage(
+            chatAI.prompt + conditionCountry ||
+                chatAI.prompt + conditionEnterprise,
+        );
         const response = sendPrompt.response;
         const text = response.text();
 
