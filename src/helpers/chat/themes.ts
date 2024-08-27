@@ -19,21 +19,30 @@ const VALID_THEMES = [
     'restaurantes',
     'hoteles',
     'transportes',
-    'aerolieneas',
-    'agrncias',
+    'aerolineas',
+    'agencias',
     'viajes',
     'Paquetes',
     'Cruceros',
+    'deportes',
+    'juegos',
+    'libros',
+    'literatura',
     ''
 ];
 
-const INVALID_THEMES = ['porno',
+const INVALID_THEMES = [
+    'pornografía',
     'religión',
     'política',
     'drogas',
-    'Pablo Escobar',
+    'Escobar',
     'Violencia',
     'Xenofobia',
+    'salud',
+    'gobierno',
+    'homofobia',
+    'racismo'
 ];
 
 export {VALID_THEMES, INVALID_THEMES};
