@@ -10,6 +10,7 @@ import clientRoutes from './routes/user/client/clientRoutes';
 import adviserRoutes from './routes/user/adviser/adviserRoutes';
 import supplierRoutes from './routes/supplier/supplierRoutes';
 import chatRoutes from './routes/chat/chatAI';
+import moderatorRoutes from './routes/moderator/moderator';
 
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
 import morgan from 'morgan';
@@ -40,6 +41,7 @@ app.use('/hotel', hotelRoutes);
 
 //AI routes
 app.use('/chat', chatRoutes);
+app.use('/moderator', moderatorRoutes);
 
 const PORT = process.env.PORT || 10240;
 
