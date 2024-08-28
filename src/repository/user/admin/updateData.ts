@@ -6,44 +6,26 @@ import generateHash from '../../../helpers/generateHash';
 
 class AdminR {
     static async updateAdmin(user: User) {
-        const fieldsToUpdate = [];
-        const values = [];
-        const userEmailIndex = 1;
-
-        values.push(user.email);
-
-        let index = userEmailIndex + 1;
-
-        if (user.names !== undefined) {
-            fieldsToUpdate.push(`firstName = $${index}`);
-            values.push(user.names);
-            index++;
-        }
-        if (user.lastNames !== undefined) {
-            fieldsToUpdate.push(`lastName = $${index}`);
-            values.push(user.lastNames);
-            index++;
-        }
-        if (user.phone !== undefined) {
-            fieldsToUpdate.push(`phone = $${index}`);
-            values.push(user.phone);
-            index++;
-        }
-
-        // Construcción de la cláusula SET y la consulta SQL
-        const setClause = fieldsToUpdate.join(', ');
-        const sql = `UPDATE Administrator SET ${setClause} WHERE email = $1`;
-
+        const sql = `SELECT update_admin(
+        $1, $2, $3, $4, $5, $6 )`;
+        const values = [
+            user.email,
+            user.id,
+            user.names,
+            user.lastNames,
+            user.phone,
+            user.state
+        ];
         try {
             const client = await connection.connect();
-            try {
-                const result = await client.query(sql, values);
-                return result.rows;
+            try{
+                const res = await client.query(sql, values);
+                return res.rowCount;
             } finally {
                 client.release();
             }
         } catch (error: any) {
-            console.log('Error Executing query', error.stack);
+            console.error('Error executing query', error.stack);
             throw error;
         }
     }
