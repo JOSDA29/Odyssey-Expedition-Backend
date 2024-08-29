@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./dist/app.js",
   "scripts": {
-    "start": "nodemon ./dist/app",
+    "start": "node ./dist/app",
     "build": "tsc"
   },
   "keywords": [],
