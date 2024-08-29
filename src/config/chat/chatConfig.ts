@@ -1,7 +1,7 @@
 import { chatMessageInterface } from '../../interfaces/chatMessage';
 
 const GenerationConfig = {
-    stopSequences: ['.', '!', '?', ''],
+    stopSequences: ['. '],
     maxOutputTokens: 90,
     temperature: 0.9,
     topP: 0.1,
