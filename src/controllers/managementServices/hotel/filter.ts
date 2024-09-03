@@ -18,17 +18,31 @@ const Filter = async (req: Request, res: Response) => {
             state,
             priceMin,
             priceMax,
-            tokenEmail,
-        } = req.body
-
-        const result = await FilterService.filter(new filterDTO(id, name, destination, startDate, endDate, numberOfPeople, room, description, location, hotelServices, state, priceMin, priceMax));
-
-        if(result){
+        } = req.query;
+        
+        const filterData = new filterDTO(
+            id ? Number(id) : undefined,
+            name ? String(name) : undefined,
+            destination ? String(destination) : undefined,
+            startDate ? new Date(startDate as string) : undefined,
+            endDate ? new Date(endDate as string) : undefined,
+            numberOfPeople ? Number(numberOfPeople) : undefined,
+            room ? String(room) : undefined,
+            description ? String(description) : undefined,
+            location ? String(location) : undefined,
+            hotelServices ? String(hotelServices) : undefined,
+            state ? Boolean(state) : undefined,
+            priceMin ? Number(priceMin) : undefined,
+            priceMax ? Number(priceMax) : undefined
+        );
+        
+        const result = await FilterService.filter(filterData);
+        
+        if (result) {
             return res.status(200).json(result);
+        } else {
+            return res.status(404).json({ message: 'No se encontraron resultados' });
         }
-        return res.status(402).json({
-            status: 'Bad Request'
-        });
     }catch (error: any) {
         return res
             .status(500)
