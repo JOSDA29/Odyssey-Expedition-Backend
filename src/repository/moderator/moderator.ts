@@ -13,7 +13,13 @@ export default class PerspectiveRepository {
         const response = await this.client.analyze({
             comment: { text: comment },
             languages: ['es'],
-            requestedAttributes: { TOXICITY: {} },
+            requestedAttributes: { 
+                TOXICITY: {}, 
+                SEVERE_TOXICITY: {},
+                INSULT: {},
+                THREAT: {},
+                PROFANITY: {},
+            },
         });
         return response as analysisResponse;
     }
