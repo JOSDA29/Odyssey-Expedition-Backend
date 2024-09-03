@@ -6,49 +6,29 @@ import bcrypt from 'bcryptjs';
 
 class ClientR {
     static async update(user: User) {
-        const fieldsToUpdate = [];
-        const values = [];
-        const userIdIndex = 1;
-
-        values.push(user.email);
-
-        let index = userIdIndex + 1;
-
-        if (user.names !== undefined) {
-            fieldsToUpdate.push(`firstName = $${index}`);
-            values.push(user.names);
-            index++;
-        }
-        if (user.lastNames !== undefined) {
-            fieldsToUpdate.push(`lastName = $${index}`);
-            values.push(user.lastNames);
-            index++;
-        }
-        if (user.phone !== undefined) {
-            fieldsToUpdate.push(`phone = $${index}`);
-            values.push(user.phone);
-            index++;
-        }
-
-        // Construcción de la cláusula SET y la consulta SQL
-        const setClause = fieldsToUpdate.join(', ');
-        const sql = `UPDATE Client SET ${setClause} WHERE email = $1`;
-
-        try {
-            const client = await connection.connect();
+            const sql = `SELECT update_client(
+            $1, $2, $3, $4, $5, $6)`;
+            const values = [
+                user.email,
+                user.id,
+                user.names,
+                user.lastNames,
+                user.phone,
+                user.state
+            ];
             try {
-                const result = await client.query(sql, values);
-                if(result.rowCount! > 0){
-                    return { message: 'Update Succesfully' }
+                const client = await connection.connect();
+                try{
+                    const res = await client.query(sql, values);
+                    return res.rowCount;
+                } finally {
+                    client.release();
                 }
-            } finally {
-                client.release();
+            } catch (error: any) {
+                console.error('Error executing query', error.stack);
+                throw error;
             }
-        } catch (error: any) {
-            console.log('Error Executing query', error.stack);
-            throw error;
         }
-    }
 
     static async changePassword(userPassword: ChangePassword) {
         const { email, oldPassword, newPassword } = userPassword;

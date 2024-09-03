@@ -8,11 +8,11 @@ class User {
 
     constructor(
         email: string,
+        id?: string,
         names?: string,
         lastNames?: string,
         phone?: string,
         state?: boolean,
-        id?: string
     ) {
         this._email = email;
         this._names = names;

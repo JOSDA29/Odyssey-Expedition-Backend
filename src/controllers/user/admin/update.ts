@@ -4,17 +4,16 @@ import User from '../../../DTO/updateDTO';
 
 const update = async (req: Request, res: Response) => {
     try {
-        const { tokenEmail, name, lastName, phoneNumber } = req.body;
+        const { tokenEmail, id, name, lastName, phoneNumber, state } = req.body;
 
         const result = await AdminUpdate.updateA(
-            new User(tokenEmail, name, lastName, phoneNumber),
+            new User(tokenEmail, id, name, lastName, phoneNumber, state),
         );
 
-        if (result) {
-            return res.status(200).json({
-                status: 'Successful Update',
-            });
+        if (result.success) {
+            return res.status(201).json({ message: result.message });
         }
+        return res.status(400).json({message: result.message });
     } catch (error) {
         return res
             .status(500)
