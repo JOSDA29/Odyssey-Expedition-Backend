@@ -3,7 +3,7 @@ import PackageDTO from "../../../DTO/managementServices/package/packageDTO";
 
 class Create {
     static async create(packageRepo: PackageDTO){
-        const sql = `SELECT insert_package(
+        const sql = `SELECT add_package(
         $1,
         $2,
         $3,
@@ -13,11 +13,7 @@ class Create {
         $7,
         $8,
         $9,
-        $10,
-        $11,
-        $12,
-        $13,
-        $14
+        $10
         )`;
         const values = [
             packageRepo.origin,
@@ -26,12 +22,8 @@ class Create {
             packageRepo.returnDate,
             packageRepo.numberOfPeople,
             packageRepo.itinerary,
-            packageRepo.packageServices,
             packageRepo.customerPreferences,
             packageRepo.state,
-            packageRepo.fkHotelID,
-            packageRepo.fkTransportID,
-            packageRepo.status,
             packageRepo.totalPrice,
             packageRepo.fkAdviserEmail,
         ];
