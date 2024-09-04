@@ -6,13 +6,8 @@ class Update {
     private _returnDate?: Date;
     private _numberOfPeople?: number;
     private _itinerary?: string;
-    private _packageServices?: string;
     private _customerPreferences?: string;
     private _state?: boolean;
-    private _fkHotelID?: number;
-    private _fkTransportID?: string;
-    private _status?: string;
-    private _totalPrice?: number;
     private _fkAdviserEmail?: string;
 
     constructor(
@@ -23,13 +18,8 @@ class Update {
         _returnDate?: Date,
         _numberOfPeople?: number,
         _itinerary?: string,
-        _packageServices?: string,
         _customerPreferences?: string,
         _state?: boolean,
-        _fkHotelID?: number,
-        _fkTransportID?: string,
-        _status?: string,
-        _totalPrice?: number,
         _fkAdviserEmail?: string,
     ) {
         this._id = _id;
@@ -39,13 +29,8 @@ class Update {
         this._returnDate = _returnDate;
         this._numberOfPeople = _numberOfPeople;
         this._itinerary = _itinerary;
-        this._packageServices = _packageServices;
         this._customerPreferences = _customerPreferences;
         this._state = _state;
-        this._fkHotelID = _fkHotelID;
-        this._fkTransportID = _fkTransportID;
-        this._status = _status;
-        this._totalPrice = _totalPrice;
         this._fkAdviserEmail = _fkAdviserEmail;
     }
 
@@ -78,32 +63,12 @@ class Update {
         return this._itinerary;
     }
 
-    public get packageServices(): string | undefined {
-        return this._packageServices;
-    }
-
     public get customerPreferences(): string | undefined {
         return this._customerPreferences;
     }
 
     public get state(): boolean | undefined {
         return this._state;
-    }
-
-    public get fkHotelID(): number | undefined {
-        return this._fkHotelID;
-    }
-
-    public get fkTransportID(): string | undefined {
-        return this._fkTransportID;
-    }
-
-    public get status(): string | undefined {
-        return this._status;
-    }
-
-    public get totalPrice(): number | undefined {
-        return this._totalPrice;
     }
 
     public get fkAdviserEmail(): string | undefined {
@@ -139,32 +104,12 @@ class Update {
         this._itinerary = value;
     }
 
-    public set packageServices(value: string | undefined) {
-        this._packageServices = value;
-    }
-
     public set customerPreferences(value: string | undefined) {
         this._customerPreferences = value;
     }
 
     public set state(value: boolean | undefined) {
         this._state = value;
-    }
-
-    public set fkHotelID(value: number | undefined) {
-        this._fkHotelID = value;
-    }
-
-    public set fkTransportID(value: string | undefined) {
-        this._fkTransportID = value;
-    }
-
-    public set status(value: string | undefined) {
-        this._status = value;
-    }
-
-    public set totalPrice(value: number | undefined) {
-        this._totalPrice = value;
     }
 
     public set fkAdviserEmail(value: string | undefined) {
