@@ -31,7 +31,7 @@ const Filter = async (req: Request, res: Response) => {
             description ? String(description) : undefined,
             location ? String(location) : undefined,
             hotelServices ? String(hotelServices) : undefined,
-            state ? Boolean(state) : undefined,
+            state ? state == 'true' : undefined,
             priceMin ? Number(priceMin) : undefined,
             priceMax ? Number(priceMax) : undefined
         );

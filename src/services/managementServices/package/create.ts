@@ -4,7 +4,23 @@ import packageRepository from "../../../repository/managementServices/package/cr
 
 class packageService {
     static async package (packageSer: PackageDTO) {
-        return await packageRepository.create(packageSer);
+        if(packageSer.departureDate && packageSer.returnDate && packageSer.departureDate > packageSer.returnDate) {
+            throw new Error ('The departure date cannot be later than the return date.');
+        } 
+        try {
+            const results = await packageRepository.create(packageSer);
+
+            if(results === 0) {
+                return {success: true, message: 'Error'}
+            }
+
+            return {success: true, message: 'Package created succesfull'}
+
+        } catch (error) {
+            console.error('Error filtering packages:', error);
+            throw new Error('Internal error when trying to filter packages.');
+        }
+       
     }
 }
 

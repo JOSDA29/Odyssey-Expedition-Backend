@@ -12,12 +12,7 @@ class Create {
         $6,
         $7,
         $8,
-        $9,
-        $10,
-        $11,
-        $12,
-        $13,
-        $14
+        $9
         )`;
         const values = [
             packageRepo.origin,
@@ -26,16 +21,10 @@ class Create {
             packageRepo.returnDate,
             packageRepo.numberOfPeople,
             packageRepo.itinerary,
-            packageRepo.packageServices,
             packageRepo.customerPreferences,
             packageRepo.state,
-            packageRepo.fkHotelID,
-            packageRepo.fkTransportID,
-            packageRepo.status,
-            packageRepo.totalPrice,
             packageRepo.fkAdviserEmail,
         ];
-        console.log(values);
         
         try {
             const client = await connection.connect();
