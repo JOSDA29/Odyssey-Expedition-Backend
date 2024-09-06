@@ -21,10 +21,7 @@ const Filter = async (req: Request, res: Response) => {
         const result = await FilterService.filter(filterData);
 
         if (result.success && Array.isArray(result.data)) {
-            if (result.data.length > 0) {
-                return res.status(202).json(result.data);
-            }
-            return res.status(202).json(result.data); 
+            return res.status(200).json(result.data); 
         }  
     } catch (error: any) {
         return res.status(500).json({ error: 'Internal Server Error', errorInfo: error.message });

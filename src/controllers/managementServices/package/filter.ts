@@ -25,11 +25,11 @@ const Filter = async (req: Request, res: Response) => {
         const result = await filterService.filter(filterData);
 
         if (result.success && Array.isArray(result.data)) {
-            if (result.data.length > 0) {
-                return res.status(200).json(result.data);
-            }
-            return res.status(202).json(result.data); 
+            return res.status(result.status).json(result.data); 
         } 
+
+        return res.status(result.status).json({ success: result.success, message: 'Bad Request' + result.menssage}); 
+
          
     } catch (error: any) {
         return res
