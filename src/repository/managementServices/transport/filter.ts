@@ -26,7 +26,6 @@ class FilterTransportRepository {
             const client = await connection.connect();
             try {
                 const result = await client.query(sql, values);
-                console.log('Result Rows:', result.rows); // Para depuración
                 return result.rows;
             } finally {
                 client.release();
