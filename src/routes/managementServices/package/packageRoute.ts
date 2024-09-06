@@ -23,6 +23,6 @@ router.put('/update', validateToken(['Adviser']), validatorParamsPackageUpdate, 
 
 router.delete('/delete/:id', validateToken(['Adviser']), deleteController);
 
-router.get('/filter', validateToken(['Adviser', 'Client']), validatorParamsFilter, validatorFilter, filterController);
+router.get('/filter', validatorParamsFilter, validatorFilter, filterController);
 
 export default router;
