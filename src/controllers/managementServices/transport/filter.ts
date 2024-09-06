@@ -14,26 +14,30 @@ const filterTransport = async (req: Request, res: Response) => {
             state
         } = req.query;
 
+        const stateParse = state === undefined ? undefined : (state === 'true' ? true : state === 'false' ? false : undefined);
+
         const filterTransportDTO = new FilterTransportDTO(
-            transportID ? String(transportID) : undefined,
-            transportType ? String(transportType) : undefined,
-            origin ? String(origin) : undefined,
-            destination ? String(destination) : undefined,
+            (transportID as string) ?? null,
+            (transportType as string) ?? null,
+            (origin as string) ?? null,
+            (destination as string) ?? null,
             arrivalDate? new Date(arrivalDate as string) : undefined,
             departureDate ? new Date(departureDate as string) : undefined,
-            state === 'true' ? true : state === 'false' ? false : undefined
+            stateParse
         );
 
         const result = await FilterTransportService.filterTransport(filterTransportDTO);
-        
-        if (result.success && Array.isArray(result.data)) {
-            if (result.data.length > 0) {
-                return res.status(202).json(result.data);
-            } 
+
+
+        if (result.success) {
+            return res.status(result.status).json(result.data);
         }
 
-        return res.status(202).json(result.data); 
-        
+        return res.status(result.status).json({
+            success: result.success,
+            message: result.message
+        });
+
     } catch (error) {
         return res.status(500).json({ message: `An error occurred: ${(error as Error).message}` });
     }
