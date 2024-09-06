@@ -38,7 +38,6 @@ const filterTransport = async (req: Request, res: Response) => {
             message: result.message
         });
 
-
     } catch (error) {
         return res.status(500).json({ message: `An error occurred: ${(error as Error).message}` });
     }

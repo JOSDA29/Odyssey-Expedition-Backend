@@ -17,7 +17,7 @@ const Filter = async (req: Request, res: Response) => {
             id ? Number(id) : undefined,
             origin ? String(origin): undefined,
             destination ? String(destination) : undefined,
-            state ? state === 'true' : undefined,
+            state === 'true' ? true : state === 'false' ? false : undefined,
             departureDate ? new Date(departureDate as string) : undefined,
             returnDate ? new Date(returnDate as string) : undefined
         );
@@ -25,15 +25,12 @@ const Filter = async (req: Request, res: Response) => {
         const result = await filterService.filter(filterData);
 
         if (result.success && Array.isArray(result.data)) {
-            if (result.data.length > 0) {
-                return res.status(200).json(result.data);
-            } else {
-                return res.status(404).json({ message: 'No packages found matching the criteria.' });
-            }
-        } else {
-            return res.status(400).json({ message: result.message || 'An unknown error occurred.' });
-        }
+            return res.status(result.status).json(result.data); 
+        } 
 
+        return res.status(result.status).json({ success: result.success, message: 'Bad Request' + result.menssage}); 
+
+         
     } catch (error: any) {
         return res
             .status(500)

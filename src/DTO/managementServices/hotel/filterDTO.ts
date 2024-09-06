@@ -1,17 +1,17 @@
 class filter {
     _Id?: number;
     _name?: string;
-    _destination?: string;
+    _location?: string;
     _state?: boolean;
     constructor(
         _Id?: number,
         _name?: string,
-        _destination?: string,
+        _location?: string,
         _state?: boolean,
     ){
         this._Id =_Id;
         this._name = _name;
-        this._destination = _destination;
+        this._location = _location;
         this._state = _state;
     }
 
@@ -29,11 +29,11 @@ class filter {
     public set name(value: string){
         this._name = value;
     }
-    public get destination(): string | undefined{
-        return this._destination;
+    public get location(): string | undefined{
+        return this._location;
     }
-    public set destination(value: string){
-        this._destination = value;
+    public set location(value: string){
+        this._location = value;
     }
     get state(): boolean | undefined {
         return this._state;

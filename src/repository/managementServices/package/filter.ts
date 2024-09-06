@@ -15,7 +15,7 @@
                 packageDTO.id || null,
                 packageDTO.origin || null,
                 packageDTO.destination || null,
-                packageDTO.state || null,
+                packageDTO.state !== undefined ? packageDTO.state : null,
                 packageDTO.departureDate || null,
                 packageDTO.returnDate || null,
             ];

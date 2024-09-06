@@ -8,10 +8,10 @@ const update = async (req: Request, res: Response) => {
     try {
         const {
             tokenEmail,
-            file,
+            id
         } = req.body;
         
-        const {id} = req.query;
+        const file = req.file;
 
         if (!file) {
             return res

@@ -10,7 +10,6 @@ class FilterTransport {
 
         try {
             const results = await FilterTransportRepository.filterTransport(filterTransportDTO);
-
             return { success: true, data: results, status: 200 };
         } catch (error) {
             console.error('Error filtering transports:', error);

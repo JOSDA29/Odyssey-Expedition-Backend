@@ -12,8 +12,8 @@ class Filter {
         const values = [
             hotel._Id || null,
             hotel.name || null,
-            hotel.destination || null,
-            hotel.state || null
+            hotel.location || null,
+            hotel.state !== undefined ? hotel.state : null 
         ];
         try {
             const services = await connection.connect();

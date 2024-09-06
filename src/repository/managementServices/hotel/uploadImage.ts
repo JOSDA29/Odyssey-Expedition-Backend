@@ -3,7 +3,7 @@ import UpdateImageDTO from '../../../DTO/managementServices/hotel/updateImageDTO
 
 class UploadImage{
     static async uploadImage(hotel: UpdateImageDTO){
-        const sql = `SELECT * update_image_hotel($1, $2, $3)`;
+        const sql = `SELECT update_image_hotel($1, $2, $3)`;
         const values = [
             hotel.hotelId,
             hotel.fkAdviserEmail,
