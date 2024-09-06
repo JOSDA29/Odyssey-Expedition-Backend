@@ -21,21 +21,19 @@ const filterTransport = async (req: Request, res: Response) => {
             destination ? String(destination) : undefined,
             arrivalDate? new Date(arrivalDate as string) : undefined,
             departureDate ? new Date(departureDate as string) : undefined,
-            state ? state === 'true' : undefined
+            state === 'true' ? true : state === 'false' ? false : undefined
         );
 
         const result = await FilterTransportService.filterTransport(filterTransportDTO);
         
         if (result.success && Array.isArray(result.data)) {
             if (result.data.length > 0) {
-                return res.status(200).json(result.data);
-            } else {
-                return res.status(404).json({ message: 'No transports found matching the criteria.' });
-            }
-        } else {
-            return res.status(400).json({ message: result.message || 'An unknown error occurred.' });
+                return res.status(202).json(result.data);
+            } 
         }
 
+        return res.status(202).json(result.data); 
+        
     } catch (error) {
         return res.status(500).json({ message: `An error occurred: ${(error as Error).message}` });
     }

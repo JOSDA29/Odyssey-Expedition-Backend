@@ -10,11 +10,6 @@ class Filter {
 
         try {
             const results = await FilterRepository.filter(filterDTO);
-
-            if (results.length === 0) {
-                return { success: true, message: 'No packages found matching the criteria.' };
-            }
-
             return { success: true, data: results };
         } catch (error) {
             console.error('Error filtering packages:', error);

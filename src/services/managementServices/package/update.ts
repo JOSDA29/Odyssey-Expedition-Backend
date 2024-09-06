@@ -7,9 +7,7 @@ class Update {
         if (!updateDTO.id || updateDTO.id <= 0) {
             throw new Error("Invalid ID.");
         }
-        if(updateDTO.id >= 1){
-            throw new Error("ID shouldn't be changed");
-        }
+        
         if (updateDTO.numberOfPeople && updateDTO.numberOfPeople <= 0) {
             throw new Error("The number of persons must be greater than 0.");
         }

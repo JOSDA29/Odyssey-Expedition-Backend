@@ -10,11 +10,6 @@ class FilterTransport {
 
         try {
             const results = await FilterTransportRepository.filterTransport(filterTransportDTO);
-
-            if (results.length === 0) {
-                return { success: true, message: 'No Transports found matching the criteria.' };
-            }
-
             return { success: true, data: results };
         } catch (error) {
             console.error('Error filtering transports:', error);
