@@ -22,9 +22,9 @@ router.put('/uploadImage', upload.single('file'), validateToken(['Adviser']), up
 
 router.delete('/delete/:id', validateToken(['Adviser']), validatorParamsEmail, validatorEmail, deleteHotelController);
 
-router.get('/getAll', validateToken(['Adviser', 'Administrator']), getAllController);
+router.get('/getAll', getAllController);
 
-router.get('/getById/:id', validateToken(['Adviser', 'Administrator']), getByIdController);
+router.get('/getById/:id', getByIdController);
 
 router.get('/filter', filterController);
 

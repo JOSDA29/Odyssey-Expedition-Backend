@@ -8,10 +8,6 @@ class Filter {
             throw new Error("The departure date cannot be later than the return date.");
         }
 
-        if (filterDTO.minPrice && filterDTO.maxPrice && filterDTO.minPrice > filterDTO.maxPrice) {
-            throw new Error("The minimum price cannot be greater than the maximum price.");
-        }
-
         try {
             const results = await FilterRepository.filter(filterDTO);
 

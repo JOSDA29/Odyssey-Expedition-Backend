@@ -3,8 +3,8 @@ export class FilterTransportDTO {
   private _transportType?: string;
   private _origin?: string;
   private _destination?: string;
-  private _arrivalDate?: string;
-  private _departureDate?: string;
+  private _arrivalDate?: Date;
+  private _departureDate?: Date;
   private _state?: boolean;
 
   constructor(
@@ -12,8 +12,8 @@ export class FilterTransportDTO {
     transportType?: string,
     origin?: string,
     destination?: string,
-    arrivalDate?: string,
-    departureDate?: string,
+    arrivalDate?: Date,
+    departureDate?: Date,
     state?: boolean
   ) {
     this._transportId = transportId;
@@ -42,11 +42,11 @@ export class FilterTransportDTO {
     return this._destination;
   }
 
-  public get arrivalDate(): string | undefined {
+  public get arrivalDate(): Date | undefined {
     return this._arrivalDate;
   }
 
-  public get departureDate(): string | undefined {
+  public get departureDate(): Date | undefined {
     return this._departureDate;
   }
 
@@ -71,11 +71,11 @@ export class FilterTransportDTO {
     this._destination = value;
   }
 
-  public set arrivalDate(value: string | undefined) {
+  public set arrivalDate(value: Date | undefined) {
     this._arrivalDate = value;
   }
 
-  public set departureDate(value: string | undefined) {
+  public set departureDate(value: Date | undefined) {
     this._departureDate = value;
   }
 

@@ -1,16 +1,24 @@
 import connection from "../../../config/configDB";
 import FilterTransportDTO from "../../../DTO/managementServices/transport/FilterTransportDTO";
 
-class FilterTransport {
-    static async filterTransport(filterTransportDTO: FilterTransportDTO){
-        const sql = 'select * from filter_transports($1,$2,$3,$4,$5,$6,$7)';
+class FilterTransportRepository {
+    static async filterTransport(filterTransportDTO: FilterTransportDTO) {
+        const sql = `SELECT * FROM filter_transport(
+            $1::VARCHAR,
+            $2::VARCHAR,
+            $3::VARCHAR,
+            $4::VARCHAR,
+            $5::DATE,
+            $6::DATE,
+            $7::BOOLEAN
+        )`;
         const values = [
             filterTransportDTO.transportId, 
             filterTransportDTO.transportType, 
             filterTransportDTO.origin, 
             filterTransportDTO.destination,
-            filterTransportDTO.arrivalDate, 
-            filterTransportDTO.departureDate, 
+            filterTransportDTO.arrivalDate ? filterTransportDTO.arrivalDate.toISOString().split('T')[0] : null,
+            filterTransportDTO.departureDate ? filterTransportDTO.departureDate.toISOString().split('T')[0] : null,
             filterTransportDTO.state
         ];
 
@@ -18,6 +26,7 @@ class FilterTransport {
             const client = await connection.connect();
             try {
                 const result = await client.query(sql, values);
+                console.log('Result Rows:', result.rows); // Para depuración
                 return result.rows;
             } finally {
                 client.release();
@@ -25,8 +34,8 @@ class FilterTransport {
         } catch (error: any) {
             console.error('Error executing query:', error.stack);
             throw error;
-        }         
+        }
     }
 }
 
-export default FilterTransport;
+export default FilterTransportRepository;

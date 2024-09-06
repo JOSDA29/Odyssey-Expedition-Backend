@@ -8,7 +8,7 @@ class GetById {
             const services = await connection.connect();
             try{
                 const res = await connection.query(sql, values);
-                return res.rows;
+                    return res.rows;
             } finally {
                 services.release();
             }

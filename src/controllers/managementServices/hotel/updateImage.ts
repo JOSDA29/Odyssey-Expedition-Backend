@@ -7,10 +7,11 @@ import { uploadImageToAzure } from "../../../config/azureBlobStorage";
 const update = async (req: Request, res: Response) => {
     try {
         const {
-            id,
             tokenEmail,
             file,
         } = req.body;
+        
+        const {id} = req.query;
 
         if (!file) {
             return res
@@ -20,7 +21,7 @@ const update = async (req: Request, res: Response) => {
 
         const imageurl = await uploadImageToAzure(file);
 
-        const result = await updateImageService.updateImage(new updateImageDTO(id, tokenEmail, imageurl));
+        const result = await updateImageService.updateImage(new updateImageDTO(Number(id), tokenEmail, imageurl));
 
         if(result){
             return res.status(200).json({

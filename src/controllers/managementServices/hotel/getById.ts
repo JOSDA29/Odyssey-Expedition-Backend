@@ -3,16 +3,15 @@ import GetByIdService from "../../../services/managementServices/hotel/getById";
 
 const GetById = async (req: Request, res: Response) => {
     try{
-        const {tokenEmail} = req.body;
         const id = req.params.id;
         const idHotel: number = parseInt(id, 10);
 
         const result = await GetByIdService.getById(idHotel);
-        if(result){
+        if(result.length > 0){
            return res.status(202).json(result);
         }
         return res.status(402).json({
-            status: 'Bad Request'
+            status: 'No se encontraron resultados'
         });
     } catch (error: any) {
         return res
