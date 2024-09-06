@@ -7,15 +7,15 @@ const Filter = async (req: Request, res: Response) => {
         const {
             id,
             name,
-            destination,
+            location,
             state
         } = req.query;
         
         const filterData = new filterDTO(
             id ? Number(id) : undefined,
             name ? String(name) : undefined,
-            destination ? String(destination) : undefined,
-            state ? state === 'true' : undefined,
+            location ? String(location) : undefined,
+            state === 'true' ? true : state === 'false' ? false : undefined,
         );
         
         const result = await FilterService.filter(filterData);
