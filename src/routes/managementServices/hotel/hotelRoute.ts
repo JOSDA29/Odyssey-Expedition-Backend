@@ -26,6 +26,6 @@ router.get('/getAll', validateToken(['Adviser', 'Administrator']), getAllControl
 
 router.get('/getById/:id', validateToken(['Adviser', 'Administrator']), getByIdController);
 
-router.get('/filter', validateToken(['Adviser', 'Administrator']), filterController);
+router.get('/filter', validateToken(['Adviser', 'Administrator', 'Client']), filterController);
 
 export default router;
