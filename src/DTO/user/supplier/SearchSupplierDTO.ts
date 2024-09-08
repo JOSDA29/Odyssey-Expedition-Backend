@@ -3,17 +3,20 @@ class SearchSupplierDTO {
     private _companyName: string | null;
     private _email: string | null;
     private _phone: string | null;
+    private _state: boolean | null;
 
     constructor(
         supplierID: string | null,
         companyName: string | null,
         email: string | null,
-        phone: string | null
+        phone: string | null,
+        state: boolean | null
     ) {
         this._supplierID = supplierID;
         this._companyName = companyName;
         this._email = email;
         this._phone = phone;
+        this._state = state;
     }
 
     // Getter y Setter para supplierID
@@ -50,6 +53,14 @@ class SearchSupplierDTO {
 
     public set phone(value: string | null) {
         this._phone = value;
+    }
+
+    public get state(): boolean | null {
+        return this._state;
+    }
+
+    public set state(value: boolean | null) {
+        this._state = value;
     }
 }
 
