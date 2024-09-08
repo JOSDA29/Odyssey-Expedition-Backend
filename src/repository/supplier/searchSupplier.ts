@@ -3,12 +3,13 @@ import SearchSupplierDTO from "../../DTO/user/supplier/SearchSupplierDTO";
 
 class SearchSupplier {
     static async searchSupplier(searchSupplierDTO : SearchSupplierDTO){
-        const sql = 'select * from filter_suppliers ($1, $2, $3, $4)';
+        const sql = 'select * from filter_suppliers ($1, $2, $3, $4, $5)';
         const values = [
             searchSupplierDTO.supplierID,
             searchSupplierDTO.email,
             searchSupplierDTO.phone,
-            searchSupplierDTO.companyName
+            searchSupplierDTO.companyName,
+            searchSupplierDTO.state
         ]
 
         try {
