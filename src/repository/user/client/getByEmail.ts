@@ -1,6 +1,6 @@
-import connection from "../../../config/configDB";
-class getByEmail{
-    static async getByEm(email: string){
+import connection from '../../../config/configDB';
+class getByEmail {
+    static async getByEm(email: string) {
         const sql = 'SELECT * FROM Client WHERE email = $1';
         const values = [email];
 
@@ -8,8 +8,6 @@ class getByEmail{
             const client = await connection.connect();
             try {
                 const res = await client.query(sql, values);
-                console.log(res);
-                
                 return res.rows;
             } finally {
                 client.release();

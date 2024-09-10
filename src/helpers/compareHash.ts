@@ -1,8 +1,11 @@
 import bcrypt from 'bcryptjs';
 
-let compareHash = async(data: string, dataToCompare: string): Promise<boolean> =>{
-    let isPasswordValid = await bcrypt.compare(data, dataToCompare);
-    return isPasswordValid
-}
+const compareHash = async (
+    data: string,
+    dataToCompare: string,
+): Promise<boolean> => {
+    const isPasswordValid = await bcrypt.compare(data, dataToCompare);
+    return isPasswordValid;
+};
 
 export default compareHash;

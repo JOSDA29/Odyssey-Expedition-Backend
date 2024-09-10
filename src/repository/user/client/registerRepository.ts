@@ -1,22 +1,23 @@
-import connection from "../../../config/configDB";
-import UserDto from "../../../DTO/user/userDto";
-import EmailVerification from "../../../helpers/verification/EmailVerification";
-import IdVerification from "../../../helpers/verification/IdVerification";
+import connection from '../../../config/configDB';
+import UserDto from '../../../DTO/user/userDto';
+import EmailVerification from '../../../helpers/verification/EmailVerification';
 
 class RegisterService {
     static async register(user: UserDto) {
-        const emailExists = !(await EmailVerification(user.email));
-        const idExists = !(await IdVerification(user.id));
+        const emailExists = await EmailVerification(user.email);
 
-        if (emailExists && idExists) {
-            return { success: false, message: "Both email and ID already exist" };
-        } else if (emailExists) {
-            return { success: false, message: "Email already exists" };
-        } else if (idExists) {
-            return { success: false, message: "ID already exists" };
+        if (emailExists) {
+            return { success: false, message: 'Email already exists' };
         } else {
-            const sql = "INSERT INTO Client(clientID, firstName, lastName, email, password, phone, image) VALUES ($1, $2, $3, $4, $5, $6, decode($7, 'hex'))";
-            const values = [user.id, user.name, user.last_Name, user.email, user.password, user.phoneNumber, user.image];
+            const sql =
+                'INSERT INTO Client( firstName, lastName, email, password, phone ) VALUES ($1, $2, $3, $4, $5 )';
+            const values = [
+                user.name,
+                user.last_Name,
+                user.email,
+                user.password,
+                user.phoneNumber,
+            ];
 
             try {
                 const client = await connection.connect();

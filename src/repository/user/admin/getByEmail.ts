@@ -1,7 +1,7 @@
-import connection from "../../../config/configDB";
+import connection from '../../../config/configDB';
 
-class getByEmail{
-    static async getByEm(email: string){
+class getByEmail {
+    static async getByEmail(email: string) {
         const sql = 'SELECT * FROM Administrator WHERE email = $1';
         const values = [email];
 
@@ -9,7 +9,7 @@ class getByEmail{
             const client = await connection.connect();
             try {
                 const res = await client.query(sql, values);
-                return  res.rows;
+                return res.rows;
             } finally {
                 client.release();
             }

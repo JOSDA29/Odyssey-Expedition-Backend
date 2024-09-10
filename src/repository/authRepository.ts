@@ -1,13 +1,12 @@
-import connection from "../config/configDB";
+import connection from '../config/configDB';
 
 class AuthRepository {
-
     static async authClient(email: string) {
         const sql = 'SELECT password FROM Client WHERE email = $1';
-        const values = [email];        
+        const values = [email];
         try {
             const client = await connection.connect();
-            
+
             try {
                 const res = await client.query(sql, values);
                 return res.rows;
@@ -19,7 +18,6 @@ class AuthRepository {
             throw error;
         }
     }
-    
 
     static async authAdmin(email: string) {
         const sql = 'SELECT password FROM Administrator WHERE email = $1';
