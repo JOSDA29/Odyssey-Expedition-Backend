@@ -5,22 +5,17 @@ class Update {
     static async update(updateDTO: UpdateDTO) {
 
         if (!updateDTO.id || updateDTO.id <= 0) {
-            throw new Error("Invalid ID.");
+            return { success: false, message: 'Bad request. Invalid ID.', status: 400 };
         }
-        
         if (updateDTO.numberOfPeople && updateDTO.numberOfPeople <= 0) {
-            throw new Error("The number of persons must be greater than 0.");
+            return { success: false, message: 'Bad request. The number of persons must be greater than 0.', status: 400 };
         }
-        if (updateDTO.departureDate && updateDTO.returnDate && updateDTO.departureDate > updateDTO.returnDate) {
-            throw new Error("The departure date cannot be later than the return date.");
-        }
-        
         try {
             const result = await UpdateRepository.UpdateRepo(updateDTO);
-            if (result === 0) {
-                throw new Error("No record was updated. Verify that the ID is correct.");
+            if (result === false) {
+                return { success: false, message: 'Not Found. The package with the given ID does not exist in the database.', status: 404 };
             }
-            return { success: true, message: 'Successful update.' };
+            return { success: true, message: 'Successful update.', status: 200};
         } catch (error) {
             console.error('Error updating the package:', error);
             throw new Error('Internal error when trying to update the package.');

@@ -12,22 +12,18 @@ const Update = async (req: Request, res: Response) => {
         returnDate,
         numberOfPeople,
         itinerary,
-        packageServices,
         customerPreferences,
         state,
-        fkHotelID,
-        fkTransportID,
-        status,
-        totalPrice,
         tokenEmail,
         } = req.body;
 
-        const result = await updateService.update(new PackageDTO(id, origin, destination, departureDate, returnDate, numberOfPeople, itinerary, packageServices, customerPreferences, state, fkHotelID, fkTransportID, status, totalPrice, tokenEmail));
+        const result = await updateService.update(new PackageDTO(id, origin, destination, departureDate, returnDate, numberOfPeople, itinerary, customerPreferences, state, tokenEmail));
 
         if(result.success){
-            return res.status(201).json({message: result.message});
+            return res.status(result.status).json({success: result.success, message: result.message});
         }
-        return res.status(400).json({ message: result.message });
+
+        return res.status(result.status).json({success: result.success, message: result.message });
     } catch (error: any) {
         return res
             .status(500)
