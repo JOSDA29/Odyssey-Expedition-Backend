@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import getService from "../../../services/adviser/getAll";
+import { Request, Response } from 'express';
+import getService from '../../../services/user/adviser/getAll';
 
 const getAll = async (req: Request, res: Response) => {
     try {
@@ -10,10 +10,11 @@ const getAll = async (req: Request, res: Response) => {
         } else {
             return res.status(404).json({ status: 'Data not found' });
         }
-
     } catch (error: any) {
-        return res.status(500).json({ status: 'Error', message: error.message });
+        return res
+            .status(500)
+            .json({ status: 'Error', message: error.message });
     }
-}
+};
 
 export default getAll;

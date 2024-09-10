@@ -1,7 +1,7 @@
-import connection from "../../../config/configDB";
+import connection from '../../../config/configDB';
 
-class GetAll{
-    static async getAll(){
+class GetAll {
+    static async getAll() {
         const sql = 'SELECT * FROM Adviser';
         try {
             const client = await connection.connect();

@@ -1,20 +1,22 @@
 import connection from '../../config/configDB';
 
 const IdVerification = async (id: string) => {
-    const sqlClient = "SELECT * FROM client WHERE clientid = $1";
-    const sqlAdministrator = "SELECT * FROM administrator WHERE administratorid = $1";
-    const sqlAdviser = "SELECT * FROM adviser WHERE adviserid = $1";
+    const sqlClient = 'SELECT * FROM client WHERE clientid = $1';
+    const sqlAdministrator =
+        'SELECT * FROM administrator WHERE administratorid = $1';
+    const sqlAdviser = 'SELECT * FROM adviser WHERE adviserid = $1';
 
     const values = [id];
 
     try {
         const client = await connection.connect();
         try {
-            const [responseClient, responseAdministrator, responseAdviser] = await Promise.all([
-                client.query(sqlClient, values),
-                client.query(sqlAdministrator, values),
-                client.query(sqlAdviser, values)
-            ]);
+            const [responseClient, responseAdministrator, responseAdviser] =
+                await Promise.all([
+                    client.query(sqlClient, values),
+                    client.query(sqlAdministrator, values),
+                    client.query(sqlAdviser, values),
+                ]);
 
             const isClientExists = responseClient.rowCount! > 0;
             const isAdministratorExists = responseAdministrator.rowCount! > 0;
@@ -32,6 +34,6 @@ const IdVerification = async (id: string) => {
         console.error('Error executing query', error.stack);
         throw error;
     }
-}
+};
 
 export default IdVerification;

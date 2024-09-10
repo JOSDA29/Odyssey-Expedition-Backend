@@ -3,23 +3,23 @@ class User {
     private _names?: string;
     private _lastNames?: string;
     private _phone?: string;
-    private _image?: string;
-    private _fkAdministratorEmail?: string;
+    private _state?: boolean;
+    private _id?: string;
 
     constructor(
         email: string,
+        id?: string,
         names?: string,
         lastNames?: string,
         phone?: string,
-        image?: string,
-        fkAdministratorEmail?: string
+        state?: boolean,
     ) {
         this._email = email;
         this._names = names;
         this._lastNames = lastNames;
         this._phone = phone;
-        this._image = image;
-        this._fkAdministratorEmail = fkAdministratorEmail;
+        this._state = state;
+        this._id = id;
     }
 
     //Getter y Setter para 'email'
@@ -56,19 +56,19 @@ class User {
     }
 
     // Getter y Setter para 'image'
-    get image(): string | undefined {
-        return this._image;
+    get state(): boolean | undefined {
+        return this._state;
     }
-    set image(value: string | undefined) {
-        this._image = value;
+    set state(value: boolean | undefined) {
+        this._state = value;
     }
 
-    //Getter y Setter para la foranea de administrador que se va a utlizar en el asesor unicamente
-    get fkAdministratorEmail(): string | undefined {
-        return this._fkAdministratorEmail;
+    get id(): string | undefined{
+        return this._id;
     }
-    set fkAdministratorEmail(value: string | undefined) {
-        this._fkAdministratorEmail = value;
+
+    set id(value: string | undefined) {
+        this.id = value;
     }
 }
 

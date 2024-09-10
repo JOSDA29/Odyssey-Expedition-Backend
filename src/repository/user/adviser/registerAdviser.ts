@@ -1,7 +1,7 @@
-import connection from "../../../config/configDB";
-import UserDto from "../../../DTO/user/userDto";
+import connection from '../../../config/configDB';
+import UserDto from '../../../DTO/user/userDto';
 import EmailVerification from '../../../helpers/verification/EmailVerification';
-import IdVerification from "../../../helpers/verification/IdVerification";
+import IdVerification from '../../../helpers/verification/IdVerification';
 
 class RegisterRepository {
     static async registerAdviser(user: UserDto) {
@@ -9,14 +9,26 @@ class RegisterRepository {
         const idExists = await IdVerification(user.id);
 
         if (emailExists && idExists) {
-            return { success: false, message: "Both email and ID already exist" };
+            return {
+                success: false,
+                message: 'Both email and ID already exist',
+            };
         } else if (emailExists) {
-            return { success: false, message: "Email already exists" };
+            return { success: false, message: 'Email already exists' };
         } else if (idExists) {
-            return { success: false, message: "ID already exists" };
+            return { success: false, message: 'ID already exists' };
         } else {
-            const sql = "INSERT INTO Adviser(AdviserID, firstName, lastName, email, password, phone, image, FKEmail) VALUES ($1, $2, $3, $4, $5, $6, decode($7, 'hex'), $8)";
-            const values = [user.id, user.name, user.last_Name, user.email, user.password, user.phoneNumber, user.image, user.email_Admin];
+            const sql =
+                'INSERT INTO Adviser(AdviserID, firstName, lastName, email, password, phone, FKEmail) VALUES ($1, $2, $3, $4, $5, $6, $7)';
+            const values = [
+                user.id,
+                user.name,
+                user.last_Name,
+                user.email,
+                user.password,
+                user.phoneNumber,
+                user.email_Admin,
+            ];
 
             try {
                 const client = await connection.connect();
