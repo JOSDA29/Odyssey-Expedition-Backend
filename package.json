@@ -1,9 +1,10 @@
 {
   "name": "odyssey-expedition-backend",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "./dist/app.js",
   "scripts": {
-    "start": "nodemon ./dist/app",
+    "start": "node ./dist/app",
+    "build": "tsc",
     "lint": "eslint .",
     "test": "jest",
     "prettier": "npx prettier --write \"./src/**/*.ts\" --ignore-path .prettierignore"
