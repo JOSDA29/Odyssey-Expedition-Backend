@@ -11,9 +11,9 @@ import adviserRoutes from './routes/user/adviser/adviserRoutes';
 import supplierRoutes from './routes/supplier/supplierRoutes';
 import packageRoutes from './routes/managementServices/package/packageRoute';
 import chatRoutes from './routes/chat/chatAI';
-
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
-import transportRoutes from './routes/managementServices/transport/transportRoutes'
+import transportRoutes from './routes/managementServices/transport/transportRoutes';
+import mercadoRoutes from './routes/payment/paymentRoute';
 
 import morgan from 'morgan';
 
@@ -50,7 +50,8 @@ app.use('/package', packageRoutes);
 //AI routes
 app.use('/chat', chatRoutes);
 
-
+//Mercado Pago
+app.use('/pasarela', mercadoRoutes);
 
 const PORT = process.env.PORT || 10240;
 

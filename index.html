@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar con Mercado Pago</title>
+</head>
+<body>
+    <h1>Pagar con Mercado Pago</h1>
+    <button id="payButton">Pagar ahora</button>
+
+    <script>
+        document.getElementById("payButton").addEventListener("click", async () => {
+            try {
+                // Hacer una solicitud para crear la orden de pago
+                const response = await fetch("http://localhost:10240/pasarela/create-order", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        precioTotal: "2000",
+                        tipoReserva: "crucero"
+                    })
+                });
+
+                const data = await response.json();
+
+                // Redirigir a la URL de Mercado Pago
+                if (data.init_point) {
+                    window.location.href = data.init_point;  // Redirigir a la URL de pago
+                } else {
+                    alert("Error al generar la orden");
+                }
+            } catch (error) {
+                console.error("Error al crear la orden de pago:", error);
+            }
+        });
+    </script>
+</body>
+</html>
