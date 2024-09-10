@@ -20,7 +20,7 @@ const Update = async (req: Request, res: Response) => {
         const result = await updateService.update(new PackageDTO(id, origin, destination, departureDate, returnDate, numberOfPeople, itinerary, customerPreferences, state, tokenEmail));
 
         if(result.success){
-            return res.status(201).json({success: result.success, message: result.message});
+            return res.status(result.status).json({success: result.success, message: result.message});
         }
 
         return res.status(result.status).json({success: result.success, message: result.message });
