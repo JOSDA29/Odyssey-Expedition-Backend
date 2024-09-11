@@ -23,9 +23,9 @@ const create = async (req: Request, res: Response) => {
         
         const result = await packageService.package(new PackageDTO(origin, destination,departureDate, returnDate, numberOfPeople, itinerary, packageServices, customerPreferences, state, fkHotelID, fkTransportID, status, totalPrice, tokenEmail));
 
-        if(result! > 0){ 
+        if(result){ 
             return res.status(200).json({
-                status: 'Package Created Succesfully'
+                message: result.message
             });
         }
 
