@@ -18,7 +18,7 @@ class packageService {
 
         } catch (error) {
             console.error('Error filtering packages:', error);
-            throw new Error('Internal error when trying to filter packages.');
+            throw new Error('Internal error when trying to created packages.');
         }
        
     }
