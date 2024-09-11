@@ -26,6 +26,6 @@ const parseResponseToList = (response: string): string[] => {
     return items;
 };
 
-const DEFAULT_MESSAGE = 'Lo siento, no puedo responder tu pregunta, por favor comunicate con un asesor :';
 
-export {isValidResponse, parseResponseToList, DEFAULT_MESSAGE};
+
+export {isValidResponse, parseResponseToList};
