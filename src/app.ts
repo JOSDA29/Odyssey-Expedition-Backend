@@ -50,8 +50,6 @@ app.use('/package', packageRoutes);
 //AI routes
 app.use('/chat', chatRoutes);
 
-
-
 const PORT = process.env.PORT || 10240;
 
 app.listen(PORT, () => {
