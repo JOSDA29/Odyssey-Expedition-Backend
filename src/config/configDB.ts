@@ -10,10 +10,6 @@ const connection = new Pool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
     max: 10,
-    ssl: {
-        rejectUnauthorized: false,
-        ca: fs.readFileSync(process.env.DB_SSL_CA || './DigiCertGlobalRootG2.crt.pem').toString(), 
-    },
     idleTimeoutMillis: 30000,
     connectionTimeoutMillis: 2000,
 });

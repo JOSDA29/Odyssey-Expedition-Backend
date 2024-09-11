@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./dist/app.js",
   "scripts": {
-    "start": "node ./dist/app",
+    "start": "nodemon ./dist/app",
     "build": "tsc",
     "lint": "eslint .",
     "test": "jest",
