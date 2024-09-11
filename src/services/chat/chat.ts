@@ -2,8 +2,7 @@ import chatConfig from '../../config/chat/chatConfig';
 import chatDto from '../../DTO/chat/chat';
 import {
     isValidResponse,
-    parseResponseToList,
-    DEFAULT_MESSAGE,
+    parseResponseToList
 } from '../../helpers/chat/validators';
 import { Content } from '@google/generative-ai';
 import model from '../../config/chat/model';
@@ -64,7 +63,7 @@ export const chatService = async (chatAI: chatDto) => {
                 return { response: response };
             }
         } else {
-            return DEFAULT_MESSAGE;
+            return 'No puedo ayudarte con tu solicitud, por favor comunicate con un asesor';
         }
     } catch (error) {
         console.error('Error en el envío del mensaje:', error);
