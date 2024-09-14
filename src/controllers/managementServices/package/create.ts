@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import packageService from "../../../services/managementServices/package/create";
+import PackageService from "../../../services/managementServices/package/create";
 import PackageDTO from "../../../DTO/managementServices/package/packageDTO";
 
 const create = async (req: Request, res: Response) => {
@@ -15,23 +15,28 @@ const create = async (req: Request, res: Response) => {
             state,
             tokenEmail,
         } = req.body;
-        
-        const result = await packageService.package(new PackageDTO(origin, destination,departureDate, returnDate, numberOfPeople, itinerary, customerPreferences, state, tokenEmail));
 
-        if(result.success){ 
-            return res.status(200).json({
-                message: result.message
-            });
-        }
+        const packageData = new PackageDTO(
+            origin,
+            destination,
+            departureDate,
+            returnDate,
+            numberOfPeople,
+            itinerary,
+            customerPreferences,
+            state,
+            tokenEmail
+        );
 
-        return res.status(400).json({
-            message: result.message
-        });
-        
+        const result = await PackageService.createPackage(packageData);
+
+        return res.status(result.state).json({ message: result.message, packageId: result.packageId });
     } catch (error: any) {
-        return res
-            .status(500)
-            .send({ error: 'Internal Server Error', errorInfo: error.message });
+        console.error('Internal Server Error:', error.message);
+        return res.status(500).json({
+            error: 'Internal Server Error',
+            errorInfo: error.message,
+        });
     }
 }
 

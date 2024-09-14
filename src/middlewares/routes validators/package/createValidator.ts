@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express";
-import { check, validationResult, body } from "express-validator";
+import { check, validationResult } from "express-validator";
 
 export const validatorParamsPackage = [
-    check('origin').isLength({ min: 2, max: 15 }).withMessage("La ciudad de origen debe tener entre 2 y 15 caracteres"),
-    check('destination').isLength({ min: 2, max: 15 }).withMessage("El destino debe tener entre 2 y 15 caracteres"),
+    check('origin').isLength({ min: 2, max: 50 }).withMessage("La ciudad de origen debe tener entre 2 y 50 caracteres"),
+    check('destination').isLength({ min: 2, max: 50 }).withMessage("El destino debe tener entre 2 y 50 caracteres"),
     check('departureDate')
         .isDate().withMessage("Debe ser una fecha")
         .custom((value) => {
