@@ -5,10 +5,11 @@ class Create {
     static async create(packageData: PackageDTO) {
         const sql = `
             SELECT insert_package(
-                $1, $2, $3, $4, $5, $6, $7, $8, $9
+                $1, $2, $3, $4, $5, $6, $7, $8, $9, $10
             )
         `;
         const values = [
+            packageData._namePackage,
             packageData.origin,
             packageData.destination,
             packageData.departureDate,

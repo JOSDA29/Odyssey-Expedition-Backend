@@ -30,6 +30,6 @@ router.delete('/delete/:id', validateToken(['Adviser']), deleteController);
 
 router.delete('/deleteService', validateToken(['Adviser']), deleteServiceController);
 
-router.get('/filter', validatorParamsFilter, validatorFilter, filterController);
+router.get('/filter', filterController);
 
 export default router;

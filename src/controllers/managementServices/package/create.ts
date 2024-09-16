@@ -13,6 +13,7 @@ const create = async (req: Request, res: Response) => {
             itinerary,
             customerPreferences,
             state,
+            packageName,
             tokenEmail,
         } = req.body;
 
@@ -25,7 +26,8 @@ const create = async (req: Request, res: Response) => {
             itinerary,
             customerPreferences,
             state,
-            tokenEmail
+            tokenEmail,
+            packageName
         );
 
         const result = await PackageService.createPackage(packageData);

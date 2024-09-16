@@ -8,18 +8,20 @@ class Package {
     _customerPreferences: string;
     _state: boolean;
     _fkAdviserEmail: string;
+    _namePackage?: string; 
     
     constructor(
-    _origin: string,
-    _destination: string,
-    _departureDate: Date,
-    _returnDate: Date,
-    _numberOfPeople: number,
-    _itinerary: string,
-    _customerPreferences: string,
-    _state: boolean,
-    _fkAdviserEmail: string,
-    ){
+        _origin: string,
+        _destination: string,
+        _departureDate: Date,
+        _returnDate: Date,
+        _numberOfPeople: number,
+        _itinerary: string,
+        _customerPreferences: string,
+        _state: boolean,
+        _fkAdviserEmail: string,
+        _namePackage?: string 
+    ) {
         this._origin = _origin;
         this._destination = _destination;
         this._departureDate = _departureDate;
@@ -29,6 +31,7 @@ class Package {
         this._customerPreferences = _customerPreferences;
         this._state = _state;
         this._fkAdviserEmail = _fkAdviserEmail;
+        this._namePackage = _namePackage;
     }
 
     // Getters
@@ -68,6 +71,10 @@ class Package {
         return this._fkAdviserEmail;
     }
 
+    public get namePackage(): string | undefined {
+        return this._namePackage;
+    }
+
     // Setters
     public set origin(value: string) {
         this._origin = value;
@@ -103,6 +110,10 @@ class Package {
 
     public set fkAdviserEmail(value: string) {
         this._fkAdviserEmail = value;
+    }
+
+    public set namePackage(value: string | undefined) {
+        this._namePackage = value;
     }
 }
 
