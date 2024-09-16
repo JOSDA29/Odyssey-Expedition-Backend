@@ -10,10 +10,9 @@ import clientRoutes from './routes/user/client/clientRoutes';
 import adviserRoutes from './routes/user/adviser/adviserRoutes';
 import supplierRoutes from './routes/supplier/supplierRoutes';
 import packageRoutes from './routes/managementServices/package/packageRoute';
-import chatRoutes from './routes/chat/chatAI';
-
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
 import transportRoutes from './routes/managementServices/transport/transportRoutes'
+import chatRoutes from './routes/chat/chatAI';
 
 import morgan from 'morgan';
 
