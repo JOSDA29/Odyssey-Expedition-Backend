@@ -16,7 +16,6 @@ passport.use(new GoogleStrategy(strategyOptions, async (accessToken: string, ref
 }));
 
 // Serializa el usuario completo (o una parte relevante) en la sesión
-// Serializa el usuario completo (o una parte relevante) en la sesión
 passport.serializeUser((user: any, done) => {
   done(null, {
     email: user.emails[0].value,
