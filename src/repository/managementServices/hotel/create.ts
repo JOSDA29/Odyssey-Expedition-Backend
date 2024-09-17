@@ -36,7 +36,7 @@ class create {
             const client = await connection.connect();
             try {
                 const res = await client.query(sql, values);
-                return res.rowCount;
+                return res.rows[0]?.insert_hotel || null;
             } finally {
                 client.release();
             }

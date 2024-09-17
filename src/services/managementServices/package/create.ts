@@ -1,27 +1,25 @@
 import PackageDTO from "../../../DTO/managementServices/package/packageDTO";
 import packageRepository from "../../../repository/managementServices/package/create";
 
+class PackageService {
+    static async createPackage(packageData: PackageDTO) {
+        if (packageData.departureDate > packageData.returnDate) {
+            return { success: false, message: 'The departure date cannot be later than the return date.', state: 400 };
+        }
 
-class packageService {
-    static async package (packageSer: PackageDTO) {
-        if(packageSer.departureDate && packageSer.returnDate && packageSer.departureDate > packageSer.returnDate) {
-            throw new Error ('The departure date cannot be later than the return date.');
-        } 
         try {
-            const results = await packageRepository.create(packageSer);
+            const packageId = await packageRepository.create(packageData);
 
-            if(results === 0) {
-                return {success: true, message: 'Error'}
+            if (packageId) {
+                return { success: true, message: 'Package created successfully', state: 201, packageId };
             }
 
-            return {success: true, message: 'Package created succesfull'}
-
-        } catch (error) {
-            console.error('Error filtering packages:', error);
-            throw new Error('Internal error when trying to filter packages.');
+            return { success: false, message: 'Failed to create package', state: 500 };
+        } catch (error: any) {
+            console.error('Error creating package:', error.message);
+            return { success: false, message: 'Internal server error', state: 500 };
         }
-       
     }
 }
 
-export default packageService;
+export default PackageService;

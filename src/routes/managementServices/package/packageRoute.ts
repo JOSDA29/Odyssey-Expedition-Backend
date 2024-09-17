@@ -10,12 +10,17 @@ import uploadImageController from '../../../controllers/managementServices/packa
 import updateController from '../../../controllers/managementServices/package/update';
 import deleteController from '../../../controllers/managementServices/package/delete';
 import filterController from '../../../controllers/managementServices/package/filter';
-
-
+import addHotelController from '../../../controllers/managementServices/package/addHotel';
+import addTransportController from '../../../controllers/managementServices/package/addTransport';
+import deleteServiceController from '../../../controllers/managementServices/package/deleteService';
 
 const router = express.Router();
 
 router.post('/create', validateToken(['Adviser']), validatorParamsPackage, validator, createController);
+
+router.post('/addHotel', validateToken(['Adviser']), addHotelController);
+
+router.post('/addTransport', validateToken(['Adviser']), addTransportController);
 
 router.put('/updateImage', validateToken(['Adviser']), upload.single('file'), uploadImageController);
 
@@ -23,6 +28,8 @@ router.put('/update', validateToken(['Adviser']), validatorParamsPackageUpdate, 
 
 router.delete('/delete/:id', validateToken(['Adviser']), deleteController);
 
-router.get('/filter', validatorParamsFilter, validatorFilter, filterController);
+router.delete('/deleteService', validateToken(['Adviser']), deleteServiceController);
+
+router.get('/filter', filterController);
 
 export default router;

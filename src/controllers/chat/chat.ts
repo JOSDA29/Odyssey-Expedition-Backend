@@ -1,5 +1,5 @@
 import chatDto from '../../DTO/chat/chat';
-import { chatAI } from '../../interfaces/chatAI';
+import { chatAI } from '../../interfaces/chat/chatAI';
 import { Request, Response } from 'express';
 import { chatService } from '../../services/chat/chat';
 

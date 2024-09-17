@@ -1,4 +1,4 @@
-import { chatMessageInterface } from '../../interfaces/chatMessage';
+import { chatMessageInterface } from '../../interfaces/chat/chatMessage';
 
 export default class chatDto {
     private _history: chatMessageInterface[];
