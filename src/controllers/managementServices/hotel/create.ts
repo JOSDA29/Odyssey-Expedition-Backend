@@ -20,9 +20,11 @@ const create = async (req: Request, res: Response) => {
         } = req.body;
 
         const result = await createService.create(new HotelDTO(name, destination, startDate, endDate, numberOfPeople, room, description, location, hotelServices, price, tokenEmail, state));
-        if(result! > 0){
+
+        if(result != null){
           return res.status(201).json({
-                status: 'Register Hotel Successfully'
+                status: 'Register Hotel Successfully',
+                idHotel: result
             });
         }
         return res.status(400).json({
