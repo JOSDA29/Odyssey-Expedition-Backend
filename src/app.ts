@@ -40,7 +40,6 @@ app.get('/', (req: Request, res: Response) => {
     res.send(`
       <html>
         <body>
-          <h1>Bienvenido</h1>
           <form action="/auth/google" method="get">
             <button type="submit">Autentícate con Google</button>
           </form>
