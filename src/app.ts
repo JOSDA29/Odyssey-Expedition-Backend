@@ -16,12 +16,9 @@ import googleRoute from './routes/googleRoute';
 
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
 import transportRoutes from './routes/managementServices/transport/transportRoutes';
-import session from 'express-session';
 import morgan from 'morgan';
-import passport from 'passport';
 
 const app = express().use(bodyParser.json());
-
 
 
 // Configura dotenv
@@ -29,11 +26,6 @@ dotenv.config();
 
 app.use(cors());
 app.use(morgan('dev'));
-
-
-app.use(session({ secret: 'oddy', resave: false, saveUninitialized: true }));
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use('/auth-google', googleRoute);
 
