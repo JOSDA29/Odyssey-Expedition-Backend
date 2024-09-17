@@ -36,17 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Este es el formulario que se tiene que hacer en el front para consumir el back de la api de google
-app.get('/', (req: Request, res: Response) => {
-    res.send(`
-      <html>
-        <body>
-          <form action="/auth/google" method="get">
-            <button type="submit">Autentícate con Google</button>
-          </form>
-        </body>
-      </html>
-    `);
-  });
+app.get('/auth/google');
 
 app.use('/auth', googleRoute);
 
@@ -76,6 +66,7 @@ app.use('/package', packageRoutes);
 
 //AI routes
 app.use('/chat', chatRoutes);
+
 
 const PORT = process.env.PORT || 10240;
 
