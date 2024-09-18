@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
-
 //ROUTES
 import auth from './routes/authRoute';
 import adminRoutes from './routes/user/admin/adminRoutes';
