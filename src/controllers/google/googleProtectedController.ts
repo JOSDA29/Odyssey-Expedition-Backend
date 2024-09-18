@@ -12,11 +12,12 @@ const googleProtected = async (req: Request, res: Response) => {
       
       const existingUser = await getByEmail.getByEmail(email);
       const payload = {
-        email, firstName, lastName
+        email: email, 
+        role: 'Client'
       };
       
       const secret = process.env.SECRET as string;
-      const token = generateToken(payload, secret, 15);
+      const token = generateToken(payload, secret, 60);
       
       if (existingUser) {
         return res.status(200).json({
