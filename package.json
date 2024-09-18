@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "./dist/app.js",
   "scripts": {
-    "start": "node ./dist/app",
     "build": "tsc",
+    "start": "node ./dist/app.js",
+    "build-and-start": "npm run build && npm run start",
     "lint": "eslint .",
     "test": "jest",
     "prettier": "npx prettier --write \"./src/**/*.ts\" --ignore-path .prettierignore"
