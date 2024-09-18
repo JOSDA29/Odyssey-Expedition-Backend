@@ -11,11 +11,11 @@ const connection = new Pool({
     database: process.env.DB_DATABASE,
     max: 10,
     ssl: {
-        rejectUnauthorized: true,
-        ca: fs.readFileSync('./path/to/BaltimoreCyberTrustRoot.crt.pem').toString(),
+        rejectUnauthorized: false,  
     },
     idleTimeoutMillis: 30000,
-    connectionTimeoutMillis: 5000,  // Aumenta este valor si es necesario
+    connectionTimeoutMillis: 5000,
 });
+
 
 export default connection;
