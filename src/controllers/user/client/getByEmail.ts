@@ -3,11 +3,26 @@ import getService from '../../../services/user/client/getByEmail';
 
 const getByEmail = async (req: Request, res: Response) => {
     try {
-    
-        const  email : string = req.params.email;
-        
-        const result = await getService.getByEmail(email);
+        const { tokenRole, tokenEmail } = req.body;
+        const email: string = req.params.email;
 
+        let result: any = [];
+
+        switch (tokenRole) {
+            case 'Client':
+                result = await getService.getByEmail(tokenEmail);
+                break;
+            case 'Adviser':
+                if (!email) {
+                    return res
+                        .status(400)
+                        .send({ message: 'Email is required' });
+                }
+                result = await getService.getByEmail(email);
+                break;
+            default:
+                return res.status(401).send({ message: 'Invalid token' });
+        }
 
         if (result.length > 0) {
             return res.status(200).json(result[0]);
