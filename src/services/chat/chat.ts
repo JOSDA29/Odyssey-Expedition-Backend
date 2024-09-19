@@ -2,7 +2,6 @@ import chatConfig from '../../config/chat/chatConfig';
 import chatDto from '../../DTO/chat/chat';
 import {
     isValidResponse,
-    parseResponseToList
 } from '../../helpers/chat/validators';
 import { Content } from '@google/generative-ai';
 import model from '../../config/chat/model';
@@ -52,18 +51,10 @@ export const chatService = async (chatAI: chatDto) => {
 
         // Verificación si la respuesta es válida según los temas permitidos
         if (isValidResponse(text)) {
-            if (
-                text.toLowerCase().includes('lista') ||
-                text.toLowerCase().includes('dame una lista')
-            ) {
-                const listResponse = parseResponseToList(text);
-                return { response: listResponse };
-            } else {
-                const response = text;
-                return { response: response };
-            }
+            const response = text;
+            return { response: response };
         } else {
-            return 'No puedo ayudarte con tu solicitud, por favor comunicate con un asesor';
+            return 'No puedo ayudarte con tu solicitud, por favor comunicate con un asesor al numero: 3122128443';
         }
     } catch (error) {
         console.error('Error en el envío del mensaje:', error);
