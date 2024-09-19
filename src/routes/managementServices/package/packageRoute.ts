@@ -13,6 +13,7 @@ import filterController from '../../../controllers/managementServices/package/fi
 import addHotelController from '../../../controllers/managementServices/package/addHotel';
 import addTransportController from '../../../controllers/managementServices/package/addTransport';
 import deleteServiceController from '../../../controllers/managementServices/package/deleteService';
+import getServicesController from '../../../controllers/managementServices/package/GetServicesByPackage';
 
 const router = express.Router();
 
@@ -31,5 +32,7 @@ router.delete('/delete/:id', validateToken(['Adviser']), deleteController);
 router.delete('/deleteService', validateToken(['Adviser']), deleteServiceController);
 
 router.get('/filter', filterController);
+
+router.get('/getServices', validateToken(['Adviser']),  getServicesController);
 
 export default router;
