@@ -2,7 +2,6 @@ import express from 'express';
 import validateToken from '../../../middlewares/validateTokenMiddleware';
 import { validatorParamsPackage, validator } from '../../../middlewares/routes validators/package/createValidator';
 import { validatorParamsPackageUpdate, validatorUpdate } from '../../../middlewares/routes validators/package/updateValidator';
-import { validatorParamsFilter, validatorFilter } from '../../../middlewares/routes validators/package/filterValidator';
 import upload from '../../../middlewares/multerMiddleware';
 
 import createController from '../../../controllers/managementServices/package/create';
