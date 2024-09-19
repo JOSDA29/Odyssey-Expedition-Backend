@@ -11,12 +11,11 @@ import clientRoutes from './routes/user/client/clientRoutes';
 import adviserRoutes from './routes/user/adviser/adviserRoutes';
 import supplierRoutes from './routes/supplier/supplierRoutes';
 import packageRoutes from './routes/managementServices/package/packageRoute';
-
 import chatRoutes from './routes/chat/chatAI';
 import googleRoute from './routes/googleRoute';
-
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
 import transportRoutes from './routes/managementServices/transport/transportRoutes';
+import transactionRoutes from './routes/transaction/createRoute';
 import morgan from 'morgan';
 
 const app = express().use(bodyParser.json());
@@ -56,6 +55,9 @@ app.use('/package', packageRoutes);
 
 //AI routes
 app.use('/chat', chatRoutes);
+
+//Transaction routes
+app.use('/transaction', transactionRoutes);
 
 const PORT = process.env.PORT || 10240;
 
