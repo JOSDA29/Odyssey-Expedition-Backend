@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 export const createOrder = async (req: Request, res: Response) => {
   const { precioTotal, tipoReserva } = req.body;
 
-  // Verifica qué valor está llegando
+  // Verifica qué valor está llegando   
   console.log('Valor de precioTotal recibido:', precioTotal);
 
   if (!precioTotal || isNaN(precioTotal) || precioTotal <= 0) {
@@ -13,16 +13,34 @@ export const createOrder = async (req: Request, res: Response) => {
     });
   }
 
+  // Define el título de la reserva basado en el tipoReserva
+  let title: string;
+  switch (tipoReserva) {
+    case 'crucero':
+      title = 'Reserva de Crucero';
+      break;
+    case 'paquete':
+      title = 'Reserva de Paquete';
+      break;
+    case 'transporte':
+      title = 'Reserva de Transporte';
+      break;
+    default:
+      return res.status(400).json({
+        error: 'Tipo de reserva no válido',
+      });
+  }
+
   try {
     const response = await axios.post(
       'https://api.mercadopago.com/checkout/preferences',
       {
         items: [
           {
-            title: tipoReserva === 'crucero' ? 'Reserva de Crucero' : 'Reserva de Paquete',
+            title: title,
             unit_price: parseFloat(precioTotal), // Asegurarse de que sea un número
             currency_id: 'COP',
-            quantity: 10,
+            quantity: 1, // Ajustar la cantidad según sea necesario
           },
         ],
         back_urls: {
