@@ -6,8 +6,8 @@ import { validatorParamsTransaction, validatorTransaction } from '../../middlewa
 
 const router = express.Router();
 
-router.post('/create', validateToken(['Adviser']), validatorParamsTransaction, validatorTransaction, createTransactionController);
-router.put('/update',validateToken(['Client']), UpdateController);
+router.post('/create', createTransactionController);
+router.put('/update', validateToken(['Client']), UpdateController);
 
 
 export default router;

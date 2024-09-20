@@ -1,0 +1,64 @@
+<form id="paymentForm">
+    <label for="clientEmail">Correo del Cliente:</label>
+    <input type="email" id="clientEmail" name="clientEmail" required />
+    <br/>
+    <label for="adviserEmail">Correo del Asesor:</label>
+    <input type="email" id="adviserEmail" name="adviserEmail" required />
+    <br/>
+    <label for="billingDate">Fecha de Facturación:</label>
+    <input type="date" id="billingDate" name="billingDate" required />
+    <br/>
+    <label for="paymentMethod">Método de Pago:</label>
+    <input type="text" id="paymentMethod" name="paymentMethod" required />
+    <br/>
+    <label for="serviceType">Tipo de Servicio:</label>
+    <select id="serviceType" name="serviceType">
+        <option value="Transport">Transport</option>
+        <option value="Hotel">Hotel</option>
+        <option value="Package">Package</option>
+    </select>
+    <br/>
+    <label for="service">ID del Servicio:</label> <!-- Cambia el 'id' y 'name' a 'service' -->
+    <input type="text" id="service" name="service" required />
+    <br/>
+    <label for="description">Descripción:</label>
+    <input type="text" id="description" name="description" required />
+    <br/>
+    <label for="state">Estado:</label>
+    <input type="text" id="state" name="state" value="prospecto" required />
+    <br/>
+    <button type="submit">Pagar</button>
+</form>
+
+<script>
+    const paymentForm = document.getElementById('paymentForm');
+    paymentForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = {
+            clientEmail: document.getElementById('clientEmail').value,
+            adviserEmail: document.getElementById('adviserEmail').value,
+            billingDate: document.getElementById('billingDate').value,
+            service: document.getElementById('service').value, // Cambia aquí
+            paymentMethod: document.getElementById('paymentMethod').value,
+            serviceType: document.getElementById('serviceType').value,
+            description: document.getElementById('description').value,
+            state: document.getElementById('state').value
+        };
+
+        console.log("Form Data:", formData);
+        
+        const response = await fetch('http://localhost:10240/transaction/create', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+        if (result.paymentURL) {
+            window.location.href = result.paymentURL;
+        } else {
+            console.error('Error:', result.message);
+        }
+    });
+</script>

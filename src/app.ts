@@ -20,7 +20,6 @@ import morgan from 'morgan';
 
 const app = express().use(bodyParser.json());
 
-
 // Configura dotenv
 dotenv.config();
 
