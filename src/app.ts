@@ -15,7 +15,7 @@ import chatRoutes from './routes/chat/chatAI';
 import googleRoute from './routes/googleRoute';
 import hotelRoutes from './routes/managementServices/hotel/hotelRoute';
 import transportRoutes from './routes/managementServices/transport/transportRoutes';
-import transactionRoutes from './routes/transaction/createRoute';
+import transactionRoutes from './routes/transaction/transationsRoute';
 import morgan from 'morgan';
 
 const app = express().use(bodyParser.json());
