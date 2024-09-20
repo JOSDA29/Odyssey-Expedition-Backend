@@ -44,7 +44,7 @@ export const createOrder = async (req: Request, res: Response) => {
           },
         ],
         back_urls: {
-          success: 'http://localhost:10240/success',
+          success: 'http://localhost:5500/index.html',
           failure: 'http://localhost:10240/failure',
           pending: 'http://localhost:10240/pending',
         },
