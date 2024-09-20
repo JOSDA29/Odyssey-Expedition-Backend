@@ -16,16 +16,16 @@ const isValidResponse = (response: string): boolean => {
 
 // Función para convertir el texto de respuesta en una lista
 // Función para extraer nombres de la respuesta
-const parseResponseToList = (response: string): string[] => {
-    // Suponiendo que los nombres están precedidos por un asterisco y un espacio
-    const items = response.split('\n')
-        .map(line => line.trim())
-        .filter(line => line.startsWith('* '))  // Filtra solo las líneas que empiezan con "* "
-        .map(line => line.substring(2).split(':')[0].trim());  // Elimina "* " y parte después de ':'
+// const parseResponseToList = (response: string): string[] => {
+//     // Suponiendo que los nombres están precedidos por un asterisco y un espacio
+//     const items = response.split('\n')
+//         .map(line => line.trim())
+//         .filter(line => line.startsWith('* '))  // Filtra solo las líneas que empiezan con "* "
+//         .map(line => line.substring(2).split(':')[0].trim());  // Elimina "* " y parte después de ':'
 
-    return items;
-};
+//     return items;
+// };
 
 
 
-export {isValidResponse, parseResponseToList};
+export {isValidResponse};

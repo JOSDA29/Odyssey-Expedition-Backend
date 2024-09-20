@@ -20,7 +20,7 @@ const StartChat: chatMessageInterface[] = [
 const StartChatResponses = new Map<string, chatMessageInterface>([
     [
         'comunicarme con un asesor',
-        { role: 'model', parts: '¡Con mucho gusto! Puedes comunicarte con un asesor llamando al número 3122128443.' },
+        { role: 'model', parts: '¡Con mucho gusto! Puedes comunicarte con un asesor llamando o escribirendo al número: 3122128443.' },
     ],
     ['nombre de la empresa', { role: 'model', parts: 'La empresa se llama Odyssey Expedition, y estamos aquí para ofrecerte experiencias inolvidables.' }],
     [
@@ -38,10 +38,24 @@ const StartChatResponses = new Map<string, chatMessageInterface>([
         },
     ],
     [
-        'como comprar un paquete de viaje',
+        'como puedo comprar un paquete',
         {
             role: 'model',
-            parts: '¡Es muy fácil! Solo debes dirigirte a la página de inicio, elegir entre nuestros destinos, ajusta tu paquete según lo que necesites (como la cantidad de personas) y seguir los pasos para completar tu compra. Si tienes alguna duda, estamos aquí para ayudarte.',
+            parts: '¡Es muy fácil! Solo debes dirigirte a la página de inicio, elegir entre nuestros diferentes destinos, ajusta tu paquete según lo que necesites (como la cantidad de personas, etc) y seguir los pasos para completar tu compra. Si tienes alguna duda, comunicate con un asesor al numero: 3122128443',
+        },
+    ],
+    [
+        'quiero comprar un paquete',
+        {
+            role: 'model',
+            parts: '¡Es muy fácil! Solo debes dirigirte a la página de inicio, elegir entre nuestros diferentes destinos, ajusta tu paquete según lo que necesites (como la cantidad de personas, etc) y seguir los pasos para completar tu compra. Si tienes alguna duda, comunicate con un asesor al numero: 3122128443',
+        },
+    ],
+    [
+        'que debo hacer para comprar un paquete',
+        {
+            role: 'model',
+            parts: '¡Es muy fácil! Solo debes dirigirte a la página de inicio, elegir entre nuestros diferentes destinos, ajusta tu paquete según lo que necesites (como la cantidad de personas, etc) y seguir los pasos para completar tu compra. Si tienes alguna duda, comunicate con un asesor al numero: 3122128443',
         },
     ],
     [
@@ -51,6 +65,7 @@ const StartChatResponses = new Map<string, chatMessageInterface>([
             parts: 'Te recomiendo visitar Cartagena de Indias, el Parque Nacional Natural Tayrona, Bogotá (La Candelaria, Monserrate), Medellín (Comuna 13, Plaza Botero), el Eje Cafetero (Salento, Valle de Cocora), Santa Marta, San Andrés y Providencia, y Villa de Leyva. ¡Son destinos increíbles!',
         },
     ],
+    
     [
         'comidas tipicas',
         {

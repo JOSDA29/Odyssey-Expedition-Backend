@@ -3,6 +3,10 @@ const VALID_THEMES = [
     'ciudades',
     'ciudad',
     'municipios',
+    'pueblos',
+    'historia',
+    'museos',
+    'servicios',
     'comidas',
     'cultura',
     'comida',
@@ -42,7 +46,13 @@ const INVALID_THEMES = [
     'salud',
     'gobierno',
     'homofobia',
-    'racismo'
+    'racismo',
+    'champions',
+    'extranjeros',
+    'subdesarrollo',
+    'intimidad',
+    'sexualidad',
+
 ];
 
 export {VALID_THEMES, INVALID_THEMES};
