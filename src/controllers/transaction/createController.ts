@@ -7,25 +7,25 @@ import db from '../../config/configDB';
 const create = async (req: Request, res: Response) => {
     try {
         const {
-            clientEmail,
+            tokenEmail,
             adviserEmail,
             billingDate,
             service,
             paymentMethod,
             serviceType,
             description,
-            state   
+            state
         } = req.body;
 
         const transactionData = new TransactionDTO(
-            clientEmail,
+            tokenEmail,
             adviserEmail,
             billingDate,
             service,
             paymentMethod,
             serviceType,
             description,
-            state 
+            state
         );
 
         const result = await TransactionService.createService(transactionData);
