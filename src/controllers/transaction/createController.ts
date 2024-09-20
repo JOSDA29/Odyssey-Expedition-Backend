@@ -7,7 +7,7 @@ import db from '../../config/configDB';
 const create = async (req: Request, res: Response) => {
     try {
         const {
-            clientEmail,
+            tokenEmail,
             adviserEmail,
             billingDate,
             service,
@@ -18,7 +18,7 @@ const create = async (req: Request, res: Response) => {
         } = req.body;
 
         const transactionData = new TransactionDTO(
-            clientEmail,
+            tokenEmail,
             adviserEmail,
             billingDate,
             service,
